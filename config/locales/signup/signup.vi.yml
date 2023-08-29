@@ -1,0 +1,14 @@
+vi:
+  signup:
+    title: "Đăng ký"
+    submit: "Tạo tài khoản"
+    name: "Họ và tên"
+    email: "Địa chỉ Email"
+    date_of_birth: "Ngày sinh"
+    gender: "Giới tính"
+    genders:
+      male: "Nam"
+      female: "Nữ"
+      other: "Khác"
+    password: "Mật khẩu"
+    password_confirmation: "Xác nhận mật khẩu"

@@ -395,6 +395,7 @@ Style/StringLiterals:
   SupportedStyles:
     - single_quotes
     - double_quotes
+  Enabled: true
 
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: space

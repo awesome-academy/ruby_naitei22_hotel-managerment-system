@@ -1,0 +1,53 @@
+en:
+  home:
+    title: "Home"
+    welcome: "Welcome to the Sample App"
+    description_html: "This is the home page for the %{link} sample application."
+    signup: "Sign up now!"
+
+  header:
+    logo: "Sample App"
+    home: "Home"
+    help: "Help"
+    contact: "Contact"
+    login: "Log in"
+    logout: "Log out"
+    account: "Account"
+    users: "Users"
+    profile: "Profile"
+    settings: "Settings"
+    english: "English"
+    vietnamese: "Vietnamese"
+
+  help:
+    title: "Help"
+    link_1: "RailsTutorial help page"
+    link_2: "<em>Ruby on Rails Tutorial</em> book"
+    paragraph_html: >
+      Get help on the Ruby on Rails Tutorial at the %{link_1}. To get help on this sample app, see the %{link_2}.
+  
+  contact:
+    title: "Contact"
+    description: "This is the Contact page for the Ruby on Rails Tutorial Sample App."
+
+  activerecord:
+    models:
+      user: "User"  
+    attributes:
+      user:
+        name: "Name"
+        email: "Email"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "Please enter your name"
+            email:
+              taken: "This email is already registered"
+            date_of_birth:
+              invalid_range: "must be within the last 100 years"
+
+  time:
+    formats:
+      long: "%B %d, %Y %H:%M"

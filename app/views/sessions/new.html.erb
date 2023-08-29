@@ -1,0 +1,27 @@
+<!-- app/views/sessions/new.html.erb -->
+<% provide :title, t("login.title") %>
+
+<h1><%= t("login.title") %></h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for :session, url: login_path do |f| %>
+            <%= f.label :email, t("login.email") %>
+            <%= f.email_field :email, class: "form-control" %>
+
+            <%= f.label :password, t("login.password") %>
+            <%= f.password_field :password, class: "form-control" %>
+                
+            <%= f.label :remember_me, class: "checkbox inline" do %>
+                <%= f.check_box :remember_me %>
+                <span><%= t("login.remember") %></span>
+            <% end %>
+
+            <%= f.submit t("login.submit") , class: "btn btn-primary" %>
+        <% end %>
+
+        <p>
+            <%= t("login.new_user") %>
+            <%= link_to t("login.signup"), signup_path %>
+        </p>
+     </div>
+</div>

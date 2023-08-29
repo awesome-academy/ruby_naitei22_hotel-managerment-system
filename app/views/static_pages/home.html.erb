@@ -1,0 +1,9 @@
+<% provide :title, t("home.title") %>
+
+<div class="center jumbotron" style="margin-top: 30px;">
+  <h1><%= t("home.welcome") %></h1>
+  <h2>
+    <%= t("home.description_html", link: link_to("Ruby on Rails Tutorial", "http://www.railstutorial.org/")).html_safe %>
+  </h2>
+  <%= link_to t("home.signup"), signup_path, class: "btn btn-lg btn-primary" %>
+</div>
