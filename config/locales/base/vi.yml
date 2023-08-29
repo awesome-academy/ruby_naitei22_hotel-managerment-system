@@ -1,0 +1,53 @@
+vi:
+  home:
+    title: "Trang chủ"
+    welcome: "Chào mừng đến với Sample App"
+    description_html: "Đây là trang chủ cho %{link} ứng dụng."
+    signup: "Đăng ký ngay!"
+
+  header:
+    logo: "Ứng Dụng"
+    home: "Trang chủ"
+    help: "Trợ giúp"
+    contact: "Liên hệ"
+    login: "Đăng nhập"
+    logout: "Đăng xuất"
+    account: "Tài khoản"
+    users: "Người dùng"
+    profile: "Trang cá nhân"
+    settings: "Cài đặt"
+    english: "Tiếng Anh"
+    vietnamese: "Tiếng Việt"
+
+  help:
+    title: "Trợ giúp"
+    link_1: "trang trợ giúp RailsTutorial"
+    link_2: "sách <em>Ruby on Rails Tutorial</em>"
+    paragraph_html: >
+      Nhận trợ giúp về Ruby on Rails Tutorial tại %{link_1}. Để biết thêm về ứng dụng mẫu, hãy xem %{link_2}.
+
+  contact:
+    title: "Liên hệ"
+    description: "Đây là trang Liên hệ cho Ứng dụng mẫu hướng dẫn Ruby on Rails."   
+
+  activerecord:
+    models:
+      user: "Người dùng"
+    attributes:
+      user:
+        name: "Tên"
+        email: "Email"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "Vui lòng nhập tên của bạn"
+            email:
+              taken: "Email này đã được đăng ký"
+            date_of_birth:
+              invalid_range: "Phải nằm trong khoảng 100 năm trở lại đây"
+
+  time:
+    formats:
+      long: "%H:%M, %d/%m/%Y"

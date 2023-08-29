@@ -1,0 +1,10 @@
+default: &default
+  site_name: "Sample App"
+  admin_email: "admin@example.com"
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  site_name: "Sample App"
