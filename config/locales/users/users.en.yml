@@ -1,0 +1,25 @@
+en:
+  users:
+    not_found: "User not found."
+    index:
+      user: "Users"
+      name: "Name"
+      email: "Email"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      new_user: "New User"
+      date: "Create date" 
+    show:
+      name: "Name"
+      created_at: "Created date" 
+      updated_at: "Updated date" 
+    create:
+      success: "User was successfully created."
+      failure: "Failed to create user."
+    update:
+      success: "User was successfully updated."
+      failure: "Failed to update the user."
+    destroy:
+      success: "User was successfully deleted."
+      failure: "Failed to delete the user."

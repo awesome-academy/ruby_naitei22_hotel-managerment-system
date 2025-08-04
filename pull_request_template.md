@@ -11,7 +11,7 @@
 - [ ] Tham khảo coding convention https://github.com/framgia/coding-standards/blob/master/vn/README.md
 
 ## Related Tickets
-- ticket redmine
+- [#TicketID](https://edu-redmine.sun-asterisk.vn/issues/???)
 
 ## WHAT (optional)
 - Change number items `completed/total` in admin page.
@@ -23,6 +23,3 @@
 - Because in previous version - number just depends on `normal` items. But in new version, we have `state` and `confirm_state` depends on both `normal` + `not_normal` items.
 
 ## Evidence (Screenshot or Video)
-
-
-## Notes (Kiến thức tìm hiểu thêm)

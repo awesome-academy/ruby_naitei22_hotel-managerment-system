@@ -1,0 +1,10 @@
+vi:
+  login:
+    title: "Đăng nhập"
+    submit: "Đăng nhập"
+    email: "Email"
+    password: "Mật khẩu"
+    remember: "Ghi nhớ đăng nhập"
+    new_user: "Người dùng mới?"
+    signup: "Đăng ký ngay!"
+    failure: "Sai email hoặc mật khẩu!"
