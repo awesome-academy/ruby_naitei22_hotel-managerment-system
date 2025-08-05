@@ -6,6 +6,21 @@ class User < ApplicationRecord
   # password_confirmation
   # password_digest: luu password vao csdl duoi dang hash
   # xac thuc mat khau bang authenticate(password)
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :approved_reviews,
+           class_name: Review.name,
+           foreign_key: "approved_by_id",
+           dependent: :nullify
+  has_many :status_changed_bookings,
+           class_name: Booking.name,
+           foreign_key: "status_changed_by_id",
+           dependent: :nullify
+
+  enum role: {
+    user: 0,
+    admin: 1
+  }, _prefix: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   NAME_MAX_LENGTH = 50
