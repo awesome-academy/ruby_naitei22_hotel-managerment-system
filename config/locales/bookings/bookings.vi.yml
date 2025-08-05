@@ -1,5 +1,6 @@
 vi:
   bookings:
+    not_found: "Không tìm thấy đơn!"
     requests:
         success: "Thêm phòng thành công!"
     card:
@@ -18,3 +19,6 @@ vi:
       need_login: "Vui lòng đăng nhập để đặt phòng."
       already_booked: "Bạn đã đặt phòng này!"
       current_booking: "Xem đơn hiện tại."
+    destroy:
+      success: "Xóa đơn thành công!"
+      failure: "Không thể xóa đơn!"

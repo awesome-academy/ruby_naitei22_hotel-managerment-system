@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :status_changed_by, class_name: User.name, optional: true
+
   has_many :requests, dependent: :destroy
   has_many :room_availabilities, through: :requests
   has_many :rooms, through: :room_availabilities
@@ -20,6 +21,7 @@ class Booking < ApplicationRecord
   {requests: [:guests, {room_availabilities: {room: :room_type}}]}].freeze
 
   UPDATE_PARAMS = %i(status decline_reason).freeze
+  INVALID_STATUSES = %i(draft declined cancelled).freeze
 
   after_update :cascade_requests_on_confirm,
                if: -> {saved_change_to_status? && status_confirmed?}
@@ -80,16 +82,14 @@ class Booking < ApplicationRecord
   private
 
   def cascade_requests_on_confirm
-    requests.where(status: %i(pending))
-            .update_all(
-              status: Request.statuses[:confirmed]
-            )
+    requests.where(status: :pending).find_each do |req|
+      req.update(status: :confirmed)
+    end
   end
 
   def cascade_requests_on_decline
-    requests.where(status: %i(pending))
-            .update_all(
-              status: Request.statuses[:declined]
-            )
+    requests.where(status: :pending).find_each do |req|
+      req.update(status: :declined)
+    end
   end
 end

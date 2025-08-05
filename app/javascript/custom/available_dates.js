@@ -10,13 +10,12 @@ document.addEventListener("turbo:load", () => {
   const availableDates = JSON.parse(checkInInput.dataset.availableDates || "[]")
     .map(dateStr => {
       const d = new Date(dateStr);
-      d.setHours(0, 0, 0, 0);
       return d.toISOString().split("T")[0]; // "YYYY-MM-DD"
     });
-
+  
   // Giới hạn chọn tối đa 2 tháng tới
   const maxDate = new Date();
-  maxDate.setMonth(maxDate.getMonth() + 2);
+  maxDate.setMonth(maxDate.getMonth() + 4);
   maxDate.setDate(0);
 
   // Khởi tạo flatpickr cho check_out
@@ -32,13 +31,11 @@ document.addEventListener("turbo:load", () => {
       if (!checkInDate || !checkOutDate) return;
 
       let d = new Date(checkInDate);
-      d.setHours(0, 0, 0, 0);
       const end = new Date(checkOutDate);
-      end.setHours(0, 0, 0, 0);
 
       // Kiểm tra trong khoảng có ngày không khả dụng
       while (d <= end) {
-        const dStr = d.toISOString().split("T")[0];
+        const dStr = formatDateLocal(d); // 👈 không dùng toISOString nữa
         if (!availableDates.includes(dStr)) {
           alert(unavailableMessage);
           checkOutFp.clear();
@@ -60,12 +57,10 @@ document.addEventListener("turbo:load", () => {
       if (!selectedDates.length) return;
 
       const minCheckOut = new Date(selectedDates[0]);
-      minCheckOut.setHours(0, 0, 0, 0);
 
       // Chỉ cho phép check_out >= check_in
       const filteredDates = availableDates.filter(dateStr => {
         const d = new Date(dateStr);
-        d.setHours(0, 0, 0, 0);
         return d >= minCheckOut;
       });
 
@@ -74,9 +69,16 @@ document.addEventListener("turbo:load", () => {
 
       // Reset check_out nếu đang chọn ngày không hợp lệ
       const currentOut = checkOutFp.selectedDates[0];
-      if (!currentOut || currentOut <= selectedDates[0]) {
+      if (!currentOut || currentOut < selectedDates[0]) {
         checkOutFp.clear();
       }
     }
   });
+
+  function formatDateLocal(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
 });

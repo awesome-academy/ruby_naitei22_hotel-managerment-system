@@ -52,6 +52,7 @@ class Room < ApplicationRecord
   has_many :room_availabilities, dependent: :destroy
   has_many :room_availability_requests, through: :room_availabilities
   has_many :requests, through: :room_availability_requests
+  has_many :requests, dependent: :destroy
   has_many :reviews, through: :requests
 
   has_many_attached :images do |attachable|

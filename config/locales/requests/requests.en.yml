@@ -1,0 +1,7 @@
+en:
+  requests:
+    not_found: "Cannot find this request."
+    destroy:
+      confirm: "Are you sure to delete this request?"
+      success: "Request deleted successfully."
+      failure: "Failed to delete request."

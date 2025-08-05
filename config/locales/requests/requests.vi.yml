@@ -1,0 +1,7 @@
+vi:
+  requests:
+    not_found: "Không thể tìm thấy phòng này."
+    destroy:
+      confirm: "Bạn có chắc chắn muốn hủy phòng này không?"
+      success: "Hủy phòng thành công."
+      failure: "Hủy phòng thất bại."

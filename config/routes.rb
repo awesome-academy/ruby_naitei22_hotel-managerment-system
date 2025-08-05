@@ -63,7 +63,16 @@ Rails.application.routes.draw do
       end
     end 
 
-    resources :bookings, only: %i(index)
+    resources :bookings, only: %i(index destroy) do
+      collection do
+        get :current_booking
+      end
+      member do
+        patch :confirm_booking
+      end
+    end
+
+    resources :requests, only: %i(destroy)
   end
   # Defines the root path route ("/")
   # root "articles#index"

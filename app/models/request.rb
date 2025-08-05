@@ -67,7 +67,7 @@ class Request < ApplicationRecord
   def check_in_before_check_out
     return if check_in.blank? || check_out.blank?
 
-    errors.add(:check_out, :check_in_before_check_out) if check_out <= check_in
+    errors.add(:check_out, :check_in_before_check_out) if check_out < check_in
   end
 
   def check_times_changed?

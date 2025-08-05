@@ -1,0 +1,21 @@
+vi:
+  current_booking:
+    title: "Đơn đặt phòng hiện tại"
+    booking_id: "Mã đặt phòng"
+    request_id: "Mã yêu cầu"
+    room_name: "Phòng"
+    room_type: "Loại phòng"
+    guests: "Số lượng khách"
+    price: "Giá"
+    check_in: "Ngày nhận phòng"
+    check_out: "Ngày trả phòng"
+    status: "Trạng thái"
+    no_request: "Bạn chưa đặt phòng nào. Vui lòng chọn phòng để tiếp tục."
+    add: "Thêm phòng"
+    delete: "Xóa"
+    confirm:
+      btn: "Đặt phòng"
+      noti: "Bạn có chắc chắn muốn đặt phòng?"
+      success: "Đặt phòng thành công!"
+      failure: "Đã có lỗi xảy ra khi đặt phòng!"
+      overlap_with_rooms: "Không thể đặt phòng do thời gian bị trùng với người dùng khác: %{rooms}"
