@@ -2,32 +2,9 @@
 
 <h1><%= t("signup.title") %></h1>
 <div class="row">
-    <!-- 
-    Rails tự động xác định HTTP method dựa vào trạng thái của đối tượng @user
-        @user là một bản ghi mới -> Rails hiểu là create -> POST
-        @user là bản ghi đã có trong CSDL -> Rails hiểu là update -> PATCH
-    -->
     <div class="col-md-6 col-md-offset-3">
         <%= form_for @user, url: signup_path do |f| %>
-            <%= render "shared/error_messages" %>
-
-            <%= f.label :name, t("signup.name") %>
-            <%= f.text_field :name %>
-
-            <%= f.label :email, t("signup.email") %>
-            <%= f.email_field :email %>
-
-            <%= f.label :date_of_birth, t("signup.date_of_birth") %>
-            <%= f.date_field :date_of_birth, class: "form-control", max: Date.today %>
-
-            <%= f.label :gender, t("signup.gender") %>
-            <%= f.select :gender, options_for_select(gender_options, @user.gender), {}, class: "form-control" %>
-
-            <%= f.label :password, t("signup.password") %>
-            <%= f.password_field :password %>
-
-            <%= f.label :password_confirmation, t("signup.password_confirmation") %>
-            <%= f.password_field :password_confirmation %>
+            <%= render "form", f: f %>
 
             <%= f.submit t("signup.submit"), class: "btn btn-primary" %>
         <% end %>

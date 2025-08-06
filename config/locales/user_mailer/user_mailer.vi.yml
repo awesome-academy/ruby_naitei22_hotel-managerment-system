@@ -1,0 +1,15 @@
+vi:
+  user_mailer:
+    account_activation:
+      subject: "Kích hoạt tài khoản"
+      greeting: "Xin chào,"
+      welcome: "Chào mừng bạn đến với Hệ thống Quản lý Khách sạn!"
+      instruction: "Nhấn vào liên kết dưới đây để kích hoạt tài khoản của bạn:"
+      activate: "Kích hoạt"
+    password_reset:
+      subject: "Đặt lại mật khẩu"
+      intro: "Để đặt lại mật khẩu, hãy nhấp vào liên kết dưới đây:"
+      link: "Đặt lại mật khẩu"
+      expiration_notice: "Liên kết này sẽ hết hạn sau hai giờ."
+      ignore_notice: "Nếu bạn không yêu cầu đặt lại mật khẩu, 
+                      vui lòng bỏ qua email này và mật khẩu của bạn sẽ không thay đổi."

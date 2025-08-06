@@ -15,11 +15,12 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      log_in(@user)
-      flash[:success] = t("users.create.success")
-      redirect_to @user, status: :see_other
+      log_out
+      @user.send_activation_email
+      flash[:info] = t(".activate")
+      redirect_to root_url, status: :see_other
     else
-      flash[:error] = t("users.create.failure")
+      flash[:error] = t(".failure")
       render :new, status: :unprocessable_entity
     end
   end

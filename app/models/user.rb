@@ -29,8 +29,7 @@ class User < ApplicationRecord
   USER_PERMIT = %i(
     name
     email
-    date_of_birth
-    gender
+    phone
     password
     password_confirmation
   ).freeze
@@ -41,17 +40,16 @@ class User < ApplicationRecord
     other: "other"
   }.freeze
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   before_save :downcase_email
+  before_create :create_activation_digest
 
   scope :recent, ->{order(created_at: :desc)} # thu tu giam dan
 
   validates :name, presence: true, length: {maximum: NAME_MAX_LENGTH}
   validates :email, presence: true, length: {maximum: EMAIL_MAX_LENGTH},
 format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
-  # validation cua email se khong phan biet CHU HOA va chu thuong
-  validate :date_of_birth_must_be_within_last_100_years
 
   class << self
     # Returns the hash digest of the given string.
@@ -79,8 +77,22 @@ format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
     update_column :remember_digest, nil
   end
 
-  def authenticated? remember_token
-    BCrypt::Password.new(remember_digest).is_password? remember_token
+  # Returns true if the given token matches the digest.
+  def authenticated? attribute, token
+    digest = send "#{attribute}_digest"
+    return false unless digest
+
+    BCrypt::Password.new(digest).is_password? token
+  end
+
+  # Activates an account
+  def activate
+    update_columns activated: true, activated_at: Time.zone.now
+  end
+
+  # Sends activation email.
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
   end
 
   private
@@ -88,14 +100,9 @@ format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   def downcase_email
     email.downcase!
   end
-  # downcase_email se chay truoc khi luu user vao csdl
-  # lam cho tat ca ky tu cua email thanh chu thuong
 
-  def date_of_birth_must_be_within_last_100_years
-    return if date_of_birth.blank?
-
-    if date_of_birth < 100.years.ago.to_date || date_of_birth > Time.zone.today
-      errors.add(:date_of_birth, :invalid_range)
-    end
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 end

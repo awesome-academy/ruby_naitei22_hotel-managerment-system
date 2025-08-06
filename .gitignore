@@ -38,3 +38,6 @@ config/settings/*.local.yml
 config/environments/*.local.yml
 
 /spec/
+
+# Ignore application configuration
+/config/application.yml

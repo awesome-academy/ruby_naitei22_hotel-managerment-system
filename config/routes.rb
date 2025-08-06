@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
+    # Account Activations
+    resources :account_activations, only: :edit
+
     resources :users, only: :show
 
     resources :microposts

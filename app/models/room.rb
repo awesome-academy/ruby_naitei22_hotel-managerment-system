@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-  belongs_to :roomtype
+  belongs_to :room_type
   has_many :room_amenities, dependent: :destroy
   has_many :amenities, through: :room_amenities
 

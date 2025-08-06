@@ -1,8 +1,8 @@
 class Request < ApplicationRecord
+  has_many :review, dependent: :destroy
   has_many :room_availability_requests, dependent: :destroy
   has_many :room_availabilities, through: :room_availability_requests
   belongs_to :booking
-  belongs_to :review
 
   enum status: {
     draft: 0,

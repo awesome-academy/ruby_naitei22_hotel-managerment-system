@@ -8,3 +8,6 @@ development:
 production:
   <<: *default
   site_name: "Sample App"
+
+mailer:
+  from: "noreply@example.com"
