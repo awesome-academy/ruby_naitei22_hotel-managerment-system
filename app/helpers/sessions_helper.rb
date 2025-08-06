@@ -10,7 +10,7 @@ module SessionsHelper
 
   # Returns the user corresponding to the remember token cookie.
   def current_user
-    @current_user ||= find_user_from_session || find_user_from_cookies
+    @current_user ||= find_user_from_cookies || find_user_from_session
   end
 
   def find_user_from_session

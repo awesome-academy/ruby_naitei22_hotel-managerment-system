@@ -4,12 +4,12 @@
       <ul class="nav">
         <li><%= link_to t("header.logo"), home_path, id: "logo" %></li>
         <li><%= link_to t("header.home"), home_path %></li>
-        <li><%= link_to t("header.explore"), "#" %></li>
+        <li><%= link_to t("header.explore"), rooms_path %></li>
         <li><%= link_to t("header.current_booking"), "#" %></li>
       </ul>
       <ul class="user-controls">
         <li>
-          <div class="language-switcher" onclick="window.location.href='<%= url_for(locale: new_locale) %>'">
+          <div class="language-switcher" onclick="window.location.href='<%= url_for(params.permit!.to_h.merge(locale: new_locale)) %>'">
             <i class="fas fa-globe"></i>
           </div>
         </li>
