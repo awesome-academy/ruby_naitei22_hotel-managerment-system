@@ -1,0 +1,27 @@
+<% provide :title, t(".title") %>
+
+<div class="bootstrap-scope">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- Sidebar bộ lọc -->
+        <%= render "room_filter" %>
+      </div>
+
+      <div class="col-md-9">
+        <div class="row">
+          <% if @rooms.blank? %>
+            <div class="col-12">
+              <h3 class="text-muted"><%= t("rooms.not_found") %></h3>
+            </div>
+          <% else %>
+            <% @rooms.each do |room| %>
+              <%= render "room_card", room: room %>
+            <% end %>
+            <%== pagy_bootstrap_nav(@pagy) if @pagy %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
