@@ -2,7 +2,6 @@ vi:
   admin:
     base:
       unauthorized_access: "Truy cập không được phép. Vui lòng đăng nhập với tư cách quản trị viên."
-
     layouts:
       sidebar:
         dashboard_text: "Bảng điều khiển"

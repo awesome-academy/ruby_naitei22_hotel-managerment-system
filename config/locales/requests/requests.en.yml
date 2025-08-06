@@ -1,0 +1,5 @@
+en:
+  requests:
+    cancel:
+      success: "Request has been cancelled."
+      alert: "Cannot cancel this request."

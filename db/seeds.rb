@@ -80,35 +80,50 @@ Room.create!(
   room_number: "R001",
   room_type_id: 3,
   description: "Serve itself national back.",
-  capacity: 1
+  capacity: 1,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60,
+  price: 100
 )
 
 Room.create!(
   room_number: "R002",
   room_type_id: 2,
   description: "Evidence year threat anything. Why those talk relate.",
-  capacity: 3
+  capacity: 3,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60,
+  price: 100
 )
 
 Room.create!(
   room_number: "R003",
   room_type_id: 3,
   description: "Less hot war music. Care officer only ready attorney which. They reduce customer follow card.",
-  capacity: 4
+  capacity: 4,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60,
+  price: 100
 )
 
 Room.create!(
   room_number: "R004",
   room_type_id: 1,
   description: "State need can PM any. Light less tend capital training him.",
-  capacity: 2
+  capacity: 2,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60,
+  price: 100
 )
 
 Room.create!(
   room_number: "R005",
   room_type_id: 2,
   description: "Leg result direction beyond. Near southern determine however point. Last thus then.",
-  capacity: 3
+  capacity: 3,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60,
+  price: 100
 )
 
 Amenity.create!(

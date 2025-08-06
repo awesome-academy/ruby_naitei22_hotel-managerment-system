@@ -7,3 +7,6 @@ import "custom/price_calculation"
 import "custom/available_dates"
 
 require("jquery")
+import "custom/password_toggle"
+import "custom/modal_toggle"
+import "custom/sort"

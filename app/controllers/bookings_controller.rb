@@ -1,10 +1,12 @@
 class BookingsController < ApplicationController
   before_action :require_login, only: %i(index update)
   before_action :set_current_booking, only: %i(update)
+  before_action :set_user, only: %i(index cancel)
+  before_action :set_booking, only: %i(cancel)
 
   # GET (/:locale)/bookings(.:format)
   def index
-    @bookings = current_user.bookings.includes(:requests)
+    @bookings = @user.bookings
   end
 
   # PATCH (/:locale)/rooms/:room_id/bookings/:id(.:format)
@@ -19,6 +21,17 @@ class BookingsController < ApplicationController
   rescue StandardError => e
     flash[:danger] = e.message
     redirect_back fallback_location: root_path
+  end
+
+  # POST (/:locale)/rooms/:room_id/bookings(.:format)
+  def cancel
+    if @booking.status_draft? || @booking.status_pending?
+      @booking.update(status: :cancelled)
+      flash[:success] = t(".success")
+    else
+      flash[:alert] = t(".alert")
+    end
+    redirect_back fallback_location: user_bookings_path(@user)
   end
 
   private
@@ -54,5 +67,13 @@ class BookingsController < ApplicationController
         room_availability: avail
       )
     end
+  end
+
+  def set_user
+    @user = User.find(params[:user_id] || current_user.id)
+  end
+
+  def set_booking
+    @booking = @user.bookings.find(params[:id])
   end
 end

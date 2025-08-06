@@ -8,4 +8,13 @@ class Review < ApplicationRecord
     approved: 1,
     rejected: 2
   }, _prefix: true
+
+  def booking
+    request&.booking
+  end
+
+  def room_type
+    request&.room_availability_requests&.first
+          &.room_availability&.room&.room_type
+  end
 end

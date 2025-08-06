@@ -1,0 +1,25 @@
+<div class="sidebar">
+  <h2><%= yield(:sidebar_title) %></h2>
+  <div class="sidebar-links">
+    <div class="sidebar-link">
+      <i class="fa fa-user"></i>
+      <%= link_to t("shared.account_sidebar.edit_profile"), edit_user_path(current_user), class: "sidebar-text #{current_page?(edit_user_path(current_user)) ? 'active' : ''}" %>
+    </div>
+    <div class="sidebar-link">
+      <i class="fa fa-credit-card"></i>
+      <%= link_to t("shared.account_sidebar.booking_history"), user_bookings_path(current_user), class: "sidebar-text #{current_page?(user_bookings_path(current_user)) ? 'active' : ''}" %>
+    </div>
+    <div class="sidebar-link">
+      <i class="fa fa-star"></i>
+      <%= link_to t("shared.account_sidebar.my_reviews"), user_reviews_path(current_user), class: "sidebar-text #{current_page?(user_reviews_path(current_user)) ? 'active' : ''}" %>
+    </div>
+    <div class="sidebar-link">
+      <i class="fa fa-lock"></i>
+      <%= link_to t("shared.account_sidebar.change_password"), edit_user_password_path(current_user), class: "sidebar-text #{current_page?(edit_user_password_path(current_user)) ? 'active' : ''}" %>
+    </div>
+    <div class="sidebar-link">
+      <i class="fa fa-sign-out"></i>
+      <%= link_to t("shared.account_sidebar.logout"), logout_path, data: { turbo_method: :delete }, class: "sidebar-text" %>
+    </div>
+  </div>
+</div>

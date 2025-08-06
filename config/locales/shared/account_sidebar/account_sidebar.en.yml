@@ -1,0 +1,8 @@
+en:
+  shared:
+    account_sidebar:
+      edit_profile: "Edit profile"
+      booking_history: "Booking history"
+      my_reviews: "My reviews"
+      change_password: "Change password"
+      logout: "Log out"

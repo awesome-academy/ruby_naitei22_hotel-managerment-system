@@ -1,0 +1,14 @@
+<% case status.to_sym %>
+<% when :draft %>
+  <span class="status-badge draft">New</span>
+<% when :pending %>
+  <span class="status-badge pending">Pending</span>
+<% when :confirmed %>
+  <span class="status-badge confirmed">Confirmed</span>
+<% when :declined %>
+  <span class="status-badge declined">Declined</span>
+<% when :cancelled %>
+  <span class="status-badge cancelled">Cancelled</span>
+<% when :completed %>
+  <span class="status-badge completed">Completed</span>
+<% end %>

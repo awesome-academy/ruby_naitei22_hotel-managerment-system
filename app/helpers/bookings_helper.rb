@@ -6,4 +6,8 @@ module BookingsHelper
       req.room_id == @room.id && !req.check_in.nil?
     end
   end
+
+  def booking_total_price booking
+    booking.rooms.sum(:price)
+  end
 end

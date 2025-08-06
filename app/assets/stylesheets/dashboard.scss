@@ -32,7 +32,6 @@ $white: #ffffff;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: $shadow;
-
     h3 {
       color: $dark-gray;
       text-align: center;
@@ -40,12 +39,10 @@ $white: #ffffff;
       font-size: 1.8rem;
       font-weight: 600;
     }
-
     .actions-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.5rem;
-
       .action-btn {
         display: flex;
         flex-direction: column;
@@ -58,7 +55,6 @@ $white: #ffffff;
         transition: $transition;
         min-height: 120px;
         justify-content: center;
-
         &:hover {
           background: $primary-hover;
           text-decoration: none;
@@ -66,12 +62,10 @@ $white: #ffffff;
           transform: translateY(-3px);
           box-shadow: 0 8px 20px rgba($primary-color, 0.3);
         }
-
         i {
           font-size: 2rem;
           margin-bottom: 0.8rem;
         }
-
         span {
           font-size: 1.1rem;
           font-weight: 600;
@@ -87,7 +81,6 @@ $white: #ffffff;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 2.5rem;
-
     .stat-card {
       background: $white;
       padding: 2.5rem 2rem;
@@ -100,12 +93,10 @@ $white: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: center;
-
       &:hover {
         transform: translateY(-5px);
         box-shadow: 0 12px 30px rgba(0,0,0,0.15);
       }
-
       .stat-number {
         font-size: 3.5rem;
         font-weight: 700;
@@ -113,7 +104,6 @@ $white: #ffffff;
         margin-bottom: 0.8rem;
         line-height: 1;
       }
-
       .stat-label {
         color: $text-gray;
         font-size: 1.1rem;

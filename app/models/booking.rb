@@ -2,8 +2,9 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :status_changed_by, class_name: User.name, optional: true
   has_many :requests, dependent: :destroy
-  has_many :room_availabilities, through: :requests
-  has_many :rooms, through: :room_availabilities
+  has_many :room_availability_requests, through: :requests
+  has_many :room_availabilities, through: :room_availability_requests
+  has_many :rooms, -> {distinct}, through: :room_availabilities
 
   accepts_nested_attributes_for :requests
 
@@ -82,5 +83,9 @@ class Booking < ApplicationRecord
             .update_all(
               status: Request.statuses[:declined]
             )
+  end
+
+  def booking_total_price
+    rooms.sum(:price)
   end
 end

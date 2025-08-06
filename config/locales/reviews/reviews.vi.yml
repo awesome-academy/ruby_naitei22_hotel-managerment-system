@@ -1,0 +1,17 @@
+vi:
+  reviews:
+    index:
+      sidebar_title: "Đánh giá của tôi"
+      table:
+        request_id: "Mã yêu cầu"
+        room: "Phòng"
+        rating: "Đánh giá"
+        comment: "Nhận xét"
+        delete: "Xóa"
+      delete_confirm: "Bạn có chắc chắn muốn xóa đánh giá này?"
+    create:
+      success: "Đánh giá thành công."
+      error: "Có lỗi xảy ra."
+    destroy:
+      success: "Xóa đánh giá thành công."
+      error: "Xóa đánh giá thất bại."

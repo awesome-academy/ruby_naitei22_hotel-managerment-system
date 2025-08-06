@@ -1,0 +1,5 @@
+vi:
+  requests:
+    cancel:
+      success: "Request đã được hủy."
+      alert: "Không thể hủy request này."

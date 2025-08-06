@@ -8,7 +8,7 @@ class AccountActivationsController < ApplicationController
     @user.activate
     log_in @user
     flash[:success] = t(".success")
-    redirect_to @user
+    redirect_to root_url
   end
 
   private

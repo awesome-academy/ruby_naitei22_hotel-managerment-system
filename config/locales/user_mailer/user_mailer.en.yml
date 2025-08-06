@@ -7,9 +7,10 @@ en:
       instruction: "Click on the link below to activate your account:"
       activate: "Activate"
     password_reset:
-      subject: "Password reset"
-      intro: "To reset your password click the link below:"
-      link: "Reset password"
+      subject: "Password Reset"
+      title: "Reset Your Password"
+      greeting_reset_password: "You requested a password reset."
+      edit_password_reset: "Click here to reset your password."
       expiration_notice: "This link will expire in two hours."
-      ignore_notice: "If you did not request your password to be reset, 
-                      please ignore this email and your password will stay as it is."
+      ignore_notice: "If you did not request a password reset, please ignore this email."
+      to_reset_password: "To reset your password, click the link below:"

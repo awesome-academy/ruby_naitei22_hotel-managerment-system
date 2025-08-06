@@ -1,0 +1,64 @@
+<div id="reviewModal-<%= request.id %>" class="custom-modal hidden">
+  <div class="custom-modal-content">
+    <span class="close-modal" data-modal-id="reviewModal-<%= request.id %>">&times;</span>
+
+    <h2><%= t("bookings.reviews_modal.title") %>:
+      <%= request.room_availability_requests.first&.room_availability&.room&.room_type&.name || t("bookings.reviews_modal.room_default") %>
+    </h2>
+
+    <div class="modal-body">
+      <%= form_with(model: [current_user, request.reviews.first || request.reviews.build], local: false) do |f| %>
+
+        <!-- Rating as 5-star radios -->
+        <div class="mb-3">
+          <%= f.label :rating, t("bookings.reviews_modal.rating_label"), class: "form-label" %>
+
+          <fieldset class="star-rating" aria-labelledby="rating-label-<%= request.id %>">
+            <legend id="rating-label-<%= request.id %>" class="sr-only"><%= t("bookings.reviews_modal.rating_legend") %></legend>
+            <% (5).downto(1) do |i| %>
+              <input
+                type="radio"
+                name="review[rating]"
+                id="review-<%= request.id %>-rating-<%= i %>"
+                value="<%= i %>"
+                class="star-input"
+                <%= "checked" if f.object && f.object.rating == i %>
+              />
+              <label
+                for="review-<%= request.id %>-rating-<%= i %>"
+                class="star-label"
+                data-value="<%= i %>"
+                aria-label="<%= t('bookings.reviews_modal.star_aria', count: i) %>"
+                title="<%= t('bookings.reviews_modal.star_title', count: i) %>"
+              >
+                <span class="star" aria-hidden="true">★</span>
+              </label>
+            <% end %>
+          </fieldset>
+        </div>
+
+        <!-- Comment -->
+        <div class="mb-3">
+          <%= f.label :comment, t("bookings.reviews_modal.comment_label"), class: "form-label" %>
+          <%= f.text_area :comment, rows: 4, class: "form-control", placeholder: t("bookings.reviews_modal.comment_placeholder"), required: true %>
+        </div>
+
+        <%= f.hidden_field :request_id, value: request.id %>
+
+        <div class="submit-actions">
+          <div class="submit-actions">
+            <% if f.object.persisted? %>
+              <%= button_to t("bookings.reviews_modal.delete"),
+                            user_review_path(current_user, f.object),
+                            method: :delete,
+                            data: { turbo_confirm: t("bookings.reviews_modal.delete_confirm"), turbo: false },
+                            class: "btn btn-danger" %>
+            <% end %>
+
+            <%= f.submit t("bookings.reviews_modal.submit"), class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

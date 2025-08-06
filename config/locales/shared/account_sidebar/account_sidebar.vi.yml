@@ -1,0 +1,8 @@
+vi:
+  shared:
+    account_sidebar:
+      edit_profile: "Chỉnh sửa hồ sơ"
+      booking_history: "Lịch sử đặt phòng"
+      my_reviews: "Đánh giá của tôi"
+      change_password: "Đổi mật khẩu"
+      logout: "Đăng xuất"

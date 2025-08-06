@@ -1,0 +1,54 @@
+.account-container {
+  display: flex;
+  padding: 20px;
+  font-family: "Helvetica Neue", sans-serif;
+  background-color: #f8f9fc;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-right: 20px;
+  height: fit-content;
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      i {
+        font-size: 16px;
+      }
+      .sidebar-text {
+        text-decoration: none;
+        color: #333;
+        transition: all 0.3s ease;
+        &.active {
+          color: #5b5fef;
+          font-weight: bold;
+        }
+        &:hover {
+          color: #5b5fef;
+        }
+      }
+    }
+  }
+}
+.account-content {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
