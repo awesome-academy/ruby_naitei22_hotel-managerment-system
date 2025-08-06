@@ -28,3 +28,10 @@ vi:
       clear_btn: "Xóa"
     index:
       title: "Tất cả phòng"
+    show:
+      overview: "Tổng quan"
+      include: "Bao gồm các tiện ích:"
+      reviews: "Đánh giá"
+      see_more: "Xem thêm"
+      see_less: "Thu gọn"
+      all_review: "Xem tất cả đánh giá"

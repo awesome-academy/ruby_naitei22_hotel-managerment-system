@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
     
     # Phòng
-    resources :rooms, only: %i(index)
+    resources :rooms, only: %i(index show)
   end
   # Defines the root path route ("/")
   # root "articles#index"

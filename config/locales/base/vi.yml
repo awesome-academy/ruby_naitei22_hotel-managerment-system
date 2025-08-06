@@ -54,3 +54,4 @@ vi:
   time:
     formats:
       long: "%H:%M, %d/%m/%Y"
+      only_date: "%d/%m/%Y"

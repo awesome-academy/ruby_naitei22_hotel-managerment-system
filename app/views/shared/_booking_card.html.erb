@@ -1,0 +1,65 @@
+<div class="booking-card">
+  <div class="booking-header">
+    <span class="price">$<%= @room.room_type.price %></span>
+    <span class="price-unit"><%= t("rooms.prices.price_night") %></span>
+  </div>
+
+  <%= form_with url: "#", method: :get, local: true, class: "booking-form" do |f| %>
+    <div class="form-group">
+      <div class="date-inputs">
+        <div class="input-group">
+          <%= f.label :check_in, t("bookings.card.check_in"), class: "input-label" %>
+          <%= f.date_field :check_in, 
+            value: @check_in, 
+            class: "date-input",
+            min: Date.today,
+            data: { booking_target: "checkIn", action: "change->booking#updatePrice" } %>
+        </div>
+        <div class="input-group">
+          <%= f.label :check_out, t("bookings.card.check_out"), class: "input-label" %>
+          <%= f.date_field :check_out, 
+            value: @check_out, 
+            class: "date-input",
+            min: Date.today,
+            data: { booking_target: "checkOut", action: "change->booking#updatePrice" } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :guests, t("bookings.card.guests"), class: "input-label" %>
+      <%= f.number_field :guests, 
+        in: 1..@room.capacity, 
+        value: @guests || 1, 
+        class: "form-input", 
+        min: 1, 
+        max: @room.capacity %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :note, t("bookings.card.note"), class: "input-label" %>
+      <%= f.text_area :note, value: @note, class: "form-input", rows: 3 %>
+    </div>
+
+    <div class="price-breakdown">
+      <div class="price-line">
+        <span>
+          $<%= @room.room_type.price %> x 
+          <span id="nights-count" data-booking-target="nights">0</span> 
+          <%= t("bookings.card.nights") %>
+        </span>
+        <span id="total-amount" data-booking-target="total">$0</span>
+      </div>    
+      <div class="total-line">
+        <span class="total-label"><%= t("bookings.card.total") %></span>
+        <span class="total-amount">$0<%= @total_price %></span>
+      </div>
+    </div>
+
+    <%= f.submit t("bookings.card.reserve"), class: "reserve-button" %>
+
+    <div class="no-charge-notice">
+      <%= t("bookings.card.notice") %>
+    </div>
+  <% end %>
+</div>

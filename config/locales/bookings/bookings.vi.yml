@@ -1,0 +1,11 @@
+vi:
+  bookings:
+    card:
+      check_in: "Ngày nhận phòng"
+      check_out: "Ngày trả phòng"
+      guests: "Số lượng khách"
+      note: "Ghi chú"
+      night: "đêm"
+      total: "Tổng cộng"
+      reserve: "Đặt phòng"
+      notice: "Bạn sẽ chưa bị tính phí ngay"

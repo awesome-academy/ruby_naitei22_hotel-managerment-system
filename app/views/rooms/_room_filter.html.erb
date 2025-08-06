@@ -36,10 +36,10 @@
     <!-- Price Range -->
     <div class="filter-section mt-3">
       <h4><%= t("rooms.prices.price") %></h4>
-      <%= form.select :price_range,
-                      options_for_select(price_range_options, params[:price_range]),
-                      { include_blank: t("rooms.filter.price_blank") },
-                      class: "form-control custom-select" %>
+      <%= form.select :price,
+                            options_for_select(price_range_options, params[:price]),
+                            { include_blank: t("rooms.filter.price_blank") },
+                            class: "form-control custom-select" %>
     </div>
 
     <!-- Sort by -->
