@@ -1,0 +1,16 @@
+vi:
+  admin:
+    base:
+      unauthorized_access: "Truy cập không được phép. Vui lòng đăng nhập với tư cách quản trị viên."
+      
+    layouts:
+      sidebar:
+        dashboard_text: "Bảng điều khiển"
+        user_text: "Người dùng"
+        room_text: "Phòng"
+        booking_text: "Đặt phòng"
+        review_text: "Đánh giá"
+        room_type_text: "Loại phòng"
+
+      header:
+        app_text: "Hệ thống quản lý khách sạn"

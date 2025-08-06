@@ -1,0 +1,47 @@
+<aside class="admin-sidebar">
+  <nav class="admin-nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <%= link_to admin_dashboard_path, class: "nav-link #{'active' if current_page?(admin_dashboard_path)}" do %>
+          <i class="fas fa-tachometer-alt"></i>
+          <%= t(".dashboard_text") %>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-users"></i>
+          <%= t(".user_text") %>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-bed"></i>
+          <%= t(".room_text") %>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-hotel"></i>
+          <%= t(".room_type_text") %>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-calendar-check"></i>
+          <%= t(".booking_text") %>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-star"></i>
+          <%= t(".review_text") %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</aside>

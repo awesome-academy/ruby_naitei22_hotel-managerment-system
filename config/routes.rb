@@ -25,6 +25,12 @@ Rails.application.routes.draw do
 
     # Bài viết (Microposts)
     resources :microposts
+
+    # Admin routes
+    namespace :admin do
+      root to: "dashboard#index"
+      get "/dashboard", to: "dashboard#index", as: "dashboard"
+    end
   end
   # Defines the root path route ("/")
   # root "articles#index"

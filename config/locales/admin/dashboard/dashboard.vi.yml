@@ -1,0 +1,16 @@
+vi:
+  admin:
+    dashboard:
+      index:
+        title: "Bảng điều khiển"
+        welcome_message: "Chào mừng đến với hệ thống quản lý khách sạn"
+        users_text: "Người dùng"
+        bookings_text: "Tổng đặt phòng"
+        rooms_text: "Tổng phòng"
+        reviews_text: "Tổng đánh giá"
+        actions_text: "Thao tác"
+        booking_management: "Quản lý đặt phòng"
+        user_management: "Quản lý người dùng"
+        room_management: "Quản lý phòng"
+        review_management: "Quản lý đánh giá"
+        room_type_management: "Quản lý loại phòng"
