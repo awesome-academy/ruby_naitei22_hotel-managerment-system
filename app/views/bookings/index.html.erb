@@ -1,0 +1,38 @@
+<h1>My Bookings</h1>
+
+<% if @bookings.any? %>
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Booking Code</th>
+        <th>Status</th>
+        <th>Requests</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.booking_code || t("n_a") %></td>
+          <td><%= booking.status %></td>
+          <td>
+            <% booking.requests.each do |req| %>
+              <div>
+                <strong>Room:</strong> <%= req.room.room_number %><br>
+                <strong>Check-in:</strong> <%= req.check_in %><br>
+                <strong>Check-out:</strong> <%= req.check_out %><br>
+                <strong>Guests:</strong> <%= req.number_of_guests %><br>
+                <strong>Note:</strong> <%= req.note.presence %><br>
+                <strong>Price:</strong> <%= req.calculate_price || "0" %>
+              </div>
+              <hr>
+            <% end %>
+          </td>
+          <td><%= booking.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You have no bookings yet.</p>
+<% end %>

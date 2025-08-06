@@ -1,6 +1,7 @@
 en:
   login:
     title: "Login"
+    login_now: "Log in now!"
     submit: "Login"
     email: "Email"
     password: "Password"

@@ -1,5 +1,6 @@
 vi:
   app: "Hệ thống Quản lý Khách sạn"
+  n_a: "N/A"
   home:
     title: "Trang chủ"
     welcome: "Chào mừng đến với Sample App"

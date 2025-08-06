@@ -100,6 +100,20 @@ class Room < ApplicationRecord
   end
 
   def number_of_rating
-    reviews.count(:id)
+    reviews.distinct.count(:id)
+  end
+
+  def available_dates
+    room_availabilities
+      .where(is_available: true)
+      .pluck(:available_date)
+  end
+
+  def total_price_for_dates check_in, check_out
+    return 0 if check_in.blank? || check_out.blank? || check_in >= check_out
+
+    room_availabilities
+      .where(available_date: check_in...check_out)
+      .sum(:price)
   end
 end

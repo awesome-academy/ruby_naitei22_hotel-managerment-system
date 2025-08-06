@@ -44,7 +44,15 @@ Rails.application.routes.draw do
     end
     
     # Phòng
-    resources :rooms, only: %i(index show)
+    resources :rooms, only: %i(index show) do
+      resources :bookings, only: %i(update)
+      member do
+        get :calculate_price
+      end
+    end 
+
+    resources :bookings, only: %i(index update)
+
   end
   # Defines the root path route ("/")
   # root "articles#index"
