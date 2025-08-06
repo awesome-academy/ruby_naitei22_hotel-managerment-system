@@ -1,0 +1,11 @@
+en:
+  bookings:
+    card:
+      check_in: "Check in"
+      check_out: "Check out"
+      guests: "Number of guests"
+      note: "Note"
+      night: "nights"
+      total: "Total"
+      reserve: "Reserve"
+      notice: "You won't be charged yet"

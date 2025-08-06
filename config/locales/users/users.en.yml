@@ -1,6 +1,11 @@
 en:
   users:
+    view_profile: "View profile"
     not_found: "User not found."
+    not_logged_in: "Please login."
+    activated: "Account is activated!"
+    not_activated: "Account not activated. Check your email for the activationlink."
+    not_authorized: "You don't have authorize."
     index:
       user: "Users"
       name: "Name"
@@ -17,9 +22,16 @@ en:
     create:
       success: "User was successfully created."
       failure: "Failed to create user."
+      activate: "Please check your email to activate your account."
     update:
       success: "User was successfully updated."
       failure: "Failed to update the user."
     destroy:
       success: "User was successfully deleted."
       failure: "Failed to delete the user."
+    form:
+      name: "Name"
+      email: "Email"
+      phone: "Phone number"
+      password: "Password"
+      password_confirmation: "Password Confirmation"

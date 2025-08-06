@@ -3,4 +3,5 @@ import "@hotwired/turbo-rails"
 import "@rails/ujs"
 import "controllers"
 import "custom/menu"
+
 require("jquery")

@@ -1,4 +1,5 @@
 vi:
+  app: "Hệ thống Quản lý Khách sạn"
   home:
     title: "Trang chủ"
     welcome: "Chào mừng đến với Sample App"
@@ -6,7 +7,7 @@ vi:
     signup: "Đăng ký ngay!"
 
   header:
-    logo: "Ứng Dụng"
+    logo: "Hệ thống Quản lý Khách sạn"
     home: "Trang chủ"
     help: "Trợ giúp"
     contact: "Liên hệ"

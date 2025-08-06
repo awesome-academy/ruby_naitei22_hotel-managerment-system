@@ -1,25 +1,37 @@
 vi:
   users:
-      not_found: "Không tìm thấy người dùng."
-      index:
-        user: "Người dùng"
-        name: "Tên"
-        email: "Địa chỉ mail"
-        show: "Xem chi tiết"
-        edit: "Chinh sửa"
-        destroy: "Xóa"
-        new_user: "Thêm người dùng"
-        date: "Ngày tạo"
-      show:
-        name: "Tên"
-        created_at: "Ngày tạo" 
-        updated_at: "Ngày sửa đổi" 
-      create:
-        success: "Tạo người dùng thành công."
-        failure: "Tạo người dùng thất bại."
-      update:
-        success: "Cập nhật người dùng thành công."
-        failure: "Cập nhật người dùng thất bại."
-      destroy:
-        success: "Xóa người dùng thành công."
-        failure: "Xóa người dùng thất bại."
+    view_profile: "Trang cá nhân"
+    not_found: "Không tìm thấy người dùng."
+    not_logged_in: "Vui lòng đăng nhập."
+    activated: "Tài khoản đã được kích hoạt!"
+    not_activated: "Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email."
+    not_authorized: "Bạn không có quyền truy cập."
+    index:
+      user: "Người dùng"
+      name: "Tên"
+      email: "Địa chỉ mail"
+      show: "Xem chi tiết"
+      edit: "Chinh sửa"
+      destroy: "Xóa"
+      new_user: "Thêm người dùng"
+      date: "Ngày tạo"
+    show:
+      name: "Tên"
+      created_at: "Ngày tạo" 
+      updated_at: "Ngày sửa đổi" 
+    create:
+      success: "Tạo người dùng thành công."
+      failure: "Tạo người dùng thất bại."
+      activate: "Vui lòng kiểm tra email để kích hoạt tài khoản."
+    update:
+      success: "Cập nhật người dùng thành công."
+      failure: "Cập nhật người dùng thất bại."
+    destroy:
+      success: "Xóa người dùng thành công."
+      failure: "Xóa người dùng thất bại."
+    form:
+      name: "Họ và tên"
+      email: "Địa chỉ Email"
+      phone: "Số điện thoại"
+      password: "Mật khẩu"
+      password_confirmation: "Xác nhận mật khẩu"

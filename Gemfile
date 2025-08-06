@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-git_source(:github){|repo| "https://github.com/#{repo}.git"}
+git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 
@@ -8,6 +8,8 @@ gem "rails-i18n"
 
 # config for manage settings
 gem "config"
+
+gem "figaro"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5"
@@ -51,6 +53,8 @@ gem "bootstrap-sass", "3.4.1"
 gem "jquery-rails"
 # Use Sass to process CSS
 gem "sassc-rails"
+
+gem "pagy"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html]
 # gem "image_processing", "~> 1.2"

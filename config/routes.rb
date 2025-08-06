@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
+  get 'rooms/show'
+  get 'rooms/new'
+  get 'rooms/edit'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   scope "(:locale)", locale: /en|vi/ do
     root to: "static_pages#home"
@@ -17,9 +21,12 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
+    # Account Activations
+    resources :account_activations, only: :edit
+
     resources :users, only: :show
 
-    resources :microposts
+    resources :rooms
   end
   # Defines the r oot path route ("/")
   # root "articles#index"
