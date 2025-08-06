@@ -1,11 +1,20 @@
 en:
   bookings:
+    requests:
+      success: "Add request successfully!"
     card:
       check_in: "Check in"
       check_out: "Check out"
+      invalid_range: "Some dates in your selected range are unavailable. Please choose again."
       guests: "Number of guests"
       note: "Note"
-      night: "nights"
-      total: "Total"
+      nights: "Night:"
+      total_price: "Total price:"
+      select_dates: "Choose date to see price"
+      error_price: "Can't calculate price."
+      dash: "-"
       reserve: "Reserve"
       notice: "You won't be charged yet"
+      need_login: "Log in to reserve."
+      already_booked: "Already booked this room!"
+      current_booking: "See your current booking."

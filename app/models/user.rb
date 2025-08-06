@@ -1,11 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  # cung cap xac thuc mat khau cho model user
-  # tu them cac truong:
-  # password: khong luu vao csdl
-  # password_confirmation
-  # password_digest: luu password vao csdl duoi dang hash
-  # xac thuc mat khau bang authenticate(password)
+
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :approved_reviews,

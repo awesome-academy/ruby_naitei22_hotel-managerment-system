@@ -50,6 +50,16 @@ Rails.application.routes.draw do
       end
       resources :amenities, only: %i(index new edit create update destroy)
     end
+    
+    # Phòng
+    resources :rooms, only: %i(index show) do
+      resources :bookings, only: %i(update)
+      member do
+        get :calculate_price
+      end
+    end 
+
+    resources :bookings, only: %i(index)
   end
   # Defines the root path route ("/")
   # root "articles#index"

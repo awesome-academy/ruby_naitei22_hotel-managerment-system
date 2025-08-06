@@ -1,6 +1,7 @@
 vi:
   login:
     title: "Đăng nhập"
+    login_now: "Đăng nhập ngay!"
     submit: "Đăng nhập"
     email: "Email"
     password: "Mật khẩu"

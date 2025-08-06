@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   document.querySelectorAll(".toggle-review").forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();

@@ -1,11 +1,22 @@
 class Request < ApplicationRecord
   UNAVAILABLE_STATUSES = %w(pending confirmed checked_in checked_out).freeze
+
+  REQUEST_PERMIT = %i(
+    room_id
+    check_in
+    check_out
+    number_of_guests
+    note
+  ).freeze
+
   has_many :review, dependent: :destroy
   has_many :room_availability_requests, dependent: :destroy
   has_many :room_availabilities, through: :room_availability_requests
   has_many :guests, dependent: :destroy
   belongs_to :booking
+  belongs_to :room
 
+  after_initialize :set_default_status, if: :new_record?
   after_update :update_room_availability_status
 
   ASSOCIATIONS_REQUEST_PRELOAD = [:booking, :guests,
@@ -27,6 +38,22 @@ class Request < ApplicationRecord
   validate  :check_in_before_check_out, if: :check_times_changed?
   validate  :validate_check_in, if: :check_times_changed?
 
+  def calculate_price
+    return nil unless check_in && check_out && room.present?
+
+    if check_in == check_out
+      availabilities = room.room_availabilities
+                           .where(available_date: check_in)
+    else
+      availabilities = room.room_availabilities
+                           .where(available_date: check_in..check_out)
+    end
+
+    return nil if availabilities.empty?
+
+    availabilities.sum(:price)
+  end
+
   private
 
   def check_in_before_check_out
@@ -44,6 +71,10 @@ class Request < ApplicationRecord
     return if check_in >= Time.zone.today
 
     errors.add(:check_in, :future)
+  end
+
+  def set_default_status
+    self.status ||= :draft
   end
 
   def update_room_availability_status
