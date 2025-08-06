@@ -7,11 +7,12 @@ vi:
     signup: "Đăng ký ngay!"
 
   header:
-    logo: "Hệ thống Quản lý Khách sạn"
+    logo: "Hitachi"
     home: "Trang chủ"
-    help: "Trợ giúp"
-    contact: "Liên hệ"
+    explore: "Tìm phòng"
+    current_booking: "Đơn đặt phòng"
     login: "Đăng nhập"
+    signup: "Đăng ký"
     logout: "Đăng xuất"
     account: "Tài khoản"
     users: "Người dùng"
@@ -19,6 +20,7 @@ vi:
     settings: "Cài đặt"
     english: "Tiếng Anh"
     vietnamese: "Tiếng Việt"
+    edit_profile: "Chỉnh sửa hồ sơ"
 
   help:
     title: "Trợ giúp"

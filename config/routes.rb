@@ -1,29 +1,31 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   scope "(:locale)", locale: /en|vi/ do
+    # Trang chủ
     root to: "static_pages#home"
 
-    # static pages
+    # Static pages
     get "/static_pages/home", to: "static_pages#home", as: "home"
-    get "/static_pages/help", to: "static_pages#help", as: "help"
-    get "/static_pages/contact", to: "static_pages#contact", as: "contact"
 
-    # sign up
+    # Đăng ký (Sign up)
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
+    put "/users/:id", to: "users#edit"
 
-    # login / logout
+    # Đăng nhập/Đăng xuất (Login/Logout)
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
-    # Account Activations
+    # Kích hoạt tài khoản (Account Activations)
     resources :account_activations, only: :edit
 
-    resources :users, only: :show
+    # Người dùng (Users)
+    resources :users, only: %i(new create show edit)
 
+    # Bài viết (Microposts)
     resources :microposts
   end
-  # Defines the r oot path route ("/")
+  # Defines the root path route ("/")
   # root "articles#index"
 end
