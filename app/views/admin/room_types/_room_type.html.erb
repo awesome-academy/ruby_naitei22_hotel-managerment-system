@@ -1,20 +1,31 @@
 <tr>
-  <td><input type="checkbox" /></td>
-  <td><%= room_type.id %></td>
-  <td><%= room_type.name %></td>
-  <td><%= room_type.description %></td>
-  <td><%= room_type.number_of_rooms %></td>
-  <td><%= l(room_type.updated_at, format: :short) %></td>
+  <td><strong><%= room_type.id %></strong></td>
   <td>
-    <%= link_to edit_admin_room_type_path(room_type), class: "text-primary me-2", title: t(".edit") do %>
-      <i class="fas fa-pen"></i>
-    <% end %>
+    <div class="room-type-name"><%= room_type.name %></div>
+  </td>
+  <td><%= room_type.description %></td>
+  <td><%= room_type.number_of_rooms || 0 %></td>
+  <td>
+    <div class="date-info">
+      <%= l(room_type.updated_at, format: :short) %>
+    </div>
+  </td>
+  <td>
+    <div class="d-flex gap-1">
+      <%= link_to edit_admin_room_type_path(room_type),
+                  class: "btn btn-sm btn-outline-primary",
+                  title: t(".edit_button") do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
 
-    <%= link_to admin_room_type_path(room_type), data: {
-      "turbo-method": :delete,
-      turbo_confirm: t(".confirm_delete")
-    }, class: "text-danger", title: t(".delete") do %>
-      <i class="fas fa-trash"></i>
-    <% end %>
+      <%= link_to admin_room_type_path(room_type), data: {
+            "turbo-method": :delete,
+            turbo_confirm: t(".confirm_delete")
+          },
+          class: "btn btn-sm btn-outline-danger",
+          title: t(".delete_button") do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
   </td>
 </tr>

@@ -23,14 +23,14 @@
       </li>
 
       <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
+        <%= link_to admin_room_types_path, class: "nav-link #{'active' if current_page?(admin_room_types_path)}" do %>
           <i class="fas fa-hotel"></i>
           <%= t(".room_type_text") %>
         <% end %>
       </li>
 
       <li class="nav-item">
-        <%= link_to admin_bookings_path, class: "nav-link" do %>
+        <%= link_to admin_bookings_path, class: "nav-link #{'active' if current_page?(admin_bookings_path)}" do %>
           <i class="fas fa-calendar-check"></i>
           <%= t(".booking_text") %>
         <% end %>
