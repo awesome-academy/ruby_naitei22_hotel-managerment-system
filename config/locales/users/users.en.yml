@@ -35,3 +35,9 @@ en:
       phone: "Phone number"
       password: "Password"
       password_confirmation: "Password Confirmation"
+      placeholders:
+        email: "Enter your email"
+        name: "Enter your name"
+        phone: "Enter your phone number"
+        password: "Enter your password"
+        password_confirmation: "Confirm your password"

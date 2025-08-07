@@ -7,11 +7,12 @@ en:
     signup: "Sign up now!"
 
   header:
-    logo: "Hotel Management System"
+    logo: "Hitachi"
     home: "Home"
-    help: "Help"
-    contact: "Contact"
+    explore: "Explore"
+    current_booking: "Current Booking"
     login: "Log in"
+    signup: "Sign up"
     logout: "Log out"
     account: "Account"
     users: "Users"
@@ -19,6 +20,7 @@ en:
     settings: "Settings"
     english: "English"
     vietnamese: "Vietnamese"
+    edit_profile: "Edit Profile"
 
   help:
     title: "Help"

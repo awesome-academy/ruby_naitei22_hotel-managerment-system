@@ -1,35 +1,50 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to t("header.logo"), home_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+<div class="navbar-header">
+  <header class="navbar">
+    <div class="container">
+      <ul class="nav">
+        <li><%= link_to t("header.logo"), home_path, id: "logo" %></li>
         <li><%= link_to t("header.home"), home_path %></li>
-        <li><%= link_to t("header.contact"), contact_path %></li>
-        <li><%= link_to t("header.help"), help_path %></li>
-
+        <li><%= link_to t("header.explore"), "#" %></li>
+        <li><%= link_to t("header.current_booking"), "#" %></li>
+      </ul>
+      <ul class="user-controls">
+        <li>
+          <div class="language-switcher" onclick="window.location.href='<%= url_for(locale: new_locale) %>'">
+            <i class="fas fa-globe"></i>
+          </div>
+        </li>
+        <li>
+          <div class="messages">
+            <i class="fa-regular fa-message"></i>
+          </div>
+        </li>
+        <li>
+          <div class="notification">
+            <i class="fa-regular fa-bell"></i>
+          </div>
+        </li>
         <% if logged_in? %>
-          <li><%= link_to t("header.users"), "#" %></li>
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= t("header.account") %> <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to t("header.profile"), current_user %></li>
-              <li><%= link_to t("header.settings"), "#" %></li>
-              <li class="divider"></li>
-              <%= button_to t("header.logout"), logout_path, method: :delete %>
-            </ul>
+          <li>
+            <div class="profile">
+              <span><%= current_user.name %></span>
+            </div>
+          </li>
+          <li>
+            <%= link_to t("logout"), logout_path, data: { turbo_method: :delete } %>
           </li>
         <% else %>
-          <li><%= link_to t("header.login"), login_path %></li>
+          <li>
+            <div class="login">
+              <%= link_to t("header.login"), login_path, class: "btn btn-primary" %>
+            </div>
+          </li>
+          <li>
+            <div class="signup">
+              <%= link_to t("header.signup"), signup_path, class: "btn btn-secondary" %>
+            </div>
+          </li>
         <% end %>
       </ul>
-    </nav>
-  </div>
-</header>
-
-<div class="language-switcher pull-right" style="margin-right: 20px;">
-  <%= link_to t("header.english"), locale: :en %> |
-  <%= link_to t("header.vietnamese"), locale: :vi %>
+    </div>
+  </header>
 </div>

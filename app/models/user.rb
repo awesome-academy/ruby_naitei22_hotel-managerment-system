@@ -34,12 +34,6 @@ class User < ApplicationRecord
     password_confirmation
   ).freeze
 
-  GENDERS = {
-    male: "male",
-    female: "female",
-    other: "other"
-  }.freeze
-
   attr_accessor :remember_token, :activation_token
 
   before_save :downcase_email
