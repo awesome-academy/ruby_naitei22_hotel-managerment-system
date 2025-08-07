@@ -1,0 +1,126 @@
+$dark-gray: #343a40;
+$primary-color: #6C63FF;
+$primary-hover: #574bff;
+$shadow: 0 2px 4px rgba(0,0,0,0.1);
+$text-gray: #495057;
+$transition: all 0.3s ease;
+$white: #ffffff;
+
+.admin-dashboard {
+  padding: 1.5rem;
+  
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    
+    h1 {
+      color: $primary-color;
+      font-size: 3rem;  
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: $text-gray;
+      font-size: 2rem;
+      margin: 0;
+    }
+  }
+
+  .quick-actions {
+    background: $white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: $shadow;
+    
+    h3 {
+      color: $dark-gray;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      
+      .action-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.8rem 1.2rem;
+        background: $primary-color;
+        color: $white;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: $transition;
+        min-height: 120px;
+        justify-content: center;
+        
+        &:hover {
+          background: $primary-hover;
+          text-decoration: none;
+          color: $white;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba($primary-color, 0.3);
+        }
+        
+        i {
+          font-size: 2rem;
+          margin-bottom: 0.8rem;
+        }
+        
+        span {
+          font-size: 1.1rem;
+          font-weight: 600;
+          text-align: center;
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    
+    .stat-card {
+      background: $white;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: $shadow;
+      border-left: 6px solid $primary-color;
+      transition: $transition;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      }
+      
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: $primary-color;
+        margin-bottom: 0.8rem;
+        line-height: 1;
+      }
+      
+      .stat-label {
+        color: $text-gray;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

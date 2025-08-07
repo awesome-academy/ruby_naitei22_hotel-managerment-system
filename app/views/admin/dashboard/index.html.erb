@@ -1,0 +1,60 @@
+<% provide :title, t(".title") %>
+
+<div class="admin-dashboard">
+  <div class="dashboard-header">
+    <h1><%= t(".title") %></h1>
+    <p><%= t(".welcome_message") %></p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number"><%= @users_count || 0 %></div>
+      <div class="stat-label"><%= t(".users_text") %></div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number"><%= @bookings_count || 0 %></div>
+      <div class="stat-label"><%= t(".bookings_text") %></div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number"><%= @rooms_count || 0 %></div>
+      <div class="stat-label"><%= t(".rooms_text") %></div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number"><%= @reviews_count || 0 %></div>
+      <div class="stat-label"><%= t(".reviews_text") %></div>
+    </div>
+  </div>
+
+  <div class="quick-actions">
+    <h3><%= t(".actions_text") %></h3>
+    <div class="actions-grid">
+      <%= link_to "#", class: "action-btn" do %>
+        <i class="fas fa-calendar-check"></i>
+        <span><%= t(".booking_management") %></span>
+      <% end %>
+
+      <%= link_to "#", class: "action-btn" do %>
+        <i class="fas fa-bed"></i>
+        <span><%= t(".room_management") %></span>
+      <% end %>
+
+      <%= link_to "#", class: "action-btn" do %>
+        <i class="fas fa-hotel"></i>
+        <span><%= t(".room_type_management") %></span>
+      <% end %>
+
+      <%= link_to "#", class: "action-btn" do %>
+        <i class="fas fa-users"></i>
+        <span><%= t(".user_management") %></span>
+      <% end %>
+
+      <%= link_to "#", class: "action-btn" do %>
+        <i class="fas fa-star"></i>
+        <span><%= t(".review_management") %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

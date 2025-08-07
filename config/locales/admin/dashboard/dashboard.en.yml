@@ -1,0 +1,16 @@
+en:
+  admin:
+    dashboard:
+      index:
+        title: "Dashboard"
+        welcome_message: "Welcome to the Admin Dashboard"
+        users_text: "Total Users"
+        bookings_text: "Total Bookings"
+        rooms_text: "Total Rooms"
+        reviews_text: "Total Reviews"
+        actions_text: "Actions"
+        booking_management: "Booking Management"
+        user_management: "User Management"
+        room_management: "Room Management"
+        review_management: "Review Management"
+        room_type_management: "Room Type Management"
