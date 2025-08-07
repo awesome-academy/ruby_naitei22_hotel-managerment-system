@@ -1,6 +1,7 @@
 default: &default
   site_name: "Sample App"
   admin_email: "admin@example.com"
+  digit_10: 10
 
 development:
   <<: *default

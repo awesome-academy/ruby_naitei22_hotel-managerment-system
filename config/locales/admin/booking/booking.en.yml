@@ -1,0 +1,41 @@
+en:
+  admin:
+    bookings:
+      index:
+        title: "Booking List"
+        list_text: "List of Bookings (%{count})"
+        id: "ID"
+        booking_code: "Booking Code"
+        user_name: "User Name"
+        status: "Status"
+        total_guests: "Total Guests"
+        total_price: "Total Price"
+        created_at: "Created At"
+        all: "All"
+        draft: "Draft"
+        pending: "Pending"
+        confirmed: "Confirmed"
+        declined: "Declined"
+        cancelled: "Cancelled"
+        completed: "Completed"
+        search_button: "Search"
+        pagy_info: "Showing %{from} to %{to} of %{count} bookings"
+        no_results: "No bookings found"
+
+      form_search_booking:
+          booking_code: "Booking Code"
+          user_name: "User Name"
+          status: "Status"
+          booking_code_placeholder: "Enter booking code..."
+          user_name_placeholder: "Enter user name..."
+          search_button: "Search"
+          reset_button: "Reset"
+
+      filter:
+        all: "All"
+        draft: "Draft"
+        pending: "Pending"
+        confirmed: "Confirmed"
+        declined: "Declined"
+        cancelled: "Cancelled"
+        completed: "Completed"

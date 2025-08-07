@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get "/dashboard", to: "dashboard#index", as: "dashboard"
 
       resources :room_types, only: %i(index new edit create update destroy)
+      resources :bookings, only: :index
     end
   end
   # Defines the root path route ("/")

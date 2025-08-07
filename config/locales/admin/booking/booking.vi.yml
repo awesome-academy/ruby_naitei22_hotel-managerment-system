@@ -1,0 +1,41 @@
+vi:
+  admin:
+    bookings:
+      index:
+        title: "Danh sách đặt phòng"
+        list_text: "Danh sách đặt phòng (%{count})"
+        id: "ID"
+        booking_code: "Mã đặt phòng"
+        user_name: "Tên người dùng"
+        status: "Trạng thái"
+        total_guests: "Tổng số khách"
+        total_price: "Tổng giá"
+        created_at: "Ngày tạo"
+        all: "Tất cả"
+        draft: "Nháp"
+        pending: "Đang chờ"
+        confirmed: "Đã xác nhận"
+        declined: "Đã từ chối"
+        cancelled: "Đã hủy"
+        completed: "Đã hoàn thành"
+        detail_button: "Chi tiết"
+        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} booking"
+        no_results: "Không tìm thấy đặt phòng nào"
+      
+      form_search_booking:
+          booking_code: "Mã đặt phòng"
+          user_name: "Tên người dùng"
+          status: "Trạng thái"
+          booking_code_placeholder: "Nhập mã đặt phòng..."
+          user_name_placeholder: "Nhập tên người dùng..."
+          search_button: "Tìm kiếm"
+          reset_button: "Đặt lại"
+
+      filter:
+        all: "Tất cả"
+        draft: "Nháp"
+        pending: "Đang chờ"
+        confirmed: "Đã xác nhận"
+        declined: "Đã từ chối"
+        cancelled: "Đã hủy"
+        completed: "Đã hoàn thành"
