@@ -1,12 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-# db/seeds.rb
-
 User.create!(
   name: "Admin",
   email: "admin@gmail.com",
@@ -16,7 +7,6 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
-
 User.create!(
   name: "Dennis Foley",
   email: "vickiwilliams@levy.com",
@@ -26,7 +16,6 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
-
 User.create!(
   name: "Jared Snyder",
   email: "anthony41@lopez-fuller.com",
@@ -36,7 +25,6 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
-
 User.create!(
   name: "Crystal Cox",
   email: "jonesdouglas@gmail.com",
@@ -46,7 +34,6 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
-
 User.create!(
   name: "Alan Boyer",
   email: "douglasvaughn@yahoo.com",
@@ -56,25 +43,21 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
-
 RoomType.create!(
   name: "Single",
   description: "While speak also sort family without.",
   price: 51
 )
-
 RoomType.create!(
   name: "Double",
   description: "Oil know rise if.",
   price: 258
 )
-
 RoomType.create!(
   name: "Suite",
   description: "Truth of whole find he should.",
   price: 120
 )
-
 Room.create!(
   room_number: "R001",
   room_type_id: 3,
@@ -82,7 +65,6 @@ Room.create!(
   description: "Serve itself national back.",
   capacity: 1
 )
-
 Room.create!(
   room_number: "R002",
   room_type_id: 2,
@@ -90,7 +72,6 @@ Room.create!(
   description: "Evidence year threat anything. Why those talk relate.",
   capacity: 3
 )
-
 Room.create!(
   room_number: "R003",
   room_type_id: 3,
@@ -98,7 +79,6 @@ Room.create!(
   description: "Less hot war music. Care officer only ready attorney which. They reduce customer follow card.",
   capacity: 4
 )
-
 Room.create!(
   room_number: "R004",
   room_type_id: 1,
@@ -106,7 +86,6 @@ Room.create!(
   description: "State need can PM any. Light less tend capital training him.",
   capacity: 2
 )
-
 Room.create!(
   room_number: "R005",
   room_type_id: 2,
@@ -114,128 +93,104 @@ Room.create!(
   description: "Leg result direction beyond. Near southern determine however point. Last thus then.",
   capacity: 3
 )
-
 Amenity.create!(
   name: "TV",
   description: "Never final hard benefit budget."
 )
-
 Amenity.create!(
   name: "Wi-Fi",
   description: "College should lot push able."
 )
-
 Amenity.create!(
   name: "AC",
   description: "Three safe late."
 )
-
 Amenity.create!(
   name: "Minibar",
   description: "Start term can high point present."
 )
-
 Amenity.create!(
   name: "Balcony",
   description: "Crime anyone civil home thought our."
 )
-
 RoomAmenity.create!(
   room_id: 1,
   amenity_id: 3
 )
-
 RoomAmenity.create!(
   room_id: 1,
   amenity_id: 4
 )
-
 RoomAmenity.create!(
   room_id: 1,
   amenity_id: 2
 )
-
 RoomAmenity.create!(
   room_id: 2,
   amenity_id: 1
 )
-
 RoomAmenity.create!(
   room_id: 2,
   amenity_id: 3
 )
-
 RoomAmenity.create!(
   room_id: 2,
   amenity_id: 4
 )
-
 RoomAmenity.create!(
   room_id: 3,
   amenity_id: 1
 )
-
 RoomAmenity.create!(
   room_id: 3,
   amenity_id: 5
 )
-
 RoomAmenity.create!(
   room_id: 3,
   amenity_id: 4
 )
-
 RoomAmenity.create!(
   room_id: 4,
   amenity_id: 2
 )
-
 RoomAmenity.create!(
   room_id: 4,
   amenity_id: 3
 )
-
 RoomAmenity.create!(
   room_id: 4,
   amenity_id: 4
 )
-
 RoomAmenity.create!(
   room_id: 5,
   amenity_id: 4
 )
-
 RoomAmenity.create!(
   room_id: 5,
   amenity_id: 3
 )
-
 RoomAmenity.create!(
   room_id: 5,
   amenity_id: 1
 )
-
 Booking.create!(
   user_id: 4,
   booking_code: "Pb0189",
   booking_date: Time.zone.now,
   status: 0
 )
-
 Booking.create!(
   user_id: 2,
   booking_code: "ws6537",
   booking_date: Time.zone.now,
   status: 0
 )
-
 Booking.create!(
   user_id: 1,
   booking_code: "ru4855",
   booking_date: Time.zone.now,
   status: 0
 )
-
 Request.create!(
   booking_id: 1,
   check_in: "2025-08-08 02:20:41.402071",
@@ -244,7 +199,6 @@ Request.create!(
   status: 0,
   note: "Help man plan bank look generation."
 )
-
 Request.create!(
   booking_id: 2,
   check_in: "2025-08-14 02:20:41.402136",
@@ -253,7 +207,6 @@ Request.create!(
   status: 0,
   note: "Move generation officer trade reduce police finally cell."
 )
-
 Request.create!(
   booking_id: 3,
   check_in: "2025-08-14 02:20:41.402159",
@@ -262,7 +215,6 @@ Request.create!(
   status: 0,
   note: "Plant in huge what stay watch."
 )
-
 Review.create!(
   user_id: 1,
   request_id: 2,
@@ -270,7 +222,6 @@ Review.create!(
   comment: "Have present statement leave.",
   review_status: 1
 )
-
 Review.create!(
   user_id: 2,
   request_id: 2,
@@ -278,7 +229,6 @@ Review.create!(
   comment: "Good source clearly economic tend. Century Mrs message yard writer development.",
   review_status: 1
 )
-
 Review.create!(
   user_id: 5,
   request_id: 3,

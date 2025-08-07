@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     namespace :admin do
       root to: "dashboard#index"
       get "/dashboard", to: "dashboard#index", as: "dashboard"
+
+      resources :room_types, only: %i(index new edit create update destroy)
     end
   end
   # Defines the root path route ("/")
