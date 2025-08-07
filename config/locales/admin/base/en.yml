@@ -2,7 +2,7 @@ en:
   admin:
     base:
       unauthorized_access: "Unauthorized access. Please log in as an admin."
-      
+
     layouts:
       sidebar:
         dashboard_text: "Dashboard"
