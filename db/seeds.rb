@@ -173,66 +173,39 @@ RoomAmenity.create!(
   room_id: 5,
   amenity_id: 1
 )
-Booking.create!(
-  user_id: 4,
-  booking_code: "Pb0189",
-  booking_date: Time.zone.now,
-  status: 0
-)
-Booking.create!(
-  user_id: 2,
-  booking_code: "ws6537",
-  booking_date: Time.zone.now,
-  status: 0
-)
-Booking.create!(
+
+RoomAvailability.create!(room_id: Room.first.id, available_date: 3.days.from_now.to_date, price: 500)
+
+# Booking cho user_id: 1
+booking = Booking.create!(
   user_id: 1,
-  booking_code: "ru4855",
+  booking_code: "RU1234",
   booking_date: Time.zone.now,
   status: 0
 )
-Request.create!(
-  booking_id: 1,
-  check_in: "2025-08-08 02:20:41.402071",
-  check_out: "2025-08-13 02:20:41.402071",
-  number_of_guests: 3,
+
+# Request gắn với booking trên
+request = Request.create!(
+  booking_id: booking.id,
+  check_in: 3.days.from_now,
+  check_out: 8.days.from_now,
+  number_of_guests: 2,
   status: 0,
-  note: "Help man plan bank look generation."
+  note: "Need quiet room for business trip."
 )
-Request.create!(
-  booking_id: 2,
-  check_in: "2025-08-14 02:20:41.402136",
-  check_out: "2025-08-19 02:20:41.402136",
-  number_of_guests: 1,
-  status: 0,
-  note: "Move generation officer trade reduce police finally cell."
+
+# Gắn request này với 1 room qua room_availability
+room_availability = RoomAvailability.find_by(room_id: 1)
+RoomAvailabilityRequest.create!(
+  room_availability_id: room_availability.id,
+  request_id: request.id
 )
-Request.create!(
-  booking_id: 3,
-  check_in: "2025-08-14 02:20:41.402159",
-  check_out: "2025-08-18 02:20:41.402159",
-  number_of_guests: 4,
-  status: 0,
-  note: "Plant in huge what stay watch."
-)
+
+# Review cho request trên
 Review.create!(
   user_id: 1,
-  request_id: 2,
-  rating: 4,
-  comment: "Have present statement leave.",
-  review_status: 1
-)
-Review.create!(
-  user_id: 2,
-  request_id: 2,
-  rating: 4,
-  comment: "Good source clearly economic tend. Century Mrs message yard writer development.",
-  review_status: 1
-)
-Review.create!(
-  user_id: 5,
-  request_id: 3,
-  rating: 4,
-  comment: "Or voice rise Mrs. Home but begin parent pass better account. Hour agent expert budget pass accept positive according.",
+  request_id: request.id,
+  rating: 5,
+  comment: "Very clean and quiet room. Great stay!",
   review_status: 1
 )
