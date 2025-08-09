@@ -179,42 +179,150 @@ Booking.create!(
   booking_date: Time.zone.now,
   status: 0
 )
-Booking.create!(
-  user_id: 2,
-  booking_code: "ws6537",
-  booking_date: Time.zone.now,
-  status: 0
-)
-Booking.create!(
-  user_id: 1,
-  booking_code: "ru4855",
-  booking_date: Time.zone.now,
-  status: 0
-)
-Request.create!(
-  booking_id: 1,
-  check_in: "2025-08-08 02:20:41.402071",
-  check_out: "2025-08-13 02:20:41.402071",
-  number_of_guests: 3,
-  status: 0,
-  note: "Help man plan bank look generation."
-)
-Request.create!(
-  booking_id: 2,
-  check_in: "2025-08-14 02:20:41.402136",
-  check_out: "2025-08-19 02:20:41.402136",
-  number_of_guests: 1,
-  status: 0,
-  note: "Move generation officer trade reduce police finally cell."
-)
-Request.create!(
-  booking_id: 3,
-  check_in: "2025-08-14 02:20:41.402159",
-  check_out: "2025-08-18 02:20:41.402159",
-  number_of_guests: 4,
-  status: 0,
-  note: "Plant in huge what stay watch."
-)
+
+# ===== RESET PHẦN BOOKING/REQUEST/LINK =====
+RoomAvailabilityRequest.delete_all
+Request.delete_all
+Booking.delete_all
+
+# ===== ĐẢM BẢO CÓ ROOM_AVAILABILITY CHO 60 NGÀY TỚI =====
+start_date = Date.today
+end_date   = start_date + 60
+
+Room.find_each do |room|
+  base = room.room_type&.price.to_d rescue 100.to_d
+  (start_date...end_date).each do |d|
+    RoomAvailability.find_or_create_by!(room_id: room.id, available_date: d) do |ra|
+      ra.price = base + [0, 10, 20, 30].sample
+    end
+  end
+end
+
+NEW_BOOKINGS = 15
+users = User.limit(10).to_a
+rooms = Room.all.to_a
+raise "Cần có Room để seed!" if rooms.empty?
+raise "Cần có User để seed!" if users.empty?
+
+# Request statuses không được overlap
+NON_OVERLAP_REQ_STATUSES = %i[pending confirmed checked_in checked_out].freeze
+
+# Map booking -> request statuses cho phép
+ALLOWED_REQ_BY_BOOKING = {
+  draft:     %i[draft],
+  pending:   %i[pending],
+  confirmed: %i[confirmed checked_in checked_out],
+  cancelled: %i[cancelled],
+  declined:  %i[declined],
+  completed: %i[checked_out]
+}.freeze
+
+occupied = Hash.new { |h, k| h[k] = {} }
+
+def pick_continuous_block(room_id:, min_day:, max_day:, nights:, active:, occupied:)
+  50.times do
+    d0 = rand(min_day..(max_day - nights))
+    dates = (d0...(d0 + nights)).to_a
+    if active
+      next if dates.any? { |d| occupied.dig(room_id, d) }
+    end
+    return dates
+  end
+  nil
+end
+
+def enum_val(klass, sym)
+  key = sym.to_s
+  h = klass.statuses
+  raise "Enum #{klass.name} không có key #{key}" unless h.key?(key)
+  h[key]
+end
+
+booking_states = Booking.statuses.keys.map(&:to_sym)
+booking_states = booking_states - [:completed] if booking_states.include?(:completed)
+cycle_states = (booking_states * ((NEW_BOOKINGS / booking_states.size) + 1)).first(NEW_BOOKINGS)
+
+NEW_BOOKINGS.times do |i|
+  code = "BK%04d" % (i + 1)
+  user = users.sample
+  booking_status = cycle_states[i]
+
+  booking = Booking.create!(
+    user_id:      user.id,
+    booking_code: code,
+    booking_date: Time.zone.now,
+    status:       enum_val(Booking, booking_status)
+  )
+
+  reqs = []
+  rand(1..3).times do |ri|
+    room = rooms.sample
+
+    allowed_req_statuses = ALLOWED_REQ_BY_BOOKING.fetch(booking_status, %i[draft])
+    req_status = allowed_req_statuses.sample
+
+    is_active = NON_OVERLAP_REQ_STATUSES.include?(req_status)
+
+    nights = rand(1..4)
+    min_day = start_date + 1
+    max_day = start_date + 40
+
+    dates = pick_continuous_block(
+      room_id: room.id,
+      min_day: min_day,
+      max_day: max_day,
+      nights: nights,
+      active: is_active,
+      occupied: occupied
+    )
+
+    if dates.nil?
+      req_status = :draft
+      is_active  = false
+      nights     = rand(1..3)
+      dates = pick_continuous_block(
+        room_id: room.id,
+        min_day: min_day,
+        max_day: max_day,
+        nights: nights,
+        active: false,
+        occupied: occupied
+      ) || (min_day...(min_day + nights)).to_a
+    end
+
+    check_in_date  = dates.first
+    check_out_date = dates.last + 1
+
+    check_in_dt  = check_in_date.to_datetime.change(hour: 14)
+    check_out_dt = check_out_date.to_datetime.change(hour: 11)
+
+    guests = [[room.capacity, 4].compact.min, 1].max
+
+    req = Request.create!(
+      booking_id:        booking.id,
+      check_in:          check_in_dt,
+      check_out:         check_out_dt,
+      number_of_guests:  guests,
+      status:            enum_val(Request, req_status),
+      note:              "#{code}-#{room.room_number}-R#{ri+1}"
+    )
+    reqs << req
+
+    dates.each do |d|
+      ra = RoomAvailability.find_by!(room_id: room.id, available_date: d)
+      RoomAvailabilityRequest.create!(room_availability_id: ra.id, request_id: req.id)
+      occupied[room.id][d] = true if is_active
+    end
+  end
+
+  # Booking chỉ complete khi tất cả request checked_out
+  if reqs.all? { |r| r.status == enum_val(Request, :checked_out) }
+    booking.update!(status: Booking.statuses[:completed]) if Booking.statuses.key?("completed")
+  end
+end
+
+puts "Seed xong: #{Booking.count} bookings, #{Request.count} requests, #{RoomAvailabilityRequest.count} links."
+
 Review.create!(
   user_id: 1,
   request_id: 2,

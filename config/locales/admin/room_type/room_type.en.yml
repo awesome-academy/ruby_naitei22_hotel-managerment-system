@@ -16,7 +16,8 @@ en:
         title: Room Types
         list_title: "Room Types List (%{count})"
         new: New Room Type
-        search: Search room type name
+        name_placeholder: Search room type name
+        description_placeholder: Search room type description
         id: ID
         name: Room Type
         description: Description
@@ -26,6 +27,11 @@ en:
         edit: Edit
         delete: Delete
         confirm_delete: Are you sure?
+        search_button: Search
+        detail_button: View Details
+        reset_button: Reset
+        pagy_info: "Showing %{from} to %{to} of %{count} room types"
+        no_results: "No bookings found"
 
       edit:
         title: "Edit Room Type"

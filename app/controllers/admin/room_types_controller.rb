@@ -5,6 +5,11 @@ class Admin::RoomTypesController < Admin::BaseController
   def index
     @q = RoomType.ransack(params[:q])
     @room_types = @q.result
+
+    scope = @q.result(distinct: true)
+
+    @pagy, @room_types = pagy(scope, items: Settings.default.digit_10,
+                            limit: Settings.default.digit_10)
   end
 
   # GET /admin/room_types/new

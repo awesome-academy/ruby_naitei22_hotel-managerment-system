@@ -8,7 +8,7 @@ class RoomType < ApplicationRecord
   has_many :rooms, dependent: :destroy
 
   def self.ransackable_attributes _ = nil
-    %w(name)
+    %w(name description)
   end
 
   def number_of_rooms
