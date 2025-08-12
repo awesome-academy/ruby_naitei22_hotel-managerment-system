@@ -1,0 +1,36 @@
+vi:
+  admin:
+    room_availabilities:
+      index:
+        title: "Phòng"
+        list_title: "Danh sách phòng (%{count})"
+        new_room: "Tạo phòng"
+        room_id: "ID"
+        room_number: "Số phòng"
+        room_type: "Loại phòng"
+        capacity: "Sức chứa"
+        status: "Trạng thái"
+        price: "Giá"
+        available_date: "Ngày"
+        pagy_info: "Hiển thị %{from} đến %{to} trên tổng %{count} phòng"
+        no_results: "Không có kết quả"
+
+      form_search_room:
+        room_number: "Số phòng"
+        room_number_placeholder: "Nhập số phòng..."
+        room_type_name: "Tên loại phòng"
+        room_type_name_placeholder: "Nhập tên loại phòng..."
+        available_date: "Ngày"
+        status: "Trạng thái"
+        search_button: "Tìm kiếm"
+        reset_button: "Làm mới"
+
+      room_availability:
+        status_available: "Khả dụng"
+        status_unavailable: "Không khả dụng"
+        view: "Xem"
+
+      filter:
+        all: "Tất cả"
+        available: "Khả dụng"
+        unavailable: "Không khả dụng"

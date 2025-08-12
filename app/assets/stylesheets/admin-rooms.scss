@@ -1,0 +1,34 @@
+.admin-rooms {
+  .rooms-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .table-container {
+    .status-badge {
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 550;
+      border-radius: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      &.available {
+        background: #d4edda;
+        color: #155724;
+      }
+      &.unavailable {
+        background: #f5c6cb;
+        color: #a71d2a;
+      }
+    }
+
+    .price-amount {
+      font-weight: 600;
+      color: #28a745;
+      font-size: 16px;
+    }
+  }
+}
