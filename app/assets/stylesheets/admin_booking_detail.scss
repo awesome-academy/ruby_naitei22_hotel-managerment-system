@@ -1,0 +1,422 @@
+.admin-booking-details {
+  .booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      color: #343a40;
+      font-weight: 700;
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .status-badge {
+      padding: 8px 16px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      &.pending {
+        background: #fff3cd;
+        color: #856404;
+      }
+
+      &.confirmed {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      &.completed {
+        background: #cce5ff;
+        color: #004085;
+      }
+
+      &.cancelled {
+        background: #f5c6cb;
+        color: #a71d2a;
+      }
+
+      &.draft {
+        background: #b9d1ff;
+        color: #416b91;
+      }
+              
+      &.declined {                
+        background: #cccac9;
+        color: #111110;
+      }
+    }
+  }
+
+  .booking-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      h3 {
+        color: #343a40;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e9ecef;
+        font-size: 18px;
+      }
+
+      .info-item {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        strong {
+          color: #495057;
+          font-weight: 600;
+          min-width: 130px;
+        }
+
+        code {
+          background: #f8f9fa;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-family: 'Courier New', monospace;
+          color: #6c63ff;
+          font-weight: 600;
+        }
+
+        .status-badge {
+          padding: 4px 12px;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 15px;
+          text-transform: uppercase;
+        }
+
+        &.total-price {
+          border-top: 1px solid #e9ecef;
+          padding-top: 15px;
+          margin-top: 20px;
+
+          .price-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: #28a745;
+          }
+        }
+      }
+
+      .info-item-last {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 120px;
+
+        strong {
+          color: #495057;
+          font-weight: 600;
+        }
+
+        a {
+          color: #007bff;
+          text-decoration: none;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .price-amount {
+        font-weight: 600;
+        color: #28a745;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .no-requests {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .status-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+
+      &.btn-secondary {
+        background: #6c757d;
+        color: white;
+
+        &:hover {
+          background: #545b62;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+        }
+      }
+
+      &.btn-success {
+        background: #28a745;
+        color: white;
+
+        &:hover {
+          background: #218838;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+        }
+      }
+
+      &.btn-danger {
+        background: #dc3545;
+        color: white;
+
+        &:hover {
+          background: #c82333;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
+      }
+
+      &.btn-warning {
+        background: #ffc107;
+        color: #212529;
+
+        &:hover {
+          background: #e0a800;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    .booking-info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .booking-header {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    .actions {
+      flex-direction: column;
+      gap: 15px;
+
+      .status-actions {
+        justify-content: center;
+      }
+    }
+
+    .request-details .rooms-section .rooms-list .room-item .room-dates {
+      justify-content: center;
+    }
+  }
+}
+
+// Modal styles
+turbo-frame[id="modal"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-card {
+    background: white;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      border-bottom: 1px solid #dee2e6;
+      background-color: #f8f9fa;
+
+      h3 {
+        margin: 0;
+        color: #343a40;
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
+
+      .modal-close {
+        font-size: 28px;
+        font-weight: bold;
+        color: #6c757d;
+        text-decoration: none;
+        line-height: 1;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #e9ecef;
+          color: #495057;
+        }
+      }
+    }
+
+    form {
+      padding: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #495057;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 16px;
+        resize: vertical;
+        min-height: 100px;
+        font-family: inherit;
+
+        &:focus {
+          outline: none;
+          border-color: #80bdff;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        &::placeholder {
+          color: #6c757d;
+          font-style: italic;
+        }
+      }
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      min-width: 100px;
+
+      &.btn-danger {
+        background-color: #dc3545;
+        color: white;
+
+        &:hover {
+          background-color: #c82333;
+          transform: translateY(-1px);
+        }
+      }
+
+      &.btn-secondary {
+        background-color: #6c757d;
+        color: white;
+
+        &:hover {
+          background-color: #545b62;
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+}
+
+// Hide modal when empty
+turbo-frame[id="modal"]:empty {
+  display: none;
+}
+
+// Show modal backdrop only when content exists
+turbo-frame[id="modal"]:not(:empty) {
+  display: flex;
+}
+
+// Hide action buttons when modal is active - improved selector
+.admin-booking-details {
+  turbo-frame[id="modal"]:not(:empty) ~ * .status-actions,
+  &:has(turbo-frame[id="modal"]:not(:empty)) .status-actions {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}

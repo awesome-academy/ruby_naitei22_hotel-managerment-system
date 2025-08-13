@@ -241,7 +241,7 @@ end
 booking_states = Booking.statuses.keys.map(&:to_sym)
 booking_states = booking_states - [:completed] if booking_states.include?(:completed)
 cycle_states = (booking_states * ((NEW_BOOKINGS / booking_states.size) + 1)).first(NEW_BOOKINGS)
-
+FORCE_COMPLETED_EVERY = 4 
 NEW_BOOKINGS.times do |i|
   code = "BK%04d" % (i + 1)
   user = users.sample
@@ -254,12 +254,20 @@ NEW_BOOKINGS.times do |i|
     status:       enum_val(Booking, booking_status)
   )
 
+  # ép booking này phải hoàn tất?
+  force_completed = (i % FORCE_COMPLETED_EVERY == 0)
+
   reqs = []
   rand(1..3).times do |ri|
     room = rooms.sample
 
-    allowed_req_statuses = ALLOWED_REQ_BY_BOOKING.fetch(booking_status, %i[draft])
-    req_status = allowed_req_statuses.sample
+    # nếu ép hoàn tất → mọi request đều checked_out
+    if force_completed
+      req_status = :checked_out
+    else
+      allowed_req_statuses = ALLOWED_REQ_BY_BOOKING.fetch(booking_status, %i[draft])
+      req_status = allowed_req_statuses.sample
+    end
 
     is_active = NON_OVERLAP_REQ_STATUSES.include?(req_status)
 
@@ -277,22 +285,23 @@ NEW_BOOKINGS.times do |i|
     )
 
     if dates.nil?
-      req_status = :draft
-      is_active  = false
+      # nếu ép hoàn tất mà bí slot, vẫn degrade về draft để tránh kẹt seed
+      req_status = :draft unless is_active && force_completed
+      is_active  = NON_OVERLAP_REQ_STATUSES.include?(req_status)
+
       nights     = rand(1..3)
       dates = pick_continuous_block(
         room_id: room.id,
         min_day: min_day,
         max_day: max_day,
         nights: nights,
-        active: false,
+        active: is_active,
         occupied: occupied
       ) || (min_day...(min_day + nights)).to_a
     end
 
     check_in_date  = dates.first
-    check_out_date = dates.last + 1
-
+    check_out_date = dates.last
     check_in_dt  = check_in_date.to_datetime.change(hour: 14)
     check_out_dt = check_out_date.to_datetime.change(hour: 11)
 
@@ -315,9 +324,9 @@ NEW_BOOKINGS.times do |i|
     end
   end
 
-  # Booking chỉ complete khi tất cả request checked_out
-  if reqs.all? { |r| r.status == enum_val(Request, :checked_out) }
-    booking.update!(status: Booking.statuses[:completed]) if Booking.statuses.key?("completed")
+  # Nếu ép hoàn tất → chắc chắn set completed (nếu enum có)
+  if defined?(Request) && reqs.any? && (force_completed || reqs.all? { |r| r.status == enum_val(Request, :checked_out) })
+    booking.update!(status: enum_val(Booking, :completed)) if Booking.statuses.key?("completed")
   end
 end
 

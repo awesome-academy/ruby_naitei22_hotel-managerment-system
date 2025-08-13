@@ -50,6 +50,13 @@ vi:
               taken: "Email này đã được đăng ký"
             date_of_birth:
               invalid_range: "Phải nằm trong khoảng 100 năm trở lại đây"
+        
+        request:
+          attributes:
+            check_out:
+              check_in_before_check_out: "phải sau ngày nhận phòng"
+            check_in:
+              future: "phải ở tương lai"
 
   time:
     formats:

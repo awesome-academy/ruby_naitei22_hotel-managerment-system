@@ -1,0 +1,49 @@
+<div class="info-card">
+  <h3><%= t("booking.info.title") %></h3>
+
+  <div class="info-item">
+    <strong><%= t("booking.info.code") %>:</strong>
+    <code><%= booking.booking_code %></code>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".created_at") %>:</strong>
+    <%= l(booking.created_at, format: :long) %>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".status") %>:</strong>
+    <span class="status-badge <%= booking.status %>">
+      <%= booking.status.titleize %>
+    </span>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".guests") %>:</strong>
+    <%= booking.number_of_guests %>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".requests") %>:</strong>
+    <%= booking.total_requests %>
+  </div>
+
+  <% if booking.status_changed_by_id.present? %>
+    <div class="info-item">
+      <strong><%= t(".updated_by") %>:</strong>
+      <%= booking.status_changed_by&.name %>
+    </div>
+  <% end %>
+
+  <div class="info-item">
+    <strong><%= t(".updated_at") %>:</strong>
+    <%= l(booking.updated_at, format: :long) %>
+  </div>
+
+  <div class="info-item total-price">
+    <strong><%= t(".total_price") %>:</strong>
+    <span class="price-amount">
+      <%= number_to_currency(booking.total_price, unit: "", separator: ".", delimiter: ",") %>đ
+    </span>
+  </div>
+</div>

@@ -6,7 +6,7 @@ class Ability
   def initialize user
     user ||= User.new # guest user (not logged in)
 
-    if user.admin?
+    if user.role_admin?
       can :manage, :all
     else
       can :read, Room

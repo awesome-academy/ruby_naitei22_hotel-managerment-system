@@ -1,0 +1,33 @@
+vi:
+  admin:
+    requests:
+      not_found_booking: "Không tìm thấy booking nào với ID này."
+      not_found_request: "Không tìm thấy yêu cầu nào với ID này."
+      guest_row:
+        edit: "Sửa"
+        delete: "Xoá"
+        delete_confirm: "Xoá khách này?"
+        edit_title: "Sửa thông tin khách"
+
+      table_guests:
+        stt: "STT"
+        full_name: "Họ tên"
+        id_type: "Loại giấy tờ"
+        id_number: "Số giấy tờ"
+        issue_date: "Ngày cấp"
+        issue_place: "Nơi cấp"
+        created_at: "Tạo lúc"
+        no_guest: "Chưa có khách nào được thêm vào yêu cầu này."
+      
+      show:
+        title: "Chi tiết yêu cầu đặt phòng - #%{id}"
+        header: "Chi tiết yêu cầu đặt phòng - #%{id}"
+        check_in: "CHECK IN"
+        checked_in_guests: "Khách hàng đã check-in (%{count})"
+        add_guest: "Thêm khách"
+        check_out: "CHECK OUT"
+      
+      update:
+        success: "Update request thành công"
+        failed: "Update request không thành công"
+        validate_check_out: "Phải có ít nhất 1 khách trước khi check out."
