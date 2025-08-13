@@ -14,7 +14,7 @@ class Admin::BookingsController < Admin::BaseController
 
     scope = @q.result(distinct: true)
 
-    @pagy, @bookings = pagy(scope, items: Settings.digit_10,
-                            limit: Settings.digit_10)
+    @pagy, @bookings = pagy(scope, items: Settings.default.digit_10,
+                            limit: Settings.default.digit_10)
   end
 end

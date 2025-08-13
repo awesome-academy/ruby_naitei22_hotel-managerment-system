@@ -21,7 +21,7 @@ vi:
         detail_button: "Chi tiết"
         pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} booking"
         no_results: "Không tìm thấy đặt phòng nào"
-      
+
       form_search_booking:
           booking_code: "Mã đặt phòng"
           user_name: "Tên người dùng"

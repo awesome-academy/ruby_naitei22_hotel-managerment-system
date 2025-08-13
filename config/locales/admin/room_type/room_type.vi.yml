@@ -16,7 +16,8 @@ vi:
         title: Loại phòng
         list_title: "Danh sách loại phòng (%{count})"
         new: Thêm loại phòng
-        search: Tìm theo tên loại phòng
+        name_placeholder: Tìm theo tên loại phòng
+        description_placeholder: Tìm theo mô tả loại phòng
         id: ID
         name: Loại phòng
         description: Mô tả
@@ -26,6 +27,11 @@ vi:
         edit: Sửa
         delete: Xoá
         confirm_delete: Bạn có chắc chắn muốn xoá?
+        search_button: Tìm kiếm
+        detail_button: Xem chi tiết
+        reset_button: Đặt lại
+        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} loại phòng"
+        no_results: "Không tìm thấy đặt phòng nào"
 
       edit:
         title: "Cập nhật loại phòng"
