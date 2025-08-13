@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
       resources :room_types, only: %i(index new edit create update destroy)
       resources :bookings, only: :index
+      resources :room_availabilities, only: :index
     end
   end
   # Defines the root path route ("/")
