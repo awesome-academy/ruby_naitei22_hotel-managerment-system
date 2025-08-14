@@ -11,6 +11,7 @@ vi:
         booking_text: "Đặt phòng"
         review_text: "Đánh giá"
         room_type_text: "Loại phòng"
+        amenity_text: "Tiện nghi"
 
       header:
         app_text: "Hệ thống quản lý khách sạn"

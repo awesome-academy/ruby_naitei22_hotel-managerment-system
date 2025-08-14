@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     # Bài viết (Microposts)
     resources :microposts
 
+    resources :rooms, only: %i(index show)
+
     # Admin routes
     namespace :admin do
       root to: "dashboard#index"
@@ -41,10 +43,13 @@ Rails.application.routes.draw do
         end
         resources :requests, only: %i(show update)
       end
+      resources :rooms, only: %i(new edit create update) do
+        member do
+          delete :remove_image
+        end
+      end
+      resources :amenities, only: %i(index new edit create update destroy)
     end
-    
-    # Phòng
-    resources :rooms, only: %i(index show)
   end
   # Defines the root path route ("/")
   # root "articles#index"

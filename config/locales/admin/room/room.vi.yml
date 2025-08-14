@@ -1,0 +1,36 @@
+vi:
+  admin:
+    rooms:
+      load_room:
+        not_found: "Không tìm thấy phòng."
+
+      new:
+        title: "Thêm phòng"
+        submit: "Tạo phòng"
+
+      edit:
+        title: "Cập nhật phòng"
+        submit: "Lưu thay đổi"
+
+      create:
+        success: "Tạo phòng thành công."
+        failure: "Tạo phòng thất bại."
+
+      update:
+        success: "Cập nhật phòng thành công."
+        failure: "Cập nhật phòng thất bại."
+
+      form:
+        room_number: "Số phòng"
+        room_type: "Loại phòng"
+        capacity: "Số người"
+        images: "Hình ảnh"
+        add_image: "Thêm ảnh"
+        description: "Mô tả"
+        write_description: "Nhập mô tả..."
+        amenities: "Tiện nghi"
+        set_range_price: "Thiết lập giá theo khoảng ngày"
+        set_range_hint: "Chọn khoảng ngày và giá để áp dụng cho tất cả các ngày."
+        from: "Từ"
+        to: "Đến"
+        price: "Giá"

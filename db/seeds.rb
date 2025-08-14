@@ -61,35 +61,30 @@ RoomType.create!(
 Room.create!(
   room_number: "R001",
   room_type_id: 3,
-  status: 0,
   description: "Serve itself national back.",
   capacity: 1
 )
 Room.create!(
   room_number: "R002",
   room_type_id: 2,
-  status: 0,
   description: "Evidence year threat anything. Why those talk relate.",
   capacity: 3
 )
 Room.create!(
   room_number: "R003",
   room_type_id: 3,
-  status: 0,
   description: "Less hot war music. Care officer only ready attorney which. They reduce customer follow card.",
   capacity: 4
 )
 Room.create!(
   room_number: "R004",
   room_type_id: 1,
-  status: 0,
   description: "State need can PM any. Light less tend capital training him.",
   capacity: 2
 )
 Room.create!(
   room_number: "R005",
   room_type_id: 2,
-  status: 0,
   description: "Leg result direction beyond. Near southern determine however point. Last thus then.",
   capacity: 3
 )

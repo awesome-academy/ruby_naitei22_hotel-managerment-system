@@ -11,6 +11,7 @@ en:
         booking_text: "Bookings"
         review_text: "Reviews"
         room_type_text: "Room Types"
+        amenity_text: "Amenities"
 
       header:
         app_text: "Hotel Management System"
