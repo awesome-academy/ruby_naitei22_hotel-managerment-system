@@ -1,0 +1,7 @@
+<% provide :title, t(".title") %>
+<%= provide(:button_text, t(".submit")) %>
+
+<h1><%= t(".title") %></h1>
+<div>
+  <%= render "form", url: admin_room_path(@room), method: :patch %>
+</div>

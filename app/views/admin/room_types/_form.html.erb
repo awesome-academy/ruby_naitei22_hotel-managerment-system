@@ -1,4 +1,6 @@
 <%= form_with(model: @room_type, url: local_assigns[:url], html: {class: "admin-room-type-form"}) do |f| %>
+  <%= render "shared/error_messages", object: @room_type %>
+
   <%= f.label :name, t(".name") %>
   <%= f.text_field :name, class: "form-control" %>
 

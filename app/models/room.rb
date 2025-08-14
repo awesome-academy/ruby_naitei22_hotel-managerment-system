@@ -1,21 +1,60 @@
 class Room < ApplicationRecord
+  RESIZE_LIMIT = [300, 300].freeze
+  DIGIT_5 = 5
+  DIGIT_140 = 140
+  ROOM_PARAMS = [
+    :room_number,
+    :room_type_id,
+    :capacity,
+    :description,
+    :price_from_date,
+    :price_to_date,
+    :price,
+    {images: [],
+     amenity_ids: []}
+  ].freeze
+
+  # Fields to create a range of room_availabilities
+  attribute :price_from_date, :date
+  attribute :price_to_date, :date
+  attribute :price, :decimal, precision: 10, scale: 2
+
+  validates :room_number, presence: true, uniqueness: true
+  validates :room_type_id, presence: true
+  validates :capacity, presence: true,
+              numericality: {only_integer: true, greater_than: 0}
+  validates :description, presence: true, length: {maximum: DIGIT_140}
+
+  # Create: Admin is required to enter all 3 fields
+  validates :price_from_date, :price_to_date, :price,
+            presence: true,
+            on: :create
+
+  # UPDATE: If admin enter 1 field then all fields are required
+  validates :price_from_date, :price_to_date, :price,
+            presence: true,
+            if: :price_fields_partially_filled?
+
+  validates :price, numericality: {greater_than: 0}, if: -> {price.present?}
+
+  # If price fields are filled, validate their dates
+  validate :validate_price_dates
+
+  after_save :upsert_range_prices
+
+  # Associations
   belongs_to :room_type
 
   has_many :room_amenities, dependent: :destroy
   has_many :amenities, through: :room_amenities
 
   has_many :room_availabilities, dependent: :destroy
-  has_many :room_availability_requests, through: :room_availabilities
   has_many :requests, through: :room_availability_requests
   has_many :reviews, through: :requests
 
-  has_many_attached :images
-
-  enum status: {
-    available: 0,
-    occupied: 1,
-    maintenance: 2
-  }, _prefix: true
+  has_many_attached :images do |attachable|
+    attachable.variant :display, resize_to_limit: RESIZE_LIMIT
+  end
 
   def self.ransackable_attributes _auth_object = nil
     %w(room_number)
@@ -101,5 +140,39 @@ class Room < ApplicationRecord
 
   def number_of_rating
     reviews.count(:id)
+  end
+
+  private
+
+  def price_fields_partially_filled?
+    price_from_date.present? || price_to_date.present? || price.present?
+  end
+
+  def validate_price_dates
+    return if price_from_date.blank? || price_to_date.blank?
+
+    current_date = Time.zone.today
+
+    errors.add(:price_from_date, :in_past) if price_from_date < current_date
+
+    errors.add(:price_to_date, :in_past) if price_to_date < current_date
+
+    return unless price_from_date > price_to_date
+
+    errors.add(:price_to_date, :before_start_date)
+  end
+
+  def upsert_range_prices
+    return if price.blank? || price_from_date.blank? || price_to_date.blank?
+
+    RoomAvailabilities::UpsertRange.new(
+      self,
+      from: price_from_date,
+      to: price_to_date,
+      price:
+    ).call
+  rescue ActiveRecord::ActiveRecordError
+    errors.add(:base, :failed_to_upsert_prices)
+    raise ActiveRecord::Rollback
   end
 end

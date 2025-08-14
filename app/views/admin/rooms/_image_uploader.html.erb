@@ -1,0 +1,30 @@
+<div class="card-section">
+  <%= f.label :images, t("admin.rooms.form.images"), class: "section-title" %>
+  <div class="images-uploader">
+    <% if room.persisted? && room.images.attached? %>
+      <div class="thumbs">
+        <% room.images.each do |img| %>
+          <div class="thumb">
+            <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
+            <div class="thumb-img-wrapper">
+              <%= image_tag img.variant(:display), alt: "image" %>
+            </div>
+            <%= link_to remove_image_admin_room_path(room, image_id: img.id),
+                  data: {"turbo-method": :delete},
+                  class: "remove-btn" do %>
+              &times;
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <label class="upload-label">
+      <%= f.file_field :images,
+            multiple: true,
+            direct_upload: true,
+            class: "file-input",
+            accept: Settings.default.image_accept_format %>
+    </label>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 class RoomType < ApplicationRecord
   ROOM_TYPE_PARAMS = %i(name description).freeze
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :description, presence: true
 
   # Associations

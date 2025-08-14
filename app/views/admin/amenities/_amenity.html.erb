@@ -1,0 +1,25 @@
+<tr>
+  <td><strong><%= amenity.id %></strong></td>
+  <td>
+    <div class="amenity-name"><%= amenity.name %></div>
+  </td>
+  <td><%= amenity.description %></td>
+  <td>
+    <div class="date-info"><%= l(amenity.updated_at, format: :short) %></div>
+  </td>
+  <td>
+    <div class="d-flex gap-1">
+      <%= link_to edit_admin_amenity_path(amenity),
+                  class: "btn btn-sm btn-outline-primary",
+                  title: t(".edit") do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+      <%= link_to admin_amenity_path(amenity),
+                  data: { "turbo-method": :delete, turbo_confirm: t(".confirm_delete") },
+                  class: "btn btn-sm btn-outline-danger",
+                  title: t(".delete") do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>
