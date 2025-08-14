@@ -1,0 +1,30 @@
+vi:
+  rooms:
+    not_found: "Không tìm thấy phòng phù hợp."
+    card:
+      guest: "người"
+      include: "Bao gồm các tiện nghi sau:"
+      number_of_rating: "đánh giá"
+    type: "Loại phòng"
+    prices:
+      price: "Giá"
+      price_night: "/đêm"
+    filter:
+      availability: "Thời gian"
+      check_in: "Ngày nhận phòng"
+      check_out: "Ngày trả phòng"
+      below_50: "Dưới $50"
+      from_50_99: "$50 ~ $99"
+      from_100_200: "$100 ~ $200"
+      above_200: "Trên $200"
+      price_asc: "Giá ↑"
+      price_desc: "Giá ↓"
+      rating_desc: "Đánh giá ↓"
+      type_blank: "Tất cả loại"
+      price_blank: "Tất cả mức giá"
+      sort_blank: "Mặc định"
+      sort: "Sắp xếp theo"
+      filter_btn: "Lọc"
+      clear_btn: "Xóa"
+    index:
+      title: "Tất cả phòng"

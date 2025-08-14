@@ -1,0 +1,64 @@
+<div class="room-filters-sidebar">
+  <%= form_with url: rooms_path, method: :get, local: true, class: "filter-form" do |form| %>
+
+    <!-- Availability -->
+    <div class="filter-section">
+      <h4><%= t("rooms.filter.availability") %></h4>
+
+      <label for="check_in" class="form-label">
+        <%= t("rooms.filter.check_in") %>
+      </label>
+      <%= form.date_field :check_in,
+                          value: params[:check_in],
+                          class: "form-control",
+                          min: Date.today,
+                          id: "check_in" %>
+
+      <label for="check_out" class="form-label">
+        <%= t("rooms.filter.check_out") %>
+      </label>
+      <%= form.date_field :check_out,
+                          value: params[:check_out],
+                          class: "form-control",
+                          min: Date.today,
+                          id: "check_out" %>
+    </div>
+
+    <!-- Room Type -->
+    <div class="filter-section">
+      <h4><%= t("rooms.type") %></h4>
+      <%= form.select :room_type,
+                      options_for_select(room_type_options, params[:room_type]),
+                      { include_blank: t("rooms.filter.type_blank") },
+                      class: "form-control custom-select" %>
+    </div>
+
+    <!-- Price Range -->
+    <div class="filter-section mt-3">
+      <h4><%= t("rooms.prices.price") %></h4>
+      <%= form.select :price_range,
+                      options_for_select(price_range_options, params[:price_range]),
+                      { include_blank: t("rooms.filter.price_blank") },
+                      class: "form-control custom-select" %>
+    </div>
+
+    <!-- Sort by -->
+    <div class="filter-section mt-3">
+      <h4><%= t("rooms.filter.sort") %></h4>
+      <%= form.select :sort_by,
+                      options_for_select(sort_by_options, params[:sort_by]),
+                      { include_blank: t("rooms.filter.sort_blank") },
+                      class: "form-control custom-select" %>
+    </div>
+
+    <!-- Actions -->
+    <div class="filter-actions mt-4">
+      <%= form.submit t("rooms.filter.filter_btn"),
+                      class: "btn btn-primary w-100" %>
+      <%= link_to t("rooms.filter.clear_btn"),
+                  rooms_path,
+                  class: "btn btn-secondary w-100 text-center" %>
+    </div>
+
+  <% end %>
+</div>

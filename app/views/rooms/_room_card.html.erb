@@ -1,0 +1,37 @@
+<div class="room-card">
+  <%= link_to "#", class: "room-card-link" do %>
+    <div class="room-image">
+      <%= image_tag(
+        room.images.attached? ? url_for(room.images.first) : "room-placeholder.jpg",
+        alt: room.room_number,
+        class: "room-photo"
+        ) %>
+    </div>
+    
+    <div class="room-details">
+      <div class="room-header">
+        <h3 class="room-name"><%= room.room_number %></h3>
+        
+        <div class="room-price">
+          <span class="price-amount">$<%= room.room_type.price %></span>
+          <span class="price-period"><%= t("rooms.prices.price_night") %></span>
+        </div>
+      </div>
+      
+      <div class="room-info">
+        <%= room.room_type.name %> • <%= pluralize(room.capacity, t("rooms.card.guest")) %><br>
+
+        <%= t("rooms.card.include") %>
+        <ul>
+            <% room.amenities.each do |amenity| %>
+                <li><%= amenity.name %></li>
+            <% end %>
+        </ul>
+
+        <span>
+            ⭐  <%= room.average_rating %> (<%= pluralize(room.number_of_rating, t("rooms.card.number_of_rating")) %>)
+        </span>
+      </div>
+    </div>
+  <% end %>
+</div>

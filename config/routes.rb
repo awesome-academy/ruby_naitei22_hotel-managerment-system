@@ -35,6 +35,9 @@ Rails.application.routes.draw do
       resources :bookings, only: :index
       resources :room_availabilities, only: :index
     end
+    
+    # Phòng
+    resources :rooms, only: %i(index)
   end
   # Defines the root path route ("/")
   # root "articles#index"
