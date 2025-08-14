@@ -1,5 +1,5 @@
 <div class="room-card">
-  <%= link_to "#", class: "room-card-link" do %>
+  <%= link_to room_path(room), class: "room-card-link" do %>
     <div class="room-image">
       <%= image_tag(
         room.images.attached? ? url_for(room.images.first) : "room-placeholder.jpg",
@@ -28,8 +28,10 @@
             <% end %>
         </ul>
 
-        <span>
-            ⭐  <%= room.average_rating %> (<%= pluralize(room.number_of_rating, t("rooms.card.number_of_rating")) %>)
+        <span class="room-rating">
+            <span class="rating-star">★</span>
+            <%= room.average_rating %> 
+            (<%= pluralize(room.number_of_rating, t("rooms.card.number_of_rating")) %>)
         </span>
       </div>
     </div>
