@@ -31,13 +31,16 @@ vi:
 
   contact:
     title: "Liên hệ"
-    description: "Đây là trang Liên hệ cho Ứng dụng mẫu hướng dẫn Ruby on Rails."
-
+    description: "Đây là trang Liên hệ cho Ứng dụng mẫu hướng dẫn Ruby on Rails."   
+          
   time:
     formats:
       long: "%H:%M, %d/%m/%Y"
       only_date: "%d/%m/%Y"
 
+  messages:
+    confirm_delete: "Bạn có chắc chắn muốn xóa khách hàng này không?"
+  
   errors:
     template:
         header:

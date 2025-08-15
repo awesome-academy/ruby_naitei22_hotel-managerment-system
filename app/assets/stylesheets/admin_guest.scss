@@ -1,0 +1,139 @@
+.admin-guest {
+  .guest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      color: #343a40;
+      font-weight: 700;
+      margin: 0;
+      font-size: 28px;
+    }
+  }
+
+  form {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #343a40;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .form-control {
+      font-size: 18px;
+      padding: 15px 20px;
+      height: 50px;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      
+      &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #6c757d;
+        font-size: 16px;
+      }
+    }
+
+    select.form-control {
+      background-position: right 15px center;
+      background-size: 16px 12px;
+      height: 50px;
+      font-size: 16px;
+    }
+
+    #guest_identity_type {
+      font-size: 16px;
+    }
+
+    #guest_identity_issued_date {
+      width: 20%;
+    }
+
+    .form-control-file {
+      border: 2px dashed #007bff;
+      border-radius: 6px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      transition: border-color 0.15s ease-in-out;
+
+      &:hover {
+        border-color: #0056b3;
+        background-color: #e2e6ea;
+      }
+    }
+
+    .current-images {
+      margin-top: 15px;
+
+      p {
+        font-size: 16px;
+        font-weight: 600;
+        color: #343a40;
+        margin-bottom: 10px;
+      }
+
+      .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .image-item {
+          position: relative;
+
+          .img-thumbnail {
+            width: 1000px;
+            height: 500px;
+            object-fit: cover;
+            margin: 5px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+              border-color: #007bff;
+              box-shadow: 0 2px 6px rgba(0, 123, 255, 0.25);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .modal-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+
+    .btn {
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+  }
+}

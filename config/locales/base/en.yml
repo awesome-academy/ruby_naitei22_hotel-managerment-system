@@ -32,12 +32,15 @@ en:
   contact:
     title: "Contact"
     description: "This is the Contact page for the Ruby on Rails Tutorial Sample App."
-
+    
   time:
     formats:
       long: "%B %d, %Y %H:%M"
       only_date: "%d/%m/%Y"
 
+  messages:
+    confirm_delete: "Are you sure you want to delete this customer?"
+  
   errors:
     template:
       header:
