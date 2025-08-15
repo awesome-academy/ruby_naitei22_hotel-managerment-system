@@ -51,6 +51,13 @@ en:
             date_of_birth:
               invalid_range: "must be within the last 100 years"
 
+        request:
+          attributes:
+            check_out:
+              check_in_before_check_out: "must be after check-in date"
+            check_in:
+              future: "must be in the future"
+
   time:
     formats:
       long: "%B %d, %Y %H:%M"

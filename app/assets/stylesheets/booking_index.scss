@@ -25,6 +25,15 @@
         background: #f5c6cb;
         color: #a71d2a;
       }
+      &.draft {
+        background: #b9d1ff;
+        color: #416b91;
+      }
+
+      &.declined {                
+        background: #cccac9;
+        color: #111110;
+        }
     }
 
     /* Thông tin user */

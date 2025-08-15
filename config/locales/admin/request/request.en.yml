@@ -1,0 +1,33 @@
+en:
+  admin:
+    requests:
+      not_found_booking: "No booking found with this ID."
+      not_found_request: "No request found with this ID."
+      guest_row:
+        edit: "Edit"
+        delete: "Delete"
+        delete_confirm: "Delete this guest?"
+        edit_title: "Edit guest information"
+      
+      table_guests:
+        stt: "No."
+        full_name: "Full name"
+        id_type: "ID Type"
+        id_number: "ID Number"
+        issue_date: "Issue Date"
+        issue_place: "Issue Place"
+        created_at: "Created At"
+        no_guest: "No guests have been added to this request."
+      
+      show:
+        title: "Booking Request Details - #%{id}"
+        header: "Booking Request Details - #%{id}"
+        check_in: "CHECK IN"
+        checked_in_guests: "Checked-in guests (%{count})"
+        add_guest: "Add Guest"
+        check_out: "CHECK OUT"  
+
+      update:
+        success: "Update request successfully"
+        failed: "Update request unsuccessfully"
+        validate_check_out: "Must have at least 1 guest before checking out."

@@ -1,0 +1,144 @@
+.requests-section {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+
+  h3 {
+    color: #343a40;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 20px;
+  }
+
+  .request-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+
+    .request-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+
+      h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #495057;
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    h4 {
+      color: #495057;
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .request-details {
+      .date-range,
+      .guests,
+      .note {
+        margin-bottom: 15px;
+
+        strong {
+          color: #495057;
+          font-weight: 600;
+          margin-right: 8px;
+        }
+      }
+
+      .rooms-section {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dee2e6;
+
+        .rooms-list {
+          margin-top: 15px;
+
+          .room-item {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+            .room-info {
+              display: flex;
+              align-items: center;
+              margin-bottom: 15px;
+
+              .room-number {
+                font-weight: 700;
+                color: #343a40;
+                font-size: 18px;
+                margin-right: 10px;
+              }
+
+              .room-type {
+                background: #e9ecef;
+                padding: 4px 8px;
+                border-radius: 15px;
+                font-size: 12px;
+                color: #6c757d;
+                font-weight: 600;
+              }
+            }
+
+            .room-dates {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              margin-bottom: 15px;
+
+              .date-badge {
+                background: #6c63ff;
+                color: white;
+                padding: 6px 12px;
+                border-radius: 15px;
+                font-size: 15px;
+                font-weight: 600;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                small {
+                  font-size: 13px;
+                  opacity: 0.9;
+                  margin-top: 6px;
+                }
+              }
+            }
+
+            .room-total {
+              text-align: right;
+              padding-top: 15px;
+              border-top: 1px solid #e9ecef;
+              font-size: 16px;
+
+              strong {
+                color: #28a745;
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

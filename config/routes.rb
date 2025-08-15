@@ -32,8 +32,15 @@ Rails.application.routes.draw do
       get "/dashboard", to: "dashboard#index", as: "dashboard"
 
       resources :room_types, only: %i(index new edit create update destroy)
-      resources :bookings, only: :index
       resources :room_availabilities, only: :index
+      resources :bookings, only: %i(index show update) do
+        member do
+          patch :update_status
+          patch :decline
+          get :show_decline
+        end
+        resources :requests, only: %i(show update)
+      end
     end
     
     # Phòng

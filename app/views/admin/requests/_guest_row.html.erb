@@ -1,0 +1,23 @@
+<tr>
+  <td><%= g_counter + 1%></td>
+  <td><%= g.full_name %></td>
+  <td><%= g.identity_type %></td>
+  <td><%= g.identity_number %></td>
+  <td><%= l(g.identity_issued_date) if g.identity_issued_date %></td>
+  <td><%= g.identity_issued_place %></td>
+  <td><%= l(g.created_at, format: :short) %></td>
+  <% if show_actions %>
+    <td class="text-right">
+      <%= link_to t(".edit"),
+          "#",
+          class: "btn btn-primary btn-sm",
+          style: "margin-right: 5px;",
+          title: t(".edit_title") %>
+      <%= link_to t(".delete"),
+          "#",
+          method: :delete,
+          data: { turbo_confirm: t(".delete_confirm") },
+          class: "btn btn-danger btn-sm" %>
+    </td>
+  <% end %>
+</tr>

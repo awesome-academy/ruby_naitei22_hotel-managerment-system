@@ -1,0 +1,227 @@
+.admin-request-detail {
+  .request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      color: #343a40;
+      font-weight: 700;
+      margin: 0;
+      font-size: 28px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: #ffffff;
+    padding: 20px;
+    gap: 10px;
+
+    .btn {
+      padding: 12px 24px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+
+      &.btn-success {
+        background: #28a745;
+        color: white;
+
+        &:hover {
+          background: #218838;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+        }
+      }
+
+      &.btn-warning {
+        background: #ffc107;
+        color: #212529;
+
+        &:hover {
+          background: #e0a800;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        }
+      }
+    }
+  }
+
+  // Status section styling - từ request.status == "confirmed" trở xuống
+  .status-section {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+
+    // Status "confirmed" - Check in button
+    .confirmed-status {
+      text-align: center;
+      padding: 20px;
+
+      .btn {
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+
+        &.btn-success {
+          background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+          color: white;
+          box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+
+          &:hover {
+            background: linear-gradient(135deg, #218838 0%, #1ea89c 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+          }
+        }
+      }
+    }
+
+    // Status "checked_in" 
+    .checked-in-status {
+      h3 {
+        color: #28a745;
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 20px;
+        padding: 15px 20px;
+        background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        border-radius: 8px;
+        border-left: 4px solid #28a745;
+        text-align: center;
+        
+        &::before {
+          content: "✓ ";
+          margin-right: 8px;
+          color: #28a745;
+          font-weight: bold;
+        }
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+
+        .btn {
+          padding: 12px 24px;
+          font-weight: 600;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+
+          &.btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+
+            &:hover {
+              background: linear-gradient(135deg, #218838 0%, #1ea89c 100%);
+              transform: translateY(-2px);
+              box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+            }
+          }
+
+          &.btn-warning {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+            color: #212529;
+            box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+
+            &:hover {
+              background: linear-gradient(135deg, #e0a800 0%, #e8610b 100%);
+              transform: translateY(-2px);
+              box-shadow: 0 6px 12px rgba(255, 193, 7, 0.4);
+            }
+          }
+
+          &.btn-danger {
+            background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+            color: white;
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+
+            &:hover {
+              background: linear-gradient(135deg, #c82333 0%, #dc2f3f 100%);
+              transform: translateY(-2px);
+              box-shadow: 0 6px 12px rgba(220, 53, 69, 0.4);
+            }
+
+            &.btn-sm {
+              padding: 8px 16px;
+              font-size: 14px;
+            }
+          }
+
+          &.btn-primary {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+
+            &:hover {
+              background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+              transform: translateY(-2px);
+              box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+            }
+
+            &.btn-sm {
+              padding: 8px 16px;
+              font-size: 14px;
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          
+          .btn {
+            width: 100%;
+          }
+        }
+      }
+
+      // Empty state message
+      p {
+        text-align: center;
+        color: #6c757d;
+        font-style: italic;
+        font-size: 16px;
+        margin: 20px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 2px dashed #dee2e6;
+        
+        em {
+          color: #495057;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

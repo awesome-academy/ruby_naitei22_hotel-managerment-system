@@ -15,7 +15,7 @@
   </td>
   <td><%= l(booking.created_at, format: :short) %></td>
   <td>
-    <%= link_to "#", class: "btn btn-sm btn-outline-primary", title: t(".detail_button") do %>
+    <%= link_to admin_booking_path(booking.id), class: "btn btn-sm btn-outline-primary", title: t(".detail_button") do %>
       <i class="fas fa-search"></i>
     <% end %>
   </td>
