@@ -1,0 +1,40 @@
+vi:
+  activerecord:
+    models:
+      user: "Người dùng"
+      guest: "Khách"
+    attributes:
+      user:
+        name: "Tên"
+        email: "Email"
+      guest:
+        full_name: "Họ và tên"
+        identity_type: "Loại giấy tờ"
+        identity_number: "Số giấy tờ"
+        identity_issued_date: "Ngày cấp"
+        identity_issued_place: "Nơi cấp"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "Vui lòng nhập tên của bạn"
+            email:
+              taken: "Email này đã được đăng ký"
+            date_of_birth:
+              invalid_range: "Phải nằm trong khoảng 100 năm trở lại đây"
+        
+        request:
+          attributes:
+            check_out:
+              check_in_before_check_out: "phải sau ngày nhận phòng"
+            check_in:
+              future: "phải ở tương lai"
+        
+        guest:
+          attributes:
+            identity_issued_date:
+              future: "Ngày cấp không được ở tương lai"
+            identity_number:
+              invalid_national_id: "phải gồm đúng 12 chữ số"
+              invalid_passport: "phải là 1 chữ cái + 7 chữ số (ví dụ: B1234567)"

@@ -39,7 +39,9 @@ Rails.application.routes.draw do
           patch :decline
           get :show_decline
         end
-        resources :requests, only: %i(show update)
+        resources :requests, only: %i(show update) do
+          resources :guests, only: %i(new create edit update destroy)
+        end
       end
     end
     
