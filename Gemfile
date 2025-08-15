@@ -6,6 +6,8 @@ ruby "3.2.2"
 # i18n for multi-languages
 gem "rails-i18n"
 
+gem "i18n-js"
+
 # config for manage settings
 gem "config"
 
@@ -55,6 +57,8 @@ gem "jquery-rails"
 gem "pagy"
 # Use Sass to process CSS
 gem "sassc-rails"
+
+gem "flatpickr", "~> 4.6"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html]
 # gem "image_processing", "~> 1.2"

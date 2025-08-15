@@ -61,7 +61,7 @@
       <section class="room-amenities">
         <h2><%= t(".include") %></h2>
         <div class="amenities-grid">
-          <% @room.amenities.each do |amenity| %>
+          <% @amenities.each do |amenity| %>
             <div class="amenity-item">
               <span class="amenity-name"><%= amenity.name %></span>
             </div>
@@ -101,7 +101,7 @@
                     data-see-less="<%= t(".see_less") %>">
                     <%= t(".see_more") %>
                   </a>
-                <% end %>
+                <% end %>              
               </div>
             </div>
           <% end %>

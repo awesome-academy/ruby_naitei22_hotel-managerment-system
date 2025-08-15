@@ -12,3 +12,6 @@ production:
 
 mailer:
   from: "noreply@example.com"
+
+placeholder:
+  date_time: "yyyy/mm/dd"
