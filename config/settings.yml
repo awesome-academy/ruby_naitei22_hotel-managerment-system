@@ -3,6 +3,12 @@ default: &default
   admin_email: "admin@example.com"
   digit_10: 10
 
+  image_content_types:
+    - image/jpeg
+    - image/gif
+    - image/png
+  image_accept_format: "image/jpeg,image/gif,image/png"
+
 development:
   <<: *default
 

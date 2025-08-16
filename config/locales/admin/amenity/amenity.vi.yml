@@ -1,0 +1,55 @@
+vi:
+  admin:
+    amenities:
+      load_amenity:
+        not_found: "Không tìm thấy tiện nghi."
+
+      new:
+        title: "Thêm tiện nghi"
+        submit: "Tạo tiện nghi"
+
+      create:
+        success_message: "Tạo tiện nghi thành công."
+        error_message: "Tạo tiện nghi thất bại. Vui lòng kiểm tra lại thông tin."
+
+      index:
+        title: Tiện nghi
+        list_title: "Danh sách tiện nghi (%{count})"
+        new: Thêm tiện nghi
+        name_placeholder: Tìm theo tên tiện nghi
+        description_placeholder: Tìm theo mô tả tiện nghi
+        id: ID
+        name: Tiện nghi
+        description: Mô tả
+        number_of_rooms: Số lượng phòng
+        updated_at: Cập nhật lúc
+        action: Hành động
+        edit: Sửa
+        delete: Xoá
+        confirm_delete: Bạn có chắc chắn?
+        search_button: Tìm kiếm
+        detail_button: Xem chi tiết
+        reset_button: Đặt lại
+        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} tiện nghi"
+        no_results: "Không có tiện nghi nào"
+
+      edit:
+        title: "Cập nhật tiện nghi"
+        submit: "Lưu thay đổi"
+
+      update:
+        success_message: "Cập nhật tiện nghi thành công."
+        error_message: "Cập nhật tiện nghi thất bại. Vui lòng kiểm tra lại thông tin."
+
+      destroy:
+        success_message: "Xoá tiện nghi thành công."
+        error_message: "Xoá tiện nghi thất bại. Vui lòng thử lại."
+
+      form:
+        name: "Tên"
+        description: "Mô tả"
+
+      amenity:
+        edit: "Chỉnh sửa"
+        delete: "Xoá"
+        confirm_delete: "Bạn có chắc chắn muốn xoá tiện nghi này không?"

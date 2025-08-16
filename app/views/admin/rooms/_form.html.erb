@@ -1,0 +1,62 @@
+<%= form_with(model: @room, url: local_assigns[:url], html: { class: "admin-room-form" }, multipart: true) do |f| %>
+  <%= render "shared/error_messages", object: @room %>
+
+  <div class="form-row three-cols">
+    <div class="field">
+      <%= f.label :room_number, t(".room_number") %>
+      <%= f.text_field :room_number, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :room_type_id, t(".room_type") %>
+      <%= f.collection_select :room_type_id, @room_types, :id, :name, {}, { class: "select" } %>
+    </div>
+
+    <div class="field">
+      <%= f.label :capacity, t(".capacity") %>
+      <%= f.number_field :capacity, class: "input", min: 1 %>
+    </div>
+  </div>
+
+  <%= render "image_uploader", f: f, room: @room %>
+
+  <div class="card-section">
+    <%= f.label :description, t(".description"), class: "section-title" %>
+    <%= f.text_area :description, class: "textarea", rows: 5, placeholder: t(".write_description") %>
+  </div>
+
+  <div class="card-section">
+    <div class="section-title"><%= t(".amenities") %></div>
+    <ul class="amenities-list">
+      <%= f.collection_check_boxes :amenity_ids, @amenities, :id, :name do |b| %>
+        <li>
+          <label class="amenity-item">
+            <%= b.check_box %>
+            <span class="amenity-text"><%= b.text %></span>
+          </label>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="card-section">
+    <div class="section-title"><%= t(".set_range_price") %></div>
+    <p class="hint"><%= t(".set_range_hint") %></p>
+    <div class="form-row range-row">
+      <div class="field">
+        <%= label_tag :price_from_date, t(".from") %>
+        <%= f.date_field :price_from_date, class: "input" %>
+      </div>
+      <div class="field">
+        <%= label_tag :price_to_date, t(".to") %>
+        <%= f.date_field :price_to_date, class: "input" %>
+      </div>
+      <div class="field">
+        <%= label_tag :price, t(".price") %>
+        <%= f.number_field :price, class: "input", min: 0, step: 1 %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit yield(:button_text), class: "btn btn-save" %>
+<% end %>

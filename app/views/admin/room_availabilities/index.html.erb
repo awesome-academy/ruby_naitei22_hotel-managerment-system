@@ -5,7 +5,7 @@
     <h1><%= t(".title") %></h1>
     <div class="rooms-header-row">
       <h3 class="mb-0"><%= t(".list_title", count: @pagy.count) %></h3>
-      <%= link_to t(".new_room"), "#", class: "btn btn-primary" %>
+      <%= link_to t(".new_room"), new_admin_room_path, class: "btn btn-primary" %>
     </div>
   </div>
 
