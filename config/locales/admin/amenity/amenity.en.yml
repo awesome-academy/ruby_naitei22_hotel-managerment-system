@@ -18,7 +18,7 @@ en:
         new: New Amenity
         name_placeholder: Search amenity name
         description_placeholder: Search amenity description
-        id: ID
+        index: No.
         name: Amenity
         description: Description
         number_of_rooms: Number of Rooms

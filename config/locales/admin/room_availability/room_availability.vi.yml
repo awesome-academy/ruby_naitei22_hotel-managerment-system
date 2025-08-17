@@ -5,7 +5,7 @@ vi:
         title: "Phòng"
         list_title: "Danh sách phòng (%{count})"
         new_room: "Tạo phòng"
-        room_id: "ID"
+        index: "STT"
         room_number: "Số phòng"
         room_type: "Loại phòng"
         capacity: "Sức chứa"

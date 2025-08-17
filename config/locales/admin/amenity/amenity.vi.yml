@@ -18,7 +18,7 @@ vi:
         new: Thêm tiện nghi
         name_placeholder: Tìm theo tên tiện nghi
         description_placeholder: Tìm theo mô tả tiện nghi
-        id: ID
+        index: STT
         name: Tiện nghi
         description: Mô tả
         number_of_rooms: Số lượng phòng

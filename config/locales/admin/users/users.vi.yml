@@ -1,0 +1,64 @@
+vi:
+  admin:
+    users:
+      index:
+        title: "Người dùng"
+        list_title: "Danh sách người dùng (%{count})"
+        index: "STT"
+        name: "Tên"
+        email: "Email"
+        phone: "Số điện thoại"
+        total_created_bookings: "Số đơn đặt phòng đã tạo"
+        status: "Trạng thái"
+        created_at: "Tạo lúc"
+        pagy_info: "Hiển thị %{from} đến %{to} trên tổng %{count} người dùng"
+        no_results: "Không có kết quả"
+
+      form_search_user:
+        name: "Tên"
+        name_placeholder: "Nhập tên..."
+        email: "Email"
+        email_placeholder: "Nhập email..."
+        phone: "Số điện thoại"
+        phone_placeholder: "Nhập số điện thoại..."
+        status: "Trạng thái"
+        search_button: "Tìm kiếm"
+        reset_button: "Làm mới"
+
+      user:
+        status_active: "Đã kích hoạt"
+        status_unactive: "Chưa kích hoạt"
+
+      filter:
+        all: "Tất cả"
+        active: "Đã kích hoạt"
+        unactive: "Chưa kích hoạt"
+
+      show:
+        not_found: "Không tìm thấy người dùng"
+        title: "Người dùng %{id}"
+        list_text: "Danh sách đặt phòng (%{count})"
+
+      user_info:
+        title: "Thông tin người dùng"
+        name: "Tên"
+        email: "Email"
+        phone: "Số điện thoại"
+        status: "Trạng thái"
+        created_at: "Tạo lúc"
+
+      other_info:
+        title: "Thông tin khác"
+        total_bookings: "Tổng số đơn đặt phòng"
+        total_created_bookings: "Số đơn đặt phòng đã tạo"
+        total_successful_bookings: "Tổng số đơn thành công"
+        total_cancelled_bookings: "Tổng số đơn đã hủy"
+        total_pending_bookings: "Tổng số đơn đang chờ"
+        total_spending: "Tổng chi tiêu"
+
+      form_search_booking:
+          booking_code: "Mã đặt phòng"
+          status: "Trạng thái"
+          booking_code_placeholder: "Nhập mã đặt phòng..."
+          search_button: "Tìm kiếm"
+          reset_button: "Đặt lại"

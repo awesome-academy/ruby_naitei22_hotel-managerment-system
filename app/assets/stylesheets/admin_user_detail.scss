@@ -1,0 +1,75 @@
+.admin-user-details {
+  .user-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      h3 {
+        color: #343a40;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e9ecef;
+        font-size: 18px;
+      }
+
+      .info-item {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        strong {
+          color: #495057;
+          font-weight: 600;
+          min-width: 130px;
+        }
+
+        .status-badge {
+          padding: 6px 12px;
+          font-size: 14px;
+          font-weight: 550;
+          border-radius: 15px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+
+          &.available {
+            background: #d4edda;
+            color: #155724;
+          }
+          &.unavailable {
+            background: #f5c6cb;
+            color: #a71d2a;
+          }
+        }
+
+        &.total-price {
+          border-top: 1px solid #e9ecef;
+          padding-top: 15px;
+          margin-top: 20px;
+
+          .price-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: #28a745;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    .user-info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

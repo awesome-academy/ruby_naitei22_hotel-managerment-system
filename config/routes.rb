@@ -49,6 +49,7 @@ Rails.application.routes.draw do
         end
       end
       resources :amenities, only: %i(index new edit create update destroy)
+      resources :users, only: %i(index show)
     end
   end
   # Defines the root path route ("/")

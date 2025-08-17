@@ -34,7 +34,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th><%= t(".id") %></th>
+          <th><%= t(".index") %></th>
           <th><%= t(".name") %></th>
           <th><%= t(".description") %></th>
           <th><%= t(".number_of_rooms") %></th>
@@ -43,7 +43,9 @@
         </tr>
       </thead>
       <tbody>
-        <%= render @room_types %>
+        <% @room_types.each_with_index do |room_type, index| %>
+          <%= render partial: "room_type", locals: {room_type: room_type, index: index + 1 + @pagy.offset} %>
+        <% end %>
       </tbody>
     </table>
 

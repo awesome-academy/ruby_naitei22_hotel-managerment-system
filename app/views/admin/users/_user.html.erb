@@ -1,0 +1,24 @@
+<tr>
+  <td><strong><%= index %></strong></td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.phone %></td>
+  <td><%= user.total_created_bookings %></td>
+  <td>
+    <span class="status-badge <%= user.status %>">
+      <%= t("admin.users.user.status_#{user.status}") %>
+    </span>
+  </td>
+  <td>
+    <div class="date-info">
+      <%= l(user.created_at, format: :short) %>
+    </div>
+  </td>
+  <td>
+    <div class="d-flex gap-1">
+      <%= link_to admin_user_path(user), class: 'btn btn-sm btn-outline-info' do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

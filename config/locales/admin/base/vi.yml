@@ -3,6 +3,26 @@ vi:
     base:
       unauthorized_access: "Truy cập không được phép. Vui lòng đăng nhập với tư cách quản trị viên."
 
+    shared:
+      bookings_table:
+        title: "Danh sách đặt phòng"
+        index: "STT"
+        booking_code: "Mã đặt phòng"
+        user_name: "Tên người dùng"
+        status: "Trạng thái"
+        total_guests: "Tổng số khách"
+        total_price: "Tổng giá"
+        created_at: "Ngày tạo"
+        all: "Tất cả"
+        draft: "Nháp"
+        pending: "Đang chờ"
+        confirmed: "Đã xác nhận"
+        declined: "Đã từ chối"
+        cancelled: "Đã hủy"
+        completed: "Đã hoàn thành"
+        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} booking"
+        no_results: "Không tìm thấy đặt phòng nào"
+
     layouts:
       sidebar:
         dashboard_text: "Bảng điều khiển"

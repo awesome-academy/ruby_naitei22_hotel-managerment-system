@@ -1,0 +1,35 @@
+<div class="info-card">
+  <h3><%= t(".title") %></h3>
+
+  <div class="info-item">
+    <strong><%= t(".total_bookings") %>:</strong>
+    <%= user.total_bookings %>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".total_created_bookings") %>:</strong>
+    <%= user.total_created_bookings %>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".total_successful_bookings") %>:</strong>
+    <%= user.total_successful_bookings %>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".total_cancelled_bookings") %>:</strong>
+    <%= user.total_cancelled_bookings %>
+  </div>
+
+  <div class="info-item">
+    <strong><%= t(".total_pending_bookings") %>:</strong>
+    <%= user.total_pending_bookings %>
+  </div>
+
+  <div class="info-item total-price">
+    <strong><%= t(".total_spending") %>:</strong>
+    <span class="price-amount">
+      <%= number_to_currency(user.total_spending, unit: "", separator: ".", delimiter: ",") %>đ
+    </span>
+  </div>
+</div>
