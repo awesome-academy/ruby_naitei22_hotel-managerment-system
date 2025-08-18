@@ -28,10 +28,3 @@ en:
       clear_btn: "Clear"
     index:
       title: "All rooms"
-    show:
-      overview: "Overview"
-      include: "This place offers:"
-      reviews: "Reviews"
-      see_more: "See more"
-      see_less: "See less"
-      all_review: "See all reviews"

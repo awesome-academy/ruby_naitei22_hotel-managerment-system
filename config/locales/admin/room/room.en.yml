@@ -12,6 +12,11 @@ en:
         title: "Edit Room"
         submit: "Save Changes"
 
+      show:
+        edit: "Edit"
+        delete: "Delete"
+        confirm_delete: "Are you sure you want to delete this room?"
+
       create:
         success: "Room was successfully created."
         failure: "Failed to create room."
@@ -19,6 +24,10 @@ en:
       update:
         success: "Room was successfully updated."
         failure: "Failed to update room."
+
+      destroy:
+        success: "Room deleted successfully."
+        failure: "Failed to delete room."
 
       form:
         room_number: "Room Number"
@@ -34,3 +43,12 @@ en:
         from: "From"
         to: "To"
         price: "Price"
+
+      availability_card:
+        available_date: "Available date"
+        search_button: "Search"
+        status: "Status"
+        price: "Price"
+        no_results: "You haven't set the price for this day yet."
+        status_available: "Available"
+        status_unavailable: "Unavailable"

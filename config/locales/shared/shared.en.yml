@@ -1,0 +1,10 @@
+en:
+  shared:
+    room_detail:
+      overview: "Overview"
+      include: "This place offers:"
+      reviews: "Reviews"
+      see_more: "See more"
+      see_less: "See less"
+      all_review: "See all reviews"
+      show_all_reviews: "Show all %{count} reviews"

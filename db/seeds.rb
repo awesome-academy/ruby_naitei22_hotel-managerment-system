@@ -80,35 +80,50 @@ Room.create!(
   room_number: "R001",
   room_type_id: 3,
   description: "Serve itself national back.",
-  capacity: 1
+  capacity: 1,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60.days,
+  price: 500
 )
 
 Room.create!(
   room_number: "R002",
   room_type_id: 2,
   description: "Evidence year threat anything. Why those talk relate.",
-  capacity: 3
+  capacity: 3,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60.days,
+  price: 300
 )
 
 Room.create!(
   room_number: "R003",
   room_type_id: 3,
   description: "Less hot war music. Care officer only ready attorney which. They reduce customer follow card.",
-  capacity: 4
+  capacity: 4,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60.days,
+  price: 400
 )
 
 Room.create!(
   room_number: "R004",
   room_type_id: 1,
   description: "State need can PM any. Light less tend capital training him.",
-  capacity: 2
+  capacity: 2,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60.days,
+  price: 700
 )
 
 Room.create!(
   room_number: "R005",
   room_type_id: 2,
   description: "Leg result direction beyond. Near southern determine however point. Last thus then.",
-  capacity: 3
+  capacity: 3,
+  price_from_date: Date.today,
+  price_to_date: Date.today + 60.days,
+  price: 800
 )
 
 Amenity.create!(
@@ -278,7 +293,7 @@ end
 booking_states = Booking.statuses.keys.map(&:to_sym)
 booking_states = booking_states - [:completed] if booking_states.include?(:completed)
 cycle_states = (booking_states * ((NEW_BOOKINGS / booking_states.size) + 1)).first(NEW_BOOKINGS)
-FORCE_COMPLETED_EVERY = 4 
+FORCE_COMPLETED_EVERY = 4
 NEW_BOOKINGS.times do |i|
   code = "BK%04d" % (i + 1)
   user = users.sample

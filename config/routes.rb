@@ -45,7 +45,7 @@ Rails.application.routes.draw do
           resources :guests, only: %i(new create edit update destroy)
         end
       end
-      resources :rooms, only: %i(new edit create update) do
+      resources :rooms, only: %i(new edit create update show destroy) do
         member do
           delete :remove_image
         end

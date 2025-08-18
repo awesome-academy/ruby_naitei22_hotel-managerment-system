@@ -26,11 +26,11 @@ vi:
         reset_button: "Làm mới"
 
       room_availability:
-        status_available: "Khả dụng"
-        status_unavailable: "Không khả dụng"
+        status_available: "Có thể đặt"
+        status_unavailable: "Đã được đặt"
         view: "Xem"
 
       filter:
         all: "Tất cả"
-        available: "Khả dụng"
-        unavailable: "Không khả dụng"
+        available: "Có thể đặt"
+        unavailable: "Đã được đặt"

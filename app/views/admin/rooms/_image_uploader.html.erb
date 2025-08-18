@@ -7,7 +7,7 @@
           <div class="thumb">
             <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
             <div class="thumb-img-wrapper">
-              <%= image_tag img.variant(:display), alt: "image" %>
+              <%= image_tag img.variant(:small), alt: "image" %>
             </div>
             <%= link_to remove_image_admin_room_path(room, image_id: img.id),
                   data: {"turbo-method": :delete},

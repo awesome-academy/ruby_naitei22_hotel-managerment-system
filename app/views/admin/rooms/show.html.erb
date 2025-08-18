@@ -1,0 +1,34 @@
+<% provide :title, @room.room_number %>
+
+<div class="room-showcase">
+  <!-- Header -->
+  <div class="room-header">
+    <div class="room-info">
+      <h1 class="room-title"><%= @room.room_number %></h1>
+      <div class="room-rating">
+        <span class="rating-star">★</span>
+        <span class="rating-score"><%= @room.average_rating %></span>
+        <span class="rating-reviews">(<%= @room.number_of_rating %> <%= t("rooms.card.number_of_rating") %>)</span>
+      </div>
+    </div>
+    <div class="room-actions">
+      <%= link_to t(".edit"), edit_admin_room_path(@room), class: "btn-action btn-edit" %>
+      <%= link_to t(".delete"), admin_room_path(@room),
+                  data: { turbo_method: :delete,
+                          turbo_confirm: t(".confirm_delete") },
+                  class: "btn-action btn-delete" %>
+    </div>
+  </div>
+
+  <%= render "shared/room_image_slider",
+           room: @room %>
+
+  <div class="room-content">
+    <%= render "shared/room_detail",
+             room: @room,
+             amenities: @room.amenities,
+             reviews: @reviews %>
+
+    <%= render "availability_card" %>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="admin-availability-card">
+  <div class="search-section">
+    <%= search_form_for @q, url: admin_room_path(@room), method: :get, local: true do |f| %>
+      <div class="search-form">
+        <!-- Search by available_date -->
+        <div class="search-field">
+          <%= f.label :available_date_eq, t(".available_date"), class: "form-label" %>
+          <%= f.date_field :available_date_eq, class: "form-control", value: (params.dig(:q, :available_date_eq).presence || Date.current) %>
+        </div>
+
+        <div class="search-actions">
+          <%= f.submit t(".search_button"), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @availability.present? %>
+    <div class="result">
+      <div class="result-field">
+        <label><%= t(".status") %></label>
+        <p class="status-text">
+          <%= t(".status_#{@availability.status}") %>
+        </p>
+      </div>
+
+      <div class="result-field">
+        <label><%= t(".price") %></label>
+        <%= number_to_currency(@availability.price, unit: "", separator: ".", delimiter: ",") %>
+      </div>
+    </div>
+  <% else %>
+    <div class="empty-state">
+      <i class="fas fa-calendar-times"></i>
+      <h6><%= t(".no_results") %></h6>
+    </div>
+  <% end %>
+</div>

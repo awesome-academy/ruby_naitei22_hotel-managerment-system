@@ -5,5 +5,6 @@ import "custom/menu"
 import "custom/user_review"
 import "custom/price_calculation"
 import "custom/available_dates"
+import "custom/room_images"
 
 require("jquery")
