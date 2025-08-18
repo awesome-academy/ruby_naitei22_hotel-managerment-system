@@ -1,6 +1,7 @@
 vi:
   login:
     title: "Đăng nhập"
+    login_now: "Đăng nhập ngay!"
     submit: "Đăng nhập"
     email: "Email"
     password: "Mật khẩu"
@@ -8,3 +9,9 @@ vi:
     new_user: "Người dùng mới?"
     signup: "Đăng ký ngay!"
     failure: "Sai email hoặc mật khẩu!"
+    email_placeholder: "Nhập email của bạn"
+    password_placeholder: "Nhập mật khẩu của bạn"
+    remember_me: "Ghi nhớ tôi"
+    forgot_password: "Quên mật khẩu?"
+    no_account: "Bạn chưa có tài khoản?"
+    signup: "Đăng ký"

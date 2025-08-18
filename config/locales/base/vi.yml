@@ -1,5 +1,6 @@
 vi:
   app: "Hệ thống Quản lý Khách sạn"
+  n_a: "N/A"
   home:
     title: "Trang chủ"
     welcome: "Chào mừng đến với Sample App"
@@ -7,11 +8,12 @@ vi:
     signup: "Đăng ký ngay!"
 
   header:
-    logo: "Hệ thống Quản lý Khách sạn"
+    logo: "Hitachi"
     home: "Trang chủ"
-    help: "Trợ giúp"
-    contact: "Liên hệ"
+    explore: "Tìm phòng"
+    current_booking: "Đơn đặt phòng"
     login: "Đăng nhập"
+    signup: "Đăng ký"
     logout: "Đăng xuất"
     account: "Tài khoản"
     users: "Người dùng"
@@ -19,6 +21,7 @@ vi:
     settings: "Cài đặt"
     english: "Tiếng Anh"
     vietnamese: "Tiếng Việt"
+    edit_profile: "Chỉnh sửa hồ sơ"
 
   help:
     title: "Trợ giúp"
@@ -30,25 +33,17 @@ vi:
   contact:
     title: "Liên hệ"
     description: "Đây là trang Liên hệ cho Ứng dụng mẫu hướng dẫn Ruby on Rails."   
-
-  activerecord:
-    models:
-      user: "Người dùng"
-    attributes:
-      user:
-        name: "Tên"
-        email: "Email"
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank: "Vui lòng nhập tên của bạn"
-            email:
-              taken: "Email này đã được đăng ký"
-            date_of_birth:
-              invalid_range: "Phải nằm trong khoảng 100 năm trở lại đây"
-
+          
   time:
     formats:
       long: "%H:%M, %d/%m/%Y"
+      only_date: "%d/%m/%Y"
+
+  messages:
+    confirm_delete: "Bạn có chắc chắn muốn xóa khách hàng này không?"
+  
+  errors:
+    template:
+        header:
+          one: "Biểu mẫu chứa 1 lỗi"
+          other: "Biểu mẫu chứa %{count} lỗi"

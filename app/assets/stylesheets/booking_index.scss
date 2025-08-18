@@ -1,0 +1,54 @@
+.admin-bookings {
+  .table-container {
+    /* Trạng thái booking */
+    .status-badge {
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 550;
+      border-radius: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      &.pending {
+        background: #fff3cd;
+        color: #856404;
+      }
+      &.confirmed {
+        background: #d4edda;
+        color: #155724;
+      }
+      &.completed {
+        background: #cce5ff;
+        color: #004085;
+      }
+      &.cancelled {
+        background: #f5c6cb;
+        color: #a71d2a;
+      }
+      &.draft {
+        background: #b9d1ff;
+        color: #416b91;
+      }
+
+      &.declined {                
+        background: #cccac9;
+        color: #111110;
+        }
+    }
+
+    /* Thông tin user */
+    .user-info {
+      .user-name {
+        font-weight: 550;
+        color: #343a40;
+      }
+    }
+
+    /* Giá tiền */
+    .price-amount {
+      font-weight: 600;
+      color: #28a745;
+      font-size: 16px;
+    }
+  }
+}

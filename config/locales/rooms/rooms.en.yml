@@ -1,0 +1,37 @@
+en:
+  rooms:
+    not_found: "Not found."
+    card:
+      guest: "guest"
+      include: "Include following amenities:"
+      number_of_rating: "review"
+    type: "Room's type"
+    prices:
+      price: "Price"
+      price_night: "/night"
+    filter:
+      availability: "Available"
+      check_in: "Check in"
+      check_out: "Check out"
+      below_50: "Below $50"
+      from_50_99: "$50 ~ $99"
+      from_100_200: "$100 ~ $200"
+      above_200: "Above $200"
+      price_asc: "Price ↑"
+      price_desc: "Price ↓"
+      rating_desc: "Rating ↓"
+      type_blank: "All types"
+      price_blank: "All prices"
+      sort_blank: "Default"
+      sort: "Sort by"
+      filter_btn: "Filter"
+      clear_btn: "Clear"
+    index:
+      title: "All rooms"
+    show:
+      overview: "Overview"
+      include: "This place offers:"
+      reviews: "Reviews"
+      see_more: "See more"
+      see_less: "See less"
+      all_review: "See all reviews"

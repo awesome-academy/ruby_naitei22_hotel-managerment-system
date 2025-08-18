@@ -1,0 +1,104 @@
+<div class="booking-card" data-room-price="<%= @room.room_type.price %>">
+  <% if room_already_booked?(@current_booking, @room) %>
+      <p>
+        <%= t("bookings.card.already_booked") %>
+        <%= link_to t("bookings.card.current_booking"), bookings_path %>
+      </p>
+  <% else %>
+    <div class="booking-header">
+      <span class="price">$<%= @room.room_type.price %></span>
+      <span class="price-unit"><%= t("rooms.prices.price_night") %></span>
+    </div>
+
+    <% booking = @current_booking || Booking.new %>
+    <% request = booking.requests&.find { |r| r.room_id == @room.id } || booking.requests.build(room_id: @room.id) %>
+
+    <%= form_with(
+          model: booking,
+          url: logged_in? ? room_booking_path(@room, booking) : "#",
+          method: :patch,
+          local: true,
+          class: "booking-form"
+        ) do |f| %>
+
+      <%= f.fields_for :requests, request do |r| %>
+        <%= r.hidden_field :room_id %>
+
+        <div class="form-group">
+          <div class="date-inputs">
+            <div class="input-group">
+              <%= r.label :check_in, t("bookings.card.check_in"), class: "input-label" %>
+              <%= r.date_field :check_in,
+                    id: "check_in_picker",
+                    value: @check_in,
+                    class: "date-input",
+                    placeholder: Settings::placeholder.date_time,
+                    data: { available_dates: @available_dates.to_json, unavailable_message: t("bookings.card.invalid_range") },
+                    required: true %>
+            </div>
+
+            <div class="input-group">
+              <%= r.label :check_out, t("bookings.card.check_out"), class: "input-label" %>
+              <%= r.date_field :check_out,
+                    id: "check_out_picker",
+                    value: @check_out,
+                    class: "date-input",
+                    placeholder: Settings::placeholder.date_time,
+                    data: { available_dates: @available_dates.to_json },
+                    required: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= r.label :number_of_guests, t("bookings.card.guests"), class: "input-label" %>
+          <%= r.number_field :number_of_guests,
+                in: 1..@room.capacity,
+                value: @guests || 1,
+                class: "form-input",
+                min: 1,
+                max: @room.capacity,
+                required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= r.label :note, t("bookings.card.note"), class: "input-label" %>
+          <%= r.text_area :note, value: @note, class: "form-input", rows: 3 %>
+        </div>
+      <% end %>
+
+      <div class="price-breakdown"
+           data-nights-label="<%= t("bookings.card.nights") %>"
+           data-total-price-label="<%= t("bookings.card.total_price") %>"
+           data-select-dates-label="<%= t("bookings.card.select_dates") %>"
+           data-error-price-label="<%= t("bookings.card.error_price") %>"
+           data-dash="<%= t("bookings.card.dash") %>">
+
+        <div class="price-line">
+          <p id="total-night" data-room-id="<%= @room.id %>">
+            <%= t("bookings.card.nights") %>
+          </p>
+        </div>
+
+        <div class="total-line">
+          <p id="total-price" data-room-id="<%= @room.id %>">
+            <%= t("bookings.card.select_dates") %>
+          </p>
+        </div>
+      </div>
+
+      <% if logged_in? %>
+        <%= f.submit t("bookings.card.reserve"), class: "reserve-button" %>
+        <div class="no-charge-notice">
+          <%= t("bookings.card.notice") %>
+        </div>
+      <% else %>
+        <div class="no-charge-notice">
+          <%= t("bookings.card.need_login") %>
+          <%= link_to t("login.login_now"), login_path %>
+        </div>
+      <% end %>
+
+    <% end %>
+  <% end %>
+</div>

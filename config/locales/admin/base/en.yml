@@ -1,0 +1,17 @@
+en:
+  admin:
+    base:
+      unauthorized_access: "Unauthorized access. Please log in as an admin."
+
+    layouts:
+      sidebar:
+        dashboard_text: "Dashboard"
+        user_text: "Users"
+        room_text: "Rooms"
+        booking_text: "Bookings"
+        review_text: "Reviews"
+        room_type_text: "Room Types"
+        amenity_text: "Amenities"
+
+      header:
+        app_text: "Hotel Management System"

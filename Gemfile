@@ -1,10 +1,12 @@
 source "https://rubygems.org"
-git_source(:github){|repo| "https://github.com/#{repo}.git"}
+git_source(:github) {|repo| "https://github.com/#{repo}.git"}
 
 ruby "3.2.2"
 
 # i18n for multi-languages
 gem "rails-i18n"
+
+gem "i18n-js"
 
 # config for manage settings
 gem "config"
@@ -50,9 +52,13 @@ gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 gem "bootstrap-sass", "3.4.1"
+gem "cancancan"
 gem "jquery-rails"
+gem "pagy"
 # Use Sass to process CSS
 gem "sassc-rails"
+
+gem "flatpickr", "~> 4.6"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html]
 # gem "image_processing", "~> 1.2"
@@ -60,6 +66,10 @@ gem "sassc-rails"
 gem "image_processing", "1.12.2"
 
 gem "active_storage_validations", "0.9.8"
+
+gem "font-awesome-sass", "~> 6.0"
+
+gem "ransack"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html

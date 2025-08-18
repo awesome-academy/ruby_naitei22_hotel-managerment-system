@@ -1,0 +1,30 @@
+<% unless request.guests.empty? %>
+  <div class="admin-common">
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= t(".stt") %></th>
+            <th><%= t(".full_name") %></th>
+            <th><%= t(".id_type") %></th>
+            <th><%= t(".id_number") %></th>
+            <th><%= t(".issue_date") %></th>
+            <th><%= t(".issue_place") %></th>
+            <th><%= t(".created_at") %></th>
+            <% if show_actions %>
+              <th class="text-right"></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "guest_row",
+                     collection: request.guests,
+                     as: :g,
+                     locals: { show_actions: show_actions } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% else %>
+  <p><em><%= t(".no_guest") %></em></p>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="request-card">
+  <div class="request-header">
+    <h4><%= t(".title", number: request_counter + 1) %></h4>
+    <%= link_to t(".detail"), admin_booking_request_path(booking.id, request.id) %>
+  </div>
+  <%= render partial: "request_detail", locals: { request: request } %>
+</div>

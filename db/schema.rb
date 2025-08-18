@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_08_05_033723) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_18_035730) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_05_033723) do
     t.string "identity_issued_place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["identity_number"], name: "index_guests_on_identity_number", unique: true
     t.index ["request_id"], name: "index_guests_on_request_id"
   end
 
@@ -80,7 +81,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_05_033723) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "room_id", null: false
     t.index ["booking_id"], name: "index_requests_on_booking_id"
+    t.index ["room_id"], name: "index_requests_on_room_id"
   end
 
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -112,6 +115,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_05_033723) do
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_available", default: true, null: false
+    t.index ["room_id", "available_date"], name: "index_room_availabilities_on_room_id_and_available_date", unique: true
     t.index ["room_id"], name: "index_room_availabilities_on_room_id"
   end
 
@@ -130,16 +135,17 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_05_033723) do
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_room_types_on_name", unique: true
   end
 
   create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "room_number"
     t.bigint "room_type_id", null: false
-    t.integer "status"
     t.text "description"
     t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_number"], name: "index_rooms_on_room_number", unique: true
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id"
   end
 
@@ -166,6 +172,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_05_033723) do
   add_foreign_key "bookings", "users", column: "status_changed_by_id"
   add_foreign_key "guests", "requests"
   add_foreign_key "requests", "bookings"
+  add_foreign_key "requests", "rooms"
   add_foreign_key "reviews", "requests"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "users", column: "approved_by_id"

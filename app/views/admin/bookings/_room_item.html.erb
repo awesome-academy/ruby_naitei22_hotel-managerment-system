@@ -1,0 +1,25 @@
+<% room, availabilities = room_group %>
+<div class="room-item">
+  <div class="room-info">
+    <span class="room-number"><%= t(".title", number: room.room_number) %></span>
+    <span class="room-type">(<%= room.room_type.name %>)</span>
+  </div>
+
+  <div class="room-dates">
+    <% availabilities.each do |availability| %>
+      <span class="date-badge">
+        <%= l(availability.available_date, format: :short) %>
+        <small>
+          <%= number_to_currency(availability.price, unit: "", separator: ".", delimiter: ",") %>đ
+        </small>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="room-total">
+    <%= t(".subtotal") %>:
+    <strong>
+      <%= number_to_currency(availabilities.sum(&:price), unit: "", separator: ".", delimiter: ",") %>đ
+    </strong>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<% provide :title, t(".title", id: @request.id) %>
+
+<div class="admin-request-detail">
+  <%= render "shared/error_messages", object: @request %>
+  <div class="request-header">
+    <h1><%= t(".header", id: @request.id) %></h1>
+  </div>
+
+  <div class="requests-section">
+    <div class="request-card">
+      <%= render partial: "admin/bookings/request_detail", locals: { request: @request } %>
+    </div>
+  </div>
+
+  <div class="status-section">
+    <% if @request.status_confirmed? %>
+      <div class="confirmed-status">
+        <%= button_to t(".check_in"),
+            admin_booking_request_path(@request.booking_id, @request),
+            method: :patch,
+            params: { request: { status: :checked_in } },
+            class: "btn btn-success",
+            title: t(".check_in") %>
+      </div>
+
+    <% elsif @request.status_checked_in? %>
+      <div class="checked-in-status">
+        <h3><%= t(".checked_in_guests", count: @request.guests.count) %></h3>
+        <div class="action-buttons">
+          <% if @request.number_of_guests > @request.guests.count %>
+            <%= link_to t(".add_guest"), 
+                new_admin_booking_request_guest_path(@request.booking_id, @request),
+                class: "btn btn-success",
+                title: t(".add_guest") %>
+          <% end %>
+
+          <% unless @request.guests.empty? %>
+            <%= button_to t(".check_out"),
+                admin_booking_request_path(@request.booking_id, @request),
+                method: :patch,
+                params: { request: { status: :checked_out } },
+                class: "btn btn-warning",
+                title: t(".check_out") %>
+          <% end %>
+        </div>
+          <%= render partial: "table_guests", locals: { request: @request, show_actions: true } %>
+      </div>
+
+    <% elsif @request.status_checked_out? %>
+      <%= render partial: "table_guests", locals: { request: @request, show_actions: false } %>
+    <% end %>
+    <%= link_to t(".back"), admin_booking_path(@request.booking_id), class: "btn btn-secondary" %>
+  </div>
+</div>

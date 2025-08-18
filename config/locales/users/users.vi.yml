@@ -35,3 +35,9 @@ vi:
       phone: "Số điện thoại"
       password: "Mật khẩu"
       password_confirmation: "Xác nhận mật khẩu"
+      placeholders:
+        email: "Nhập email của bạn"
+        name: "Nhập tên của bạn"
+        phone: "Nhập số điện thoại"
+        password: "Nhập mật khẩu"
+        password_confirmation: "Xác nhận mật khẩu"

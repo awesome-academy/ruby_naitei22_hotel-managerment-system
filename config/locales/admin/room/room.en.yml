@@ -1,0 +1,36 @@
+en:
+  admin:
+    rooms:
+      load_room:
+        not_found: "Room not found."
+
+      new:
+        title: "Add Room"
+        submit: "Create Room"
+
+      edit:
+        title: "Edit Room"
+        submit: "Save Changes"
+
+      create:
+        success: "Room was successfully created."
+        failure: "Failed to create room."
+
+      update:
+        success: "Room was successfully updated."
+        failure: "Failed to update room."
+
+      form:
+        room_number: "Room Number"
+        room_type: "Room Type"
+        capacity: "Capacity"
+        images: "Images"
+        add_image: "Add image"
+        description: "Description"
+        write_description: "Write description..."
+        amenities: "Amenities"
+        set_range_price: "Set price for date range"
+        set_range_hint: "Select a date range and a price to apply to all dates."
+        from: "From"
+        to: "To"
+        price: "Price"

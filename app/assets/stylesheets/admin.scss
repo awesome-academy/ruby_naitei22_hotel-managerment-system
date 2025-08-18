@@ -1,0 +1,160 @@
+$border-gray: #e0e0e0;
+$dark-gray: #343a40;
+$light-gray: #f8f9fa;
+$primary-color: #6C63FF;
+$primary-hover: #574bff;
+$shadow: 0 2px 4px rgba(0,0,0,0.1);
+$text-gray: #495057;
+$transition: all 0.3s ease;
+$white: #ffffff;
+
+// Mixin
+@mixin button-hover-effect {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+// Admin Base Styles
+.admin-body {
+  background-color: $light-gray;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+// Admin Container Layout
+.admin-container {
+  display: flex;
+  height: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  width: 100%;
+}
+
+// Admin Header Component
+.admin-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  // Navbar Styles
+  .admin-navbar {
+    background-color: $white;
+    box-shadow: $shadow;
+    color: $dark-gray;
+    padding: 1rem 0;
+
+    .container-fluid {
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .navbar-brand {
+      align-items: center;
+      display: flex;
+      gap: 4rem;
+
+      .brand-link {
+        color: $dark-gray;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: $transition;
+
+        &:hover {
+          color: $primary-color;
+        }
+
+        i {
+          margin-right: 0.5rem;
+        }
+      }
+
+      .nav-item {
+        .nav-link {
+          border-radius: 4px;
+          color: $dark-gray;
+          padding: 0.5rem 1rem;
+          text-decoration: none;
+          transition: $transition;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+
+          i {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+
+    .home-page {
+      margin-left: 2rem;
+    }
+  }
+}
+
+// Sidebar Component
+.admin-sidebar {
+  background-color: #e6e6fa;
+  border-right: 1px solid #dee2e6;
+  height: 100vh;
+  left: 0;
+  padding-top: 80px;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 999;
+  width: 250px;
+
+  .admin-nav {
+    padding-top: 2rem;
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .nav-item {
+        margin-bottom: 0.5rem;
+
+        .nav-link {
+          display: block;
+          padding: 1rem 1.5rem;
+          color: $text-gray;
+          text-decoration: none;
+          transition: $transition;
+          border-left: 3px solid transparent;
+
+          &:hover,
+          &.active {
+            background-color: $primary-color;
+            color: $white;
+            border-left-color: $primary-hover;
+          }
+
+          i {
+            margin-right: 0.75rem;
+            text-align: center;
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Main Content Area
+.admin-main {
+  background-color: $white;
+  box-sizing: border-box;
+  flex-grow: 1;
+  margin-left: 250px;
+  min-height: 100vh;
+  padding: 2rem;
+  padding-top: 80px;
+  width: calc(100% - 250px);
+}

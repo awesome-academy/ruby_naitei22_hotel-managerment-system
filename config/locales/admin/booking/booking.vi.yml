@@ -1,0 +1,104 @@
+vi:
+  admin:
+    bookings:
+      not_found: "Không tìm thấy booking nào"
+      index:
+        title: "Danh sách đặt phòng"
+        list_text: "Danh sách đặt phòng (%{count})"
+        id: "ID"
+        booking_code: "Mã đặt phòng"
+        user_name: "Tên người dùng"
+        status: "Trạng thái"
+        total_guests: "Tổng số khách"
+        total_price: "Tổng giá"
+        created_at: "Ngày tạo"
+        all: "Tất cả"
+        draft: "Nháp"
+        pending: "Đang chờ"
+        confirmed: "Đã xác nhận"
+        declined: "Đã từ chối"
+        cancelled: "Đã hủy"
+        completed: "Đã hoàn thành"
+        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} booking"
+        no_results: "Không tìm thấy đặt phòng nào"
+      
+      booking_row:
+        detail_button: "Chi tiết"
+
+      form_search_booking:
+          booking_code: "Mã đặt phòng"
+          user_name: "Tên người dùng"
+          status: "Trạng thái"
+          booking_code_placeholder: "Nhập mã đặt phòng..."
+          user_name_placeholder: "Nhập tên người dùng..."
+          search_button: "Tìm kiếm"
+          reset_button: "Đặt lại"
+
+      filter:
+        all: "Tất cả"
+        draft: "Nháp"
+        pending: "Đang chờ"
+        confirmed: "Đã xác nhận"
+        declined: "Đã từ chối"
+        cancelled: "Đã hủy"
+        completed: "Đã hoàn thành"
+      
+      booking_info:
+        title: "Thông tin booking"
+        code: "Mã booking"
+        created_at: "Ngày tạo"
+        status: "Trạng thái"
+        guests: "Số khách"
+        requests: "Số request"
+        updated_by: "Cập nhật bởi"
+        updated_at: "Ngày cập nhật"
+        total_price: "Tổng tiền"
+      
+      request_detail:
+        time: "Thời gian"
+        guests: "Số khách"
+        status: "Trạng thái"
+        checked_in_guests: "Số khách đã check in"
+        note: "Ghi chú"
+        booked_rooms: "Phòng đã đặt"
+
+      request_info:
+        title: "Yêu cầu #%{number}"
+        detail: "Xem chi tiết"
+
+      room_item:
+        title: "Phòng #%{number}"
+        subtotal: "Tổng tiền"
+      
+      user_info:
+        title: "Thông tin khách hàng"
+        name: "Tên khách hàng"
+        email: "Email"
+        phone: "Số điện thoại"
+        detail: "Xem chi tiết"
+      
+      show:
+        title: "Chi tiết booking - %{code}"
+        header: "Chi tiết đặt phòng #%{code}"
+        request_details: "Chi tiết yêu cầu đặt phòng"
+        no_requests: "Chưa có yêu cầu đặt phòng nào."
+        back: "← Quay lại danh sách"
+        confirm: "Xác nhận"
+        confirm_title: "Xác nhận booking"
+        decline: "Từ chối"
+        decline_title: "Từ chối booking"
+        complete: "Hoàn thành"
+        complete_title: "Hoàn thành booking"
+      
+      update_status:
+        success: "Update trạng thái thành công"
+      
+      decline:
+        success: "Decline booking thành công"
+      
+      show_decline:
+        title: "Từ chối booking #%{code}"
+        reason_label: "Lý do từ chối"
+        reason_placeholder: "Vui lòng nhập lý do từ chối booking này..."
+        confirm_button: "Xác nhận từ chối"
+        cancel_button: "Hủy"

@@ -1,0 +1,53 @@
+<% provide :title, t(".title", code: @booking.booking_code) %>
+
+<div class="admin-booking-details">
+  <div class="booking-header">
+    <h1><%= t(".header", code: @booking.booking_code) %></h1>
+    <span class="status-badge <%= @booking.status %>"><%= @booking.status.titleize %></span>
+  </div> 
+  
+  <div class="booking-info-grid">
+    <%= render partial: "booking_info", locals: { booking: @booking } %>
+    <%= render partial: "user_info", locals: { booking: @booking } %>
+  </div>
+  
+  <% if @booking.requests.any? %>
+    <div class="requests-section">
+      <h3><%= t(".request_details") %></h3>
+      <%= render partial: "request_info", collection: @booking.requests, as: :request, locals: { booking: @booking } %>
+    </div>
+  <% else %>
+    <div class="no-requests">
+      <p><em><%= t(".no_requests") %></em></p>
+    </div>
+  <% end %>
+  
+  <div class="actions">
+    <%= link_to t(".back"), admin_bookings_path, class: "btn btn-secondary" %>
+    <div class="status-actions">
+      <% if @booking.status_pending? %>
+        <%= button_to t(".confirm"),
+            update_status_admin_booking_path(@booking),
+            method: :patch,
+            params: { booking: { status: :confirmed } },
+            class: "btn btn-success",
+            title: t(".confirm_title") %>
+
+        <%= link_to t(".decline"),
+            show_decline_admin_booking_path(@booking),
+            data: { turbo_frame: "modal" },
+            class: "btn btn-danger",
+            title: t(".decline_title") %>
+      <% elsif @booking.status_confirmed? && @booking.all_requests_checked_out? %>
+        <%= button_to t(".complete"),
+            update_status_admin_booking_path(@booking),
+            method: :patch,
+            params: { booking: { status: :completed } },
+            class: "btn btn-success",
+            title: t(".complete_title") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<turbo-frame id="modal"></turbo-frame>

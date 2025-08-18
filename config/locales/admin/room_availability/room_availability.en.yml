@@ -1,0 +1,36 @@
+en:
+  admin:
+    room_availabilities:
+      index:
+        title: "Rooms"
+        list_title: "List of Rooms (%{count})"
+        new_room: "New Room"
+        room_id: "ID"
+        room_number: "Room Number"
+        room_type: "Room Type"
+        capacity: "Capacity"
+        status: "Status"
+        price: "Price"
+        available_date: "Date"
+        pagy_info: "Showing %{from} to %{to} of %{count} rooms"
+        no_results: "No results found"
+
+      form_search_room:
+        room_number: "Room Number"
+        room_number_placeholder: "Enter room number..."
+        room_type_name: "Room Type Name"
+        room_type_name_placeholder: "Enter room type name..."
+        available_date: "Date"
+        status: "Status"
+        search_button: "Search"
+        reset_button: "Reset"
+
+      room_availability:
+        status_available: "Available"
+        status_unavailable: "Unavailable"
+        view: "View"
+
+      filter:
+        all: "All"
+        available: "Available"
+        unavailable: "Unavailable"

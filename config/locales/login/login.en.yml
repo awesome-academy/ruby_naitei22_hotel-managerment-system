@@ -1,6 +1,7 @@
 en:
   login:
     title: "Login"
+    login_now: "Log in now!"
     submit: "Login"
     email: "Email"
     password: "Password"
@@ -8,3 +9,9 @@ en:
     new_user: "New User?"
     signup: "Sign Up Now!"
     failure: "Wrong email or password!"
+    email_placeholder: "Enter your email"
+    password_placeholder: "Enter your password"
+    remember_me: "Remember me"
+    forgot_password: "Forgot your password?"
+    no_account: "Don't have an account?"
+    signup: "Sign up"

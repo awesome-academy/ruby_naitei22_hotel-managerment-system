@@ -1,0 +1,32 @@
+<turbo-frame id="modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3><%= t(".title", code: @booking.booking_code) %></h3>
+      <%= link_to "×", "#", 
+                 data: { controller: "modal", action: "modal#close" }, 
+                 class: "modal-close" %>
+    </div>
+
+    <%= form_with model: @booking, 
+                  url: decline_admin_booking_path(@booking),
+                  data: { turbo_frame: "_top" } do |f| %>
+      <%= f.hidden_field :status, value: :declined %>
+
+      <div class="form-group">
+        <%= f.label :decline_reason, t(".reason_label") %>
+        <%= f.text_area :decline_reason, 
+                        rows: 4, 
+                        class: "form-control", 
+                        required: true, 
+                        placeholder: t(".reason_placeholder") %>
+      </div>
+
+      <div class="modal-actions">
+        <%= f.submit t(".confirm_button"), class: "btn btn-danger" %>
+        <%= link_to t(".cancel_button"), "#", 
+                   data: { controller: "modal", action: "modal#close" }, 
+                   class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</turbo-frame>

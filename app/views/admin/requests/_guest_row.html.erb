@@ -1,0 +1,23 @@
+<tr>
+  <td><%= g_counter + 1%></td>
+  <td><%= g.full_name %></td>
+  <td><%= g.identity_type %></td>
+  <td><%= g.identity_number %></td>
+  <td><%= l(g.identity_issued_date) if g.identity_issued_date %></td>
+  <td><%= g.identity_issued_place %></td>
+  <td><%= l(g.created_at, format: :short) %></td>
+  <% if show_actions %>
+    <td class="text-right">
+      <%= link_to t(".edit"),
+          edit_admin_booking_request_guest_path(@request.booking_id, @request, g),
+          class: "btn btn-primary btn-sm",
+          style: "margin-right: 5px;",
+          title: t(".edit_title") %>
+      <%= link_to t(".delete"),
+          admin_booking_request_guest_path(@request.booking_id, @request, g),
+          data: { "turbo-method": :delete,
+          turbo_confirm: t("messages.confirm_delete") },
+          class: "btn btn-danger btn-sm" %>
+    </td>
+  <% end %>
+</tr>

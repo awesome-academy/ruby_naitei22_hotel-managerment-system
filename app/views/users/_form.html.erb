@@ -1,16 +1,32 @@
-<%= render "shared/error_messages" %>
+<%= render "shared/error_messages", object: @user %>
 
-<%= f.label :name, t(".name") %>
-<%= f.text_field :name %>
+<div class="form-group">
+    <%= f.label :email, t("signup.email") %>
+    <%= f.email_field :email, class: "form-control", placeholder: t(".placeholders.email") %>
+</div>
 
-<%= f.label :email, t(".email") %>
-<%= f.email_field :email %>
+<div class="form-group">
+    <%= f.label :name, t("signup.name") %>
+    <%= f.text_field :name, class: "form-control", placeholder: t(".placeholders.name") %>
+</div>
 
-<%= f.label :phone, t(".phone") %>
-<%= f.text_field :phone %>
+<div class="form-group">
+    <%= f.label :phone, t("signup.phone") %>
+    <%= f.telephone_field :phone, class: "form-control", placeholder: t(".placeholders.phone") %>
+</div>
 
-<%= f.label :password, t(".password") %>
-<%= f.password_field :password %>
+<div class="form-group">
+    <%= f.label :password, t("signup.password") %>
+    <div class="password-field">
+        <%= f.password_field :password, class: "form-control", placeholder: t(".placeholders.password") %>
+        <i class="toggle-password fa fa-eye"></i>
+    </div>
+</div>
 
-<%= f.label :password_confirmation, t(".password_confirmation") %>
-<%= f.password_field :password_confirmation %>
+<div class="form-group">
+    <%= f.label :password_confirmation, t("signup.password_confirmation") %>
+    <div class="password-field">
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".placeholders.password_confirmation") %>
+        <i class="toggle-password fa fa-eye"></i>
+    </div>
+</div>

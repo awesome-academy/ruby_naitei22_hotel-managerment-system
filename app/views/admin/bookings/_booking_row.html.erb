@@ -1,0 +1,22 @@
+<tr>
+  <td><strong><%= booking_counter + 1 %></strong></td>
+  <td><code><%= booking.booking_code %></code></td>
+  <td><%= booking.user.name %></td>
+  <td>
+    <span class="status-badge <%= booking.status %>">
+      <%= booking.status %>
+    </span>
+  </td>
+  <td><%= booking.number_of_guests %></td>
+  <td>
+    <span class="price-amount">
+      <%= number_to_currency(booking.total_price, unit: "", separator: ".", delimiter: ",") %>
+    </span>
+  </td>
+  <td><%= l(booking.created_at, format: :short) %></td>
+  <td>
+    <%= link_to admin_booking_path(booking.id), class: "btn btn-sm btn-outline-primary", title: t(".detail_button") do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  </td>
+</tr>

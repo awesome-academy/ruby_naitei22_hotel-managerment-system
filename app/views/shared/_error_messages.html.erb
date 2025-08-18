@@ -1,15 +1,14 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
+  <div class="bootstrap-scope">
     <div id="error_explanation">
-        <div class="alert alert-danger">
-            <%= t "the_form_contains" %>
-                <%= pluralize @user.errors.count, "error" %>.
-        </div>
+      <div class="alert alert-danger">
+        <h4><%= t("errors.template.header", count: object.errors.count) %></h4>
         <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li>
-                    <%= msg %>
-                </li>
-                <% end %>
+          <% object.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
         </ul>
+      </div>
     </div>
+  </div>
 <% end %>

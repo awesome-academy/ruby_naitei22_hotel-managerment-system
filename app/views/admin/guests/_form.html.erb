@@ -1,0 +1,69 @@
+<%= form_with model: [:admin, @booking, @request, @guest] do |f| %>
+  <%= render "shared/error_messages", object: @guest %>
+
+  <div class="form-group">
+    <%= f.label :full_name, t(".full_name_label") %>
+    <%= f.text_field :full_name,
+                     class: "form-control",
+                     placeholder: t(".full_name_placeholder") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :identity_type, t(".identity_type_label") %>
+    <%= f.select :identity_type,
+                 options_for_select(identity_type_options, @guest.identity_type),
+                 { prompt: t(".select_identity_type") },
+                 required: true,
+                 class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :identity_number, t(".identity_number_label") %>
+    <%= f.text_field :identity_number,
+                     class: "form-control",
+                     placeholder: t(".identity_number_placeholder") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :identity_issued_date, t(".identity_issued_date_label") %>
+    <%= f.date_field :identity_issued_date,
+                     class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :identity_issued_place, t(".identity_issued_place_label") %>
+    <%= f.text_field :identity_issued_place,
+                     class: "form-control",
+                     placeholder: t(".identity_issued_place_placeholder") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :images, t(".images_label") %>
+    <%= f.file_field :images,
+                     multiple: true,
+                     accept: Settings.default.microposts.format_image,
+                     class: "form-control-file" %>
+    <small class="form-text text-muted">
+      <%= t(".images_help_text") %>
+    </small>
+    <% if @guest.images.attached? %>
+      <div class="current-images mt-2">
+        <p><strong><%= t(".current_images") %></strong></p>
+        <div class="image-gallery">
+          <% @guest.images.each do |image| %>
+            <div class="image-item">
+              <%= image_tag image, class: "img-thumbnail" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="modal-actions">
+    <%= f.submit yield(:button_text), class: "btn btn-success" %>
+    <%= link_to t(".cancel_button"),
+                admin_booking_request_path(@booking, @request),
+                class: "btn btn-secondary" %>
+  </div>
+<% end %>

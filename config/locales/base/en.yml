@@ -1,5 +1,6 @@
 en:
   app: "Hotel Management System"
+  n_a: "N/A"
   home:
     title: "Home"
     welcome: "Welcome to the Sample App"
@@ -7,11 +8,12 @@ en:
     signup: "Sign up now!"
 
   header:
-    logo: "Hotel Management System"
+    logo: "Hitachi"
     home: "Home"
-    help: "Help"
-    contact: "Contact"
+    explore: "Explore"
+    current_booking: "Current Booking"
     login: "Log in"
+    signup: "Sign up"
     logout: "Log out"
     account: "Account"
     users: "Users"
@@ -19,6 +21,7 @@ en:
     settings: "Settings"
     english: "English"
     vietnamese: "Vietnamese"
+    edit_profile: "Edit Profile"
 
   help:
     title: "Help"
@@ -26,29 +29,21 @@ en:
     link_2: "<em>Ruby on Rails Tutorial</em> book"
     paragraph_html: >
       Get help on the Ruby on Rails Tutorial at the %{link_1}. To get help on this sample app, see the %{link_2}.
-  
+
   contact:
     title: "Contact"
     description: "This is the Contact page for the Ruby on Rails Tutorial Sample App."
-
-  activerecord:
-    models:
-      user: "User"  
-    attributes:
-      user:
-        name: "Name"
-        email: "Email"
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank: "Please enter your name"
-            email:
-              taken: "This email is already registered"
-            date_of_birth:
-              invalid_range: "must be within the last 100 years"
-
+    
   time:
     formats:
       long: "%B %d, %Y %H:%M"
+      only_date: "%d/%m/%Y"
+
+  messages:
+    confirm_delete: "Are you sure you want to delete this customer?"
+  
+  errors:
+    template:
+      header:
+        one: "The form contains 1 error"
+        other: "The form contains %{count} errors"

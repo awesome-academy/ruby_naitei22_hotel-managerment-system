@@ -1,6 +1,20 @@
 default: &default
   site_name: "Sample App"
   admin_email: "admin@example.com"
+  digit_10: 10
+  microposts:
+    type_image: 
+      - "image/png"
+      - "image/jpg"
+      - "image/jpeg"
+  
+    format_image: "image/jpeg,image/jpg,image/png"
+
+  image_content_types:
+    - image/jpeg
+    - image/gif
+    - image/png
+  image_accept_format: "image/jpeg,image/gif,image/png"
 
 development:
   <<: *default
@@ -11,3 +25,6 @@ production:
 
 mailer:
   from: "noreply@example.com"
+
+placeholder:
+  date_time: "yyyy/mm/dd"

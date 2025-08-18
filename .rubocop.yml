@@ -404,7 +404,7 @@ Layout/SpaceAroundEqualsInParameterDefault:
     - no_space
 
 Layout/SpaceBeforeBlockBraces:
-  EnforcedStyle: no_space
+  EnforcedStyle: space
   SupportedStyles:
     - space
     - no_space

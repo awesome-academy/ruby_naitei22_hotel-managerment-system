@@ -1,0 +1,55 @@
+vi:
+  admin:
+    room_types:
+      load_room_type:
+        not_found: "Không tìm thấy loại phòng."
+
+      new:
+        title: "Thêm loại phòng"
+        submit: "Tạo loại phòng"
+
+      create:
+        success_message: "Tạo loại phòng thành công."
+        error_message: "Tạo loại phòng thất bại. Vui lòng kiểm tra lại thông tin."
+
+      index:
+        title: Loại phòng
+        list_title: "Danh sách loại phòng (%{count})"
+        new: Thêm loại phòng
+        name_placeholder: Tìm theo tên loại phòng
+        description_placeholder: Tìm theo mô tả loại phòng
+        id: ID
+        name: Loại phòng
+        description: Mô tả
+        number_of_rooms: Số lượng phòng
+        updated_at: Cập nhật lúc
+        action: Hành động
+        edit: Sửa
+        delete: Xoá
+        confirm_delete: Bạn có chắc chắn muốn xoá?
+        search_button: Tìm kiếm
+        detail_button: Xem chi tiết
+        reset_button: Đặt lại
+        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} loại phòng"
+        no_results: "Không tìm thấy đặt phòng nào"
+
+      edit:
+        title: "Cập nhật loại phòng"
+        submit: "Lưu thay đổi"
+
+      update:
+        success_message: "Cập nhật loại phòng thành công."
+        error_message: "Cập nhật loại phòng thất bại. Vui lòng kiểm tra lại thông tin."
+
+      destroy:
+        success_message: "Xoá loại phòng thành công."
+        error_message: "Xoá loại phòng thất bại. Vui lòng thử lại."
+
+      form:
+        name: "Tên"
+        description: "Mô tả"
+
+      room_type:
+        edit: "Chỉnh sửa"
+        delete: "Xoá"
+        confirm_delete: "Bạn có chắc chắn muốn xoá loại phòng này không?"
