@@ -5,7 +5,7 @@ en:
         title: "Rooms"
         list_title: "List of Rooms (%{count})"
         new_room: "New Room"
-        room_id: "ID"
+        index: "No."
         room_number: "Room Number"
         room_type: "Room Type"
         capacity: "Capacity"

@@ -2,29 +2,14 @@ en:
   admin:
     bookings:
       not_found: "No bookings found"
+
       index:
-        title: "Booking List"
+        title: "Bookings"
         list_text: "List of Bookings (%{count})"
-        id: "ID"
-        booking_code: "Booking Code"
-        user_name: "User Name"
-        status: "Status"
-        total_guests: "Total Guests"
-        total_price: "Total Price"
-        created_at: "Created At"
-        all: "All"
-        draft: "Draft"
-        pending: "Pending"
-        confirmed: "Confirmed"
-        declined: "Declined"
-        cancelled: "Cancelled"
-        completed: "Completed"
-        pagy_info: "Showing %{from} to %{to} of %{count} bookings"
-        no_results: "No bookings found"
 
       booking_row:
         detail_button: "Details"
-      
+
       form_search_booking:
           booking_code: "Booking Code"
           user_name: "User Name"
@@ -42,7 +27,7 @@ en:
         declined: "Declined"
         cancelled: "Cancelled"
         completed: "Completed"
-      
+
       booking_info:
         title: "Booking Information"
         code: "Booking Code"
@@ -53,7 +38,7 @@ en:
         updated_by: "Updated By"
         updated_at: "Updated At"
         total_price: "Total Price"
-      
+
       request_detail:
         time: "Time"
         guests: "Guests"
@@ -61,11 +46,11 @@ en:
         checked_in_guests: "Checked-in guests"
         note: "Note"
         booked_rooms: "Booked rooms"
-      
+
       request_info:
         title: "Request #%{number}"
         detail: "View Details"
-      
+
       room_item:
         title: "Room #%{number}"
         subtotal: "Subtotal"
@@ -76,7 +61,7 @@ en:
         email: "Email"
         phone: "Phone Number"
         detail: "View Details"
-      
+
       show:
         title: "Booking Details - %{code}"
         header: "Booking Details #%{code}"
@@ -95,7 +80,7 @@ en:
 
       decline:
         success: "Decline booking successfully"
-      
+
       show_decline:
         title: "Decline booking #%{code}"
         reason_label: "Decline reason"

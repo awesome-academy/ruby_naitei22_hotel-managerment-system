@@ -1,0 +1,32 @@
+.admin-users {
+  .table-container {
+    .status-badge {
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 550;
+      border-radius: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      &.active {
+        background: #d4edda;
+        color: #155724;
+      }
+      &.unactive {
+        background: #f5c6cb;
+        color: #a71d2a;
+      }
+    }
+
+    .user-name {
+      font-weight: 550;
+      color: #343a40;
+    }
+
+    .total-bookings {
+      font-weight: 600;
+      color: #28a745;
+      font-size: 16px;
+    }
+  }
+}

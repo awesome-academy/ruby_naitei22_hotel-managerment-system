@@ -34,7 +34,17 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest
 
-  scope :recent, -> {order(created_at: :desc)} # thu tu giam dan
+  scope :recent, -> {order(created_at: :desc)}
+
+  scope :with_total_created_bookings, (lambda do
+    select(
+      "users.*, " \
+      "COUNT(CASE WHEN bookings.status != #{Booking.statuses[:draft]} " \
+      "THEN 1 END) AS total_created_bookings"
+    )
+      .left_joins(:bookings)
+      .group("users.id")
+  end)
 
   validates :name, presence: true, length: {maximum: NAME_MAX_LENGTH}
   validates :email, presence: true, length: {maximum: EMAIL_MAX_LENGTH},
@@ -84,8 +94,49 @@ format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
     UserMailer.account_activation(self).deliver_now
   end
 
+  def status
+    activated ? :active : :unactive
+  end
+
+  def total_bookings
+    bookings.count
+  end
+
+  # Index: use scope with_total_created_bookings
+  #   => ActiveRecord adds a virtual attribute total_created_bookings,
+  #      avoid N+1 queries
+  # Show: calculate directly with association (bookings.where...)
+  #   => For a single record, this query is simple and
+  #      more efficient than joining tables
+  def total_created_bookings
+    if has_attribute?(:total_created_bookings)
+      self[:total_created_bookings].to_i
+    else
+      bookings.where.not(status: :draft).count
+    end
+  end
+
+  def total_successful_bookings
+    bookings.where(status: [:confirmed, :completed]).count
+  end
+
+  def total_cancelled_bookings
+    bookings.where(status: :cancelled).count
+  end
+
+  def total_pending_bookings
+    bookings.where(status: :pending).count
+  end
+
+  def total_spending
+    bookings
+      .joins(requests: :room_availabilities)
+      .where(status: [:confirmed, :completed])
+      .sum("room_availabilities.price")
+  end
+
   def self.ransackable_attributes _auth_object = nil
-    %w(name)
+    %w(name email phone activated)
   end
 
   private

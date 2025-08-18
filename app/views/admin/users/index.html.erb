@@ -1,0 +1,48 @@
+<% provide :title, t(".title") %>
+
+<div class="admin-users admin-common">
+	<div class="header">
+		<h1><%= t(".title") %></h1>
+		<h3><%= t(".list_title", count: @pagy.count) %></h3>
+	</div>
+
+	<%= render "form_search_user" %>
+
+	<div class="table-container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><%= t(".index") %></th>
+					<th><%= t(".name") %></th>
+					<th><%= t(".email") %></th>
+					<th><%= t(".phone") %></th>
+					<th><%= t(".total_created_bookings") %></th>
+					<th><%= t(".status") %></th>
+					<th><%= t(".created_at") %></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each_with_index do |user, index| %>
+					<%= render partial: "user", locals: {user: user, index: index + 1 + @pagy.offset} %>
+				<% end %>
+			</tbody>
+		</table>
+
+		<% if @users.any? %>
+			<div class="pagination-wrapper">
+				<%== pagy_bootstrap_nav(@pagy) if defined?(pagy_bootstrap_nav) && @pagy %>
+				<% if @pagy %>
+					<div class="pagy-info">
+						<%= t(".pagy_info", from: @pagy.from, to: @pagy.to, count: @pagy.count) %>
+					</div>
+				<% end %>
+			</div>
+		<% else %>
+			<div class="empty-state">
+				<i class="fas fa-user-times"></i>
+				<h3><%= t(".no_results") %></h3>
+			</div>
+		<% end %>
+	</div>
+</div>

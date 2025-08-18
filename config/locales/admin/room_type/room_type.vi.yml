@@ -18,7 +18,7 @@ vi:
         new: Thêm loại phòng
         name_placeholder: Tìm theo tên loại phòng
         description_placeholder: Tìm theo mô tả loại phòng
-        id: ID
+        index: STT
         name: Loại phòng
         description: Mô tả
         number_of_rooms: Số lượng phòng

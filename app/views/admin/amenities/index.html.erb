@@ -32,7 +32,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th><%= t(".id") %></th>
+          <th><%= t(".index") %></th>
           <th><%= t(".name") %></th>
           <th><%= t(".description") %></th>
           <th><%= t(".updated_at") %></th>
@@ -40,7 +40,9 @@
         </tr>
       </thead>
       <tbody>
-        <%= render @amenities %>
+        <% @amenities.each_with_index do |amenity, index| %>
+          <%= render partial: "amenity", locals: {amenity: amenity, index: index + 1 + @pagy.offset} %>
+        <% end %>
       </tbody>
     </table>
 

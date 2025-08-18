@@ -1,0 +1,22 @@
+<div class="search-section">
+  <%= search_form_for @q, url: admin_user_path(@user), method: :get, local: true do |f| %>
+    <div class="search-form">
+      <div class="search-field">
+        <%= f.label :booking_code_cont, t(".booking_code"), class: "form-label" %>
+        <%= f.search_field :booking_code_cont, class: "form-control", placeholder: t(".booking_code_placeholder") %>
+      </div>
+
+      <div class="search-field">
+        <%= f.label :status_eq, t(".status"), class: "form-label" %>
+        <%= f.select :status_eq,
+            options_for_select(booking_status_options, params.dig(:q, :status_eq)), {},
+            { class: "form-select" } %>
+      </div>
+
+      <div class="search-actions">
+        <%= f.submit t(".search_button"), class: "btn btn-primary" %>
+        <%= link_to t(".reset_button"), admin_user_path(@user), class: "btn btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

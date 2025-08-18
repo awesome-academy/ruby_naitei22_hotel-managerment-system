@@ -1,0 +1,64 @@
+en:
+  admin:
+    users:
+      index:
+        title: "Users"
+        list_title: "List of Users (%{count})"
+        index: "No."
+        name: "Name"
+        email: "Email"
+        phone: "Phone"
+        total_created_bookings: "Total created bookings"
+        status: "Status"
+        created_at: "Created At"
+        pagy_info: "Showing %{from} to %{to} of %{count} users"
+        no_results: "No results found"
+
+      form_search_user:
+        name: "Name"
+        name_placeholder: "Enter name..."
+        email: "Email"
+        email_placeholder: "Enter email..."
+        phone: "Phone"
+        phone_placeholder: "Enter phone..."
+        status: "Status"
+        search_button: "Search"
+        reset_button: "Reset"
+
+      user:
+        status_active: "Activated"
+        status_unactive: "Unactivated"
+
+      filter:
+        all: "All"
+        active: "Activated"
+        unactive: "Unactivated"
+
+      show:
+        not_found: "User not found"
+        title: "User %{id}"
+        list_text: "List of Bookings (%{count})"
+
+      user_info:
+        title: "User Information"
+        name: "Name"
+        email: "Email"
+        phone: "Phone"
+        status: "Status"
+        created_at: "Created At"
+
+      other_info:
+        title: "Other Information"
+        total_bookings: "Total bookings"
+        total_created_bookings: "Total created bookings"
+        total_successful_bookings: "Total successful bookings"
+        total_cancelled_bookings: "Total cancelled bookings"
+        total_pending_bookings: "Total pending bookings"
+        total_spending: "Total spending"
+
+      form_search_booking:
+          booking_code: "Booking Code"
+          status: "Status"
+          booking_code_placeholder: "Enter booking code..."
+          search_button: "Search"
+          reset_button: "Reset"

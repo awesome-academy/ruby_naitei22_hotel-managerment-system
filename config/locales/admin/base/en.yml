@@ -3,6 +3,26 @@ en:
     base:
       unauthorized_access: "Unauthorized access. Please log in as an admin."
 
+    shared:
+      bookings_table:
+        title: "Booking List"
+        index: "No."
+        booking_code: "Booking Code"
+        user_name: "User Name"
+        status: "Status"
+        total_guests: "Total Guests"
+        total_price: "Total Price"
+        created_at: "Created At"
+        all: "All"
+        draft: "Draft"
+        pending: "Pending"
+        confirmed: "Confirmed"
+        declined: "Declined"
+        cancelled: "Cancelled"
+        completed: "Completed"
+        pagy_info: "Showing %{from} to %{to} of %{count} bookings"
+        no_results: "No bookings found"
+
     layouts:
       sidebar:
         dashboard_text: "Dashboard"

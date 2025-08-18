@@ -2,26 +2,11 @@ vi:
   admin:
     bookings:
       not_found: "Không tìm thấy booking nào"
+
       index:
         title: "Danh sách đặt phòng"
         list_text: "Danh sách đặt phòng (%{count})"
-        id: "ID"
-        booking_code: "Mã đặt phòng"
-        user_name: "Tên người dùng"
-        status: "Trạng thái"
-        total_guests: "Tổng số khách"
-        total_price: "Tổng giá"
-        created_at: "Ngày tạo"
-        all: "Tất cả"
-        draft: "Nháp"
-        pending: "Đang chờ"
-        confirmed: "Đã xác nhận"
-        declined: "Đã từ chối"
-        cancelled: "Đã hủy"
-        completed: "Đã hoàn thành"
-        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} booking"
-        no_results: "Không tìm thấy đặt phòng nào"
-      
+
       booking_row:
         detail_button: "Chi tiết"
 
@@ -42,7 +27,7 @@ vi:
         declined: "Đã từ chối"
         cancelled: "Đã hủy"
         completed: "Đã hoàn thành"
-      
+
       booking_info:
         title: "Thông tin booking"
         code: "Mã booking"
@@ -53,7 +38,7 @@ vi:
         updated_by: "Cập nhật bởi"
         updated_at: "Ngày cập nhật"
         total_price: "Tổng tiền"
-      
+
       request_detail:
         time: "Thời gian"
         guests: "Số khách"
@@ -69,14 +54,14 @@ vi:
       room_item:
         title: "Phòng #%{number}"
         subtotal: "Tổng tiền"
-      
+
       user_info:
         title: "Thông tin khách hàng"
         name: "Tên khách hàng"
         email: "Email"
         phone: "Số điện thoại"
         detail: "Xem chi tiết"
-      
+
       show:
         title: "Chi tiết booking - %{code}"
         header: "Chi tiết đặt phòng #%{code}"
@@ -89,13 +74,13 @@ vi:
         decline_title: "Từ chối booking"
         complete: "Hoàn thành"
         complete_title: "Hoàn thành booking"
-      
+
       update_status:
         success: "Update trạng thái thành công"
-      
+
       decline:
         success: "Decline booking thành công"
-      
+
       show_decline:
         title: "Từ chối booking #%{code}"
         reason_label: "Lý do từ chối"

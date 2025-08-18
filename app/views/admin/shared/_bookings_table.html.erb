@@ -1,0 +1,40 @@
+<div class="table-container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t(".index") %></th>
+        <th><%= t(".booking_code") %></th>
+        <th><%= t(".user_name") %></th>
+        <th><%= t(".status") %></th>
+        <th><%= t(".total_guests") %></th>
+        <th><%= t(".total_price") %></th>
+        <th><%= t(".created_at") %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% bookings.each_with_index do |booking, index| %>
+        <%= render partial: "admin/shared/booking_row", locals: {booking: booking, index: index + 1 + @pagy.offset} %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% unless bookings.empty? %>
+    <div class="pagination-wrapper">
+      <%== pagy_bootstrap_nav pagy %>
+      <div class="pagy-info">
+        <%= t(".pagy_info",
+              from: pagy.from,
+              to: pagy.to,
+              count: pagy.count) %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if bookings.empty? %>
+    <div class="empty-state">
+      <i class="fas fa-calendar-times"></i>
+      <h3><%= t(".no_results") %></h3>
+    </div>
+  <% end %>
+</div>

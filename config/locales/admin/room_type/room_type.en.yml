@@ -18,7 +18,7 @@ en:
         new: New Room Type
         name_placeholder: Search room type name
         description_placeholder: Search room type description
-        id: ID
+        index: No.
         name: Room Type
         description: Description
         number_of_rooms: Number of Rooms

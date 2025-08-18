@@ -1,0 +1,20 @@
+<%= provide :title, t(".title", id: @user.id) %>
+
+<div class="admin-user-details admin-common">
+	<div class="header">
+    <h1><%= t(".title", id: @user.id) %></h1>
+	</div>
+
+  <div class="user-info-grid">
+    <%= render partial: "user_info", locals: { user: @user } %>
+    <%= render partial: "other_info", locals: { user: @user } %>
+  </div>
+
+  <div class="admin-bookings">
+    <h3><%= t(".list_text", count: @pagy.count) %></h3>
+
+    <%= render partial: "form_search_booking"%>
+
+    <%= render partial: "admin/shared/bookings_table", locals: {bookings: @bookings, pagy: @pagy} %>
+  </div>
+</div>
