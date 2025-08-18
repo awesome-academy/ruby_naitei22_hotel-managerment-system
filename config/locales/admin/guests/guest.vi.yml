@@ -1,0 +1,43 @@
+vi:
+  admin:
+    guests:
+      new:
+        title: "Thêm Khách Mới"
+        header: "Thông tin Khách Mới"
+        add_guest_button: "Thêm Khách"
+        request_not_found: "Không tìm thấy yêu cầu"
+
+      create:
+        success: "Thêm khách thành công"
+        error: "Lỗi khi thêm khách" 
+      
+      edit:
+        title: "Chỉnh Sửa Thông Tin Khách"
+        header: "Thông tin Khách"
+        button_text: "Cập Nhật Khách"
+        guest_not_found: "Không tìm thấy khách"
+
+      update:
+        success: "Cập nhật khách thành công"
+      
+      destroy:
+        success: "Xóa khách thành công"
+        error: "Lỗi khi xóa khách"
+
+      form:
+        full_name_label: "Họ Tên"
+        full_name_placeholder: "Nhập họ tên khách"
+        identity_type_label: "Loại Giấy Tờ"
+        national_id: "CCCD"
+        passport: "Hộ Chiếu"
+        identity_number: "Mã định danh"
+        select_identity_type: "Chọn loại giấy tờ"
+        identity_number_label: "Số Giấy Tờ"
+        identity_number_placeholder: "Nhập số giấy tờ"
+        identity_issued_date_label: "Ngày Cấp"
+        identity_issued_place_label: "Nơi Cấp"
+        identity_issued_place_placeholder: "Nhập nơi cấp"
+        images_label: "Ảnh"
+        images_help_text: "Chọn nhiều ảnh (định dạng JPG, PNG). Có thể chọn ảnh CCCD/Hộ chiếu hoặc ảnh chân dung."
+        current_images: "Ảnh hiện tại"
+        cancel_button: "Hủy"

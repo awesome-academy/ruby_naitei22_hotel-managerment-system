@@ -2,14 +2,13 @@
   <div class="modal-card">
     <div class="modal-header">
       <h3><%= t(".title", code: @booking.booking_code) %></h3>
-      <%= link_to "×", admin_booking_path(@booking), 
+      <%= link_to "×", "#", 
                  data: { controller: "modal", action: "modal#close" }, 
                  class: "modal-close" %>
     </div>
 
     <%= form_with model: @booking, 
                   url: decline_admin_booking_path(@booking),
-                  method: :patch,
                   data: { turbo_frame: "_top" } do |f| %>
       <%= f.hidden_field :status, value: :declined %>
 
@@ -24,7 +23,7 @@
 
       <div class="modal-actions">
         <%= f.submit t(".confirm_button"), class: "btn btn-danger" %>
-        <%= link_to t(".cancel_button"), admin_booking_path(@booking), 
+        <%= link_to t(".cancel_button"), "#", 
                    data: { controller: "modal", action: "modal#close" }, 
                    class: "btn btn-secondary" %>
       </div>

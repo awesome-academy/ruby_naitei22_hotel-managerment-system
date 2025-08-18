@@ -4,6 +4,7 @@ vi:
       user: "Người dùng"
       room: "Phòng"
       room_type: "Loại phòng"
+      guest: "Khách"
 
     attributes:
       user:
@@ -22,6 +23,14 @@ vi:
       room_type:
         name: "Tên loại phòng"
         description: "Mô tả loại phòng"
+
+      guest:
+        full_name: "Họ và tên"
+        identity_type: "Loại giấy tờ"
+        identity_number: "Số giấy tờ"
+        identity_issued_date: "Ngày cấp"
+        identity_issued_place: "Nơi cấp"
+        images: "Ảnh"
 
     errors:
       models:
@@ -50,6 +59,17 @@ vi:
               check_in_before_check_out: "phải sau ngày nhận phòng"
             check_in:
               future: "phải ở tương lai"
+        
+        guest:
+          attributes:
+            identity_issued_date:
+              future: "Ngày cấp không được ở tương lai"
+            identity_number:
+              invalid_national_id: "phải gồm đúng 12 chữ số"
+              invalid_passport: "phải là 1 chữ cái + 7 chữ số (ví dụ: B1234567)"
+            images:
+              invalid_format: "chỉ chấp nhận định dạng JPG, PNG"
+              too_many: "không được quá 2 ảnh"
 
   errors:
     messages:

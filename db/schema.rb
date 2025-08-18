@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_08_15_155245) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_18_035730) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_15_155245) do
     t.string "identity_issued_place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["identity_number"], name: "index_guests_on_identity_number", unique: true
     t.index ["request_id"], name: "index_guests_on_request_id"
   end
 

@@ -1,0 +1,43 @@
+en:
+  admin:
+    guests:
+      new:
+        title: "Add New Guest"
+        header: "New Guest Information"
+        add_guest_button: "Add Guest"
+        request_not_found: "Request not found"
+
+      create:
+        success: "Guest added successfully"
+        error: "Error adding guest"
+
+      edit:
+        title: "Edit Guest Information"
+        header: "Guest Information"
+        button_text: "Update Guest"
+        guest_not_found: "Guest not found"
+
+      update:
+        success: "Guest updated successfully"
+
+      destroy:
+        success: "Guest deleted successfully"
+        error: "Error deleting guest"
+
+      form:
+        full_name_label: "Full Name"
+        full_name_placeholder: "Enter guest's full name"
+        identity_type_label: "Identity Type"
+        national_id: "National ID"
+        passport: "Passport"
+        identity_number: "Identity Number"
+        select_identity_type: "Select identity type"
+        identity_number_label: "Identity Number"
+        identity_number_placeholder: "Enter identity number"
+        identity_issued_date_label: "Issued Date"
+        identity_issued_place_label: "Issued Place"
+        identity_issued_place_placeholder: "Enter issued place"
+        images_label: "Images"
+        images_help_text: "Select multiple images (JPG, PNG format). You can upload ID card/passport photos or portrait photos."
+        current_images: "Current Images"
+        cancel_button: "Cancel"

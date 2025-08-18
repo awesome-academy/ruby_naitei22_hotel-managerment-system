@@ -2,13 +2,13 @@
   <div class="bootstrap-scope">
     <div id="error_explanation">
       <div class="alert alert-danger">
-        <%= t("errors.template.header", count: object.errors.count) %>
+        <h4><%= t("errors.template.header", count: object.errors.count) %></h4>
+        <ul>
+          <% object.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       </div>
-      <ul>
-        <% object.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
     </div>
   </div>
 <% end %>

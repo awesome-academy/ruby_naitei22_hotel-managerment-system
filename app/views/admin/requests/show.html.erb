@@ -27,9 +27,12 @@
       <div class="checked-in-status">
         <h3><%= t(".checked_in_guests", count: @request.guests.count) %></h3>
         <div class="action-buttons">
-          <%= link_to t(".add_guest"), "#",
-              class: "btn btn-success",
-              title: t(".add_guest") %>
+          <% if @request.number_of_guests > @request.guests.count %>
+            <%= link_to t(".add_guest"), 
+                new_admin_booking_request_guest_path(@request.booking_id, @request),
+                class: "btn btn-success",
+                title: t(".add_guest") %>
+          <% end %>
 
           <% unless @request.guests.empty? %>
             <%= button_to t(".check_out"),
@@ -40,11 +43,12 @@
                 title: t(".check_out") %>
           <% end %>
         </div>
-        <%= render partial: "table_guests", locals: { request: @request, show_actions: true } %>
+          <%= render partial: "table_guests", locals: { request: @request, show_actions: true } %>
       </div>
 
     <% elsif @request.status_checked_out? %>
       <%= render partial: "table_guests", locals: { request: @request, show_actions: false } %>
     <% end %>
+    <%= link_to t(".back"), admin_booking_path(@request.booking_id), class: "btn btn-secondary" %>
   </div>
 </div>

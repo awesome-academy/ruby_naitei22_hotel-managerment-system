@@ -4,6 +4,7 @@ en:
       user: "User"
       room: "Room"
       room_type: "Room Type"
+      guest: "Guest"
 
     attributes:
       user:
@@ -22,6 +23,14 @@ en:
       room_type:
         name: "Room Type"
         description: "Room Type Description"
+      
+      guest:
+        full_name: "Full Name"
+        identity_type: "Identity Type"
+        identity_number: "Identity Number"
+        identity_issued_date: "Identity Issued Date"
+        identity_issued_place: "Identity Issued Place"
+        images: "Images"
 
     errors:
       models:
@@ -50,6 +59,17 @@ en:
               check_in_before_check_out: "must be after check-in date"
             check_in:
               future: "must be in the future"
+        
+        guest:
+          attributes:
+            identity_issued_date:
+              future: "must be in the past"
+            identity_number:
+              invalid_national_id: "must consist of exactly 12 digits"
+              invalid_passport: "must be 1 letter + 7 digits (e.g., B1234567)"
+            images:
+              invalid_format: "only JPG, PNG formats are allowed"
+              too_many: "maximum 2 images allowed"
 
   errors:
     messages:
