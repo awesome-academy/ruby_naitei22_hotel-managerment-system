@@ -80,7 +80,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_15_155245) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "room_id", null: false
     t.index ["booking_id"], name: "index_requests_on_booking_id"
+    t.index ["room_id"], name: "index_requests_on_room_id"
   end
 
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -169,6 +171,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_15_155245) do
   add_foreign_key "bookings", "users", column: "status_changed_by_id"
   add_foreign_key "guests", "requests"
   add_foreign_key "requests", "bookings"
+  add_foreign_key "requests", "rooms"
   add_foreign_key "reviews", "requests"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "users", column: "approved_by_id"

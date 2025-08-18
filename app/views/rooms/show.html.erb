@@ -24,7 +24,7 @@
       <% if @room.images.attached? %>
         <% thumbnails = @room.images.drop(1).first(4) %>
         <% thumbnails.each_with_index do |image, index| %>
-          <%= image_tag image, alt: "#{@room.name} - Image #{index + 2}", class: "thumbnail-image" %>
+          <%= image_tag image, alt: "#{@room.room_number} - Image #{index + 2}", class: "thumbnail-image" %>
         <% end %>
 
         <% remaining_slots = 4 - thumbnails.size %>
@@ -61,7 +61,7 @@
       <section class="room-amenities">
         <h2><%= t(".include") %></h2>
         <div class="amenities-grid">
-          <% @room.amenities.each do |amenity| %>
+          <% @amenities.each do |amenity| %>
             <div class="amenity-item">
               <span class="amenity-name"><%= amenity.name %></span>
             </div>
@@ -101,7 +101,7 @@
                     data-see-less="<%= t(".see_less") %>">
                     <%= t(".see_more") %>
                   </a>
-                <% end %>
+                <% end %>              
               </div>
             </div>
           <% end %>

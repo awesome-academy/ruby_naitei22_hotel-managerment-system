@@ -1,5 +1,6 @@
 en:
   app: "Hotel Management System"
+  n_a: "N/A"
   home:
     title: "Home"
     welcome: "Welcome to the Sample App"

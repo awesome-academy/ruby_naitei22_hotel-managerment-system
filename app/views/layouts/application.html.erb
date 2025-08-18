@@ -12,23 +12,28 @@
   <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
 
   <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
-
+  
   <%= javascript_importmap_tags %>
 
+  <!-- Disable dates -->
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/flatpickr" %>
+  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" %>
+
+  <%= javascript_importmap_tags %>
 </head>
 
 <body>
   <%= render "layouts/header", new_locale: (I18n.locale == :en ? :vi : :en) %>
+  
   <div class="container">
-    <% if flash.present? %>
-      <div class="bootstrap-scope">
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>">
-            <%= message %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="bootstrap-scope">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %> ">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+
     <%= yield %>
   </div>
 </body>

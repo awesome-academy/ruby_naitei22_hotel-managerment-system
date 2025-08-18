@@ -1,3 +1,13 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
+# db/seeds.rb
+require 'date'
+
 User.create!(
   name: "Admin",
   email: "admin@gmail.com",
@@ -7,6 +17,7 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
 User.create!(
   name: "Dennis Foley",
   email: "vickiwilliams@levy.com",
@@ -16,6 +27,7 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
 User.create!(
   name: "Jared Snyder",
   email: "anthony41@lopez-fuller.com",
@@ -25,6 +37,7 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
 User.create!(
   name: "Crystal Cox",
   email: "jonesdouglas@gmail.com",
@@ -34,6 +47,7 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
 User.create!(
   name: "Alan Boyer",
   email: "douglasvaughn@yahoo.com",
@@ -43,123 +57,150 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
 RoomType.create!(
   name: "Single",
   description: "While speak also sort family without.",
   price: 51
 )
+
 RoomType.create!(
   name: "Double",
   description: "Oil know rise if.",
   price: 258
 )
+
 RoomType.create!(
   name: "Suite",
   description: "Truth of whole find he should.",
   price: 120
 )
+
 Room.create!(
   room_number: "R001",
   room_type_id: 3,
   description: "Serve itself national back.",
   capacity: 1
 )
+
 Room.create!(
   room_number: "R002",
   room_type_id: 2,
   description: "Evidence year threat anything. Why those talk relate.",
   capacity: 3
 )
+
 Room.create!(
   room_number: "R003",
   room_type_id: 3,
   description: "Less hot war music. Care officer only ready attorney which. They reduce customer follow card.",
   capacity: 4
 )
+
 Room.create!(
   room_number: "R004",
   room_type_id: 1,
   description: "State need can PM any. Light less tend capital training him.",
   capacity: 2
 )
+
 Room.create!(
   room_number: "R005",
   room_type_id: 2,
   description: "Leg result direction beyond. Near southern determine however point. Last thus then.",
   capacity: 3
 )
+
 Amenity.create!(
   name: "TV",
   description: "Never final hard benefit budget."
 )
+
 Amenity.create!(
   name: "Wi-Fi",
   description: "College should lot push able."
 )
+
 Amenity.create!(
   name: "AC",
   description: "Three safe late."
 )
+
 Amenity.create!(
   name: "Minibar",
   description: "Start term can high point present."
 )
+
 Amenity.create!(
   name: "Balcony",
   description: "Crime anyone civil home thought our."
 )
+
 RoomAmenity.create!(
   room_id: 1,
   amenity_id: 3
 )
+
 RoomAmenity.create!(
   room_id: 1,
   amenity_id: 4
 )
+
 RoomAmenity.create!(
   room_id: 1,
   amenity_id: 2
 )
+
 RoomAmenity.create!(
   room_id: 2,
   amenity_id: 1
 )
+
 RoomAmenity.create!(
   room_id: 2,
   amenity_id: 3
 )
+
 RoomAmenity.create!(
   room_id: 2,
   amenity_id: 4
 )
+
 RoomAmenity.create!(
   room_id: 3,
   amenity_id: 1
 )
+
 RoomAmenity.create!(
   room_id: 3,
   amenity_id: 5
 )
+
 RoomAmenity.create!(
   room_id: 3,
   amenity_id: 4
 )
+
 RoomAmenity.create!(
   room_id: 4,
   amenity_id: 2
 )
+
 RoomAmenity.create!(
   room_id: 4,
   amenity_id: 3
 )
+
 RoomAmenity.create!(
   room_id: 4,
   amenity_id: 4
 )
+
 RoomAmenity.create!(
   room_id: 5,
   amenity_id: 4
 )
+
 RoomAmenity.create!(
   room_id: 5,
   amenity_id: 3
@@ -168,6 +209,7 @@ RoomAmenity.create!(
   room_id: 5,
   amenity_id: 1
 )
+
 Booking.create!(
   user_id: 4,
   booking_code: "Pb0189",
@@ -304,6 +346,7 @@ NEW_BOOKINGS.times do |i|
 
     req = Request.create!(
       booking_id:        booking.id,
+      room_id:           room.id,
       check_in:          check_in_dt,
       check_out:         check_out_dt,
       number_of_guests:  guests,

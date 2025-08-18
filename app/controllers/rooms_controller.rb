@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :load_room, only: %i(show)
+  before_action :load_room, only: %i(show calculate_price)
+  before_action :set_current_booking, only: %i(show)
 
   # GET (/:locale)/rooms(.:format)
   def index
@@ -14,8 +15,30 @@ class RoomsController < ApplicationController
 
   # GET (/:locale)/rooms/id
   def show
-    @room_availability = @room.room_availabilities
-    @reviews = @room.reviews.includes(:user)
+    @amenities = @room.amenities
+    @reviews = @room.reviews.includes(:user).distinct
+    @available_dates = @room.available_dates
+  end
+
+  # GET (/:locale)/rooms/:id/calculate_price(.:format)
+  def calculate_price
+    check_in  = parse_date(params[:check_in])
+    check_out = parse_date(params[:check_out])
+
+    if check_in && check_out && check_out >= check_in
+      nights = (check_out - check_in).to_i
+      total_price = @room.room_availabilities
+                         .where(available_date: check_in..check_out)
+                         .sum(:price)
+
+      render json: {success: true, total_price:, nights:}, status: :ok
+    else
+      render json: {success: false, error: t("bookings.card.error_price")},
+             status: :unprocessable_entity
+    end
+  rescue StandardError => e
+    render json: {success: false, error: e.message},
+           status: :internal_server_error
   end
 
   private
@@ -26,5 +49,17 @@ class RoomsController < ApplicationController
 
     flash[:warning] = t("rooms.not_found")
     redirect_to root_path
+  end
+
+  def set_current_booking
+    return unless logged_in?
+
+    @current_booking = current_user.bookings.find_or_create_by(status: :draft)
+  end
+
+  def parse_date date_str
+    Date.parse(date_str)
+  rescue StandardError
+    nil
   end
 end

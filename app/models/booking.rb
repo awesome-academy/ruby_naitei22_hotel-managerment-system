@@ -5,6 +5,8 @@ class Booking < ApplicationRecord
   has_many :room_availabilities, through: :requests
   has_many :rooms, through: :room_availabilities
 
+  accepts_nested_attributes_for :requests
+
   enum status: {
     draft: 0,
     pending: 1,
