@@ -12,6 +12,11 @@ vi:
         title: "Cập nhật phòng"
         submit: "Lưu thay đổi"
 
+      show:
+        edit: "Chỉnh sửa"
+        delete: "Xóa"
+        confirm_delete: "Bạn có chắc chắn muốn xóa phòng này không?"
+
       create:
         success: "Tạo phòng thành công."
         failure: "Tạo phòng thất bại."
@@ -19,6 +24,10 @@ vi:
       update:
         success: "Cập nhật phòng thành công."
         failure: "Cập nhật phòng thất bại."
+
+      destroy:
+        success: "Xóa phòng thành công."
+        failure: "Xóa phòng thất bại."
 
       form:
         room_number: "Số phòng"
@@ -34,3 +43,12 @@ vi:
         from: "Từ"
         to: "Đến"
         price: "Giá"
+
+      availability_card:
+        available_date: "Ngày"
+        search_button: "Tìm kiếm"
+        status: "Trạng thái"
+        price: "Giá"
+        no_results: "Bạn chưa thiết lập giá cho ngày này."
+        status_available: "Có thể đặt"
+        status_unavailable: "Đã được đặt"

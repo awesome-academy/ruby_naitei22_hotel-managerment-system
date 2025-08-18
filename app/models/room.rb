@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
-  RESIZE_LIMIT = [300, 300].freeze
+  RESIZE_LIMIT_SMALL = [300, 300].freeze
+  RESIZE_LIMIT_LARGE = [600, 300].freeze
   DIGIT_5 = 5
   DIGIT_140 = 140
   ROOM_PARAMS = [
@@ -54,7 +55,8 @@ class Room < ApplicationRecord
   has_many :reviews, through: :requests
 
   has_many_attached :images do |attachable|
-    attachable.variant :display, resize_to_limit: RESIZE_LIMIT
+    attachable.variant :small, resize_to_limit: RESIZE_LIMIT_SMALL
+    attachable.variant :large, resize_to_limit: RESIZE_LIMIT_LARGE
   end
 
   def self.ransackable_attributes _auth_object = nil

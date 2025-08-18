@@ -6,6 +6,48 @@
 
   .room-header {
     margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .room-info {
+      flex: 1;
+    }
+
+    .room-actions {
+      display: flex;
+      gap: 12px;
+
+      .btn-action {
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid transparent;
+        transition: background .2s, color .2s, border-color .2s;
+        cursor: pointer;
+        line-height: 1.2;
+      }
+
+      .btn-edit {
+        background: #6c63ff;
+        color: #fff;
+      }
+
+      .btn-edit:hover {
+        background: #5a52d5; /* blue-700 */
+      }
+
+      .btn-delete {
+        background: #dc2626; /* red-600 */
+        color: #fff;
+      }
+
+      .btn-delete:hover {
+        background: #b91c1c; /* red-700 */
+      }
+    }
 
     .room-title {
       font-size: 48px;
@@ -35,41 +77,17 @@
     }
   }
 
-  .room-gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 48px;
-    height: 400px;
-
-    .primary-image {
-      border-radius: 12px;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .thumbnail-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-
-      .thumbnail-image {
-        border-radius: 12px;
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .room-content {
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 120px;
+    margin-top: 20px;
 
     .room-details {
       section {

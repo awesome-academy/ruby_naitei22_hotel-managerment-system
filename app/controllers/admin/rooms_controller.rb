@@ -1,6 +1,7 @@
 class Admin::RoomsController < Admin::BaseController
-  before_action :load_room, only: %i(edit update)
+  before_action :load_room, only: %i(show edit update destroy)
   before_action :load_room_types_and_amenities, only: %i(new edit create update)
+  before_action :set_default_date_filter, only: %i(show)
 
   # GET /admin/rooms/new
   def new
@@ -30,6 +31,23 @@ class Admin::RoomsController < Admin::BaseController
     end
   end
 
+  # GET /admin/rooms/:id
+  def show
+    @q = @room.room_availabilities.ransack(params[:q])
+    @availability = @q.result.first
+    @reviews = @room.reviews.includes(:user)
+  end
+
+  # DELETE /admin/rooms/:id
+  def destroy
+    if @room.destroy
+      flash[:success] = t(".success")
+    else
+      flash[:danger] = t(".failure")
+    end
+    redirect_to admin_room_availabilities_path
+  end
+
   # DELETE /admin/rooms/:id/remove_image
   def remove_image
     @image = ActiveStorage::Attachment.find_by(id: params[:image_id])
@@ -54,6 +72,13 @@ class Admin::RoomsController < Admin::BaseController
 
     flash[:danger] = t("admin.rooms.load_room.not_found")
     redirect_to admin_room_availabilities_path
+  end
+
+  def set_default_date_filter
+    return if params.dig(:q, :available_date_eq).present?
+
+    params[:q] ||= {}
+    params[:q][:available_date_eq] = Date.current.to_s
   end
 
   def handle_successful_creation

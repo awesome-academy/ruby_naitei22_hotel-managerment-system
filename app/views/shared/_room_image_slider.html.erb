@@ -1,0 +1,27 @@
+<!-- Image Gallery -->
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <% if room.images.attached? %>
+      <% room.images.each do |image| %>
+        <div class="swiper-slide">
+          <%= image_tag image.variant(:large),
+              alt: room.room_number,
+              class: "rounded-lg object-cover" %>
+        </div>
+      <% end %>
+    <% else %>
+      <% 5.times do %>
+        <div class="swiper-slide">
+          <%= image_tag "room-placeholder.jpg",
+              alt: "Placeholder",
+              class: "w-full h-auto rounded-lg object-cover" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- Navigation -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>

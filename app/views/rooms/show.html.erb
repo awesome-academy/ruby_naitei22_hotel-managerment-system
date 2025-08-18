@@ -12,109 +12,14 @@
     </div>
   </div>
 
-  <!-- Image Gallery -->
-  <div class="room-gallery">
-    <%= image_tag(
-      @room.images.attached? ? url_for(@room.images.first) : "room-placeholder.jpg",
-      alt: @room.room_number,
-      class: "primary-image"
-    ) %>
+  <%= render "shared/room_image_slider",
+           room: @room %>
 
-    <div class="thumbnail-grid">
-      <% if @room.images.attached? %>
-        <% thumbnails = @room.images.drop(1).first(4) %>
-        <% thumbnails.each_with_index do |image, index| %>
-          <%= image_tag image, alt: "#{@room.room_number} - Image #{index + 2}", class: "thumbnail-image" %>
-        <% end %>
-
-        <% remaining_slots = 4 - thumbnails.size %>
-        <% remaining_slots.times do |i| %>
-          <%= image_tag "room-placeholder.jpg", alt: "Placeholder image #{i + thumbnails.size + 2}", class: "thumbnail-image" %>
-        <% end %>
-      <% else %>
-        <% 4.times do |i| %>
-          <%= image_tag "room-placeholder.jpg", alt: "Placeholder image #{i + 2}", class: "thumbnail-image" %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <!-- Content Area -->
   <div class="room-content">
-    <!-- Left Column - Room Details -->
-    <div class="room-details">
-      <!-- Overview -->
-      <section>
-        <h2><%= t(".overview") %></h2>
-        <div class="room-overview">
-          👥 <%= @room.room_type.name %> • <%= pluralize(@room.capacity, t("rooms.card.guest")) %><br>
-        </div>
-
-        <% if @room.description.present? %>
-          <div class="room-overview">
-            <%= simple_format(@room.room_type.description) %>
-          </div>
-        <% end %>
-      </section>
-
-      <!-- Amenities -->
-      <section class="room-amenities">
-        <h2><%= t(".include") %></h2>
-        <div class="amenities-grid">
-          <% @amenities.each do |amenity| %>
-            <div class="amenity-item">
-              <span class="amenity-name"><%= amenity.name %></span>
-            </div>
-          <% end %>
-        </div>
-      </section>
-
-      <!-- Reviews -->
-      <section class="room-reviews">
-        <h2><%= t(".reviews") %></h2>
-        <span class="rating-star">★</span>
-        <span class="rating-score"><%= @room.average_rating %></span>
-        <span class="rating-count">(<%= @room.number_of_rating %> <%= t("rooms.card.number_of_rating") %>)</span>
-
-        <div class="reviews-grid">
-          <% @reviews.each do |review| %>
-            <div class="review-item">
-              <div class="review-header">
-                <div class="reviewer-avatar">
-                  <%= review.user.name %>
-                </div>
-                <div class="reviewer-info">
-                  <div class="reviewer-name"><%= review.user.name %></div>
-                  <div class="rating-score"><span class="rating-star">★</span><%= review.rating %></div>
-                  <div class="review-date"><%= l(review.created_at, format: :only_date)%></div>
-                </div>
-              </div>
-              <div class="review-content" id="review-<%= review.id %>">
-                <span class="short-text"><%= truncate(review.comment, length: 15) %></span>
-                <span class="full-text" style="display: none;"><%= review.comment %></span>
-                
-                <% if review.comment.length > 15 %>
-                  <a href="#" 
-                    class="toggle-review" 
-                    data-id="<%= review.id %>" 
-                    data-see-more="<%= t(".see_more") %>" 
-                    data-see-less="<%= t(".see_less") %>">
-                    <%= t(".see_more") %>
-                  </a>
-                <% end %>              
-              </div>
-            </div>
-          <% end %>
-        </div>
-
-        <% if @room.number_of_rating > 4 %>
-          <%= link_to t(".all_review"), "#", class: "show-all-reviews" %>
-        <% end %>
-      </section>
-    </div>
-
-    <!-- Right Column - Booking Card -->
+    <%= render "shared/room_detail",
+             room: @room,
+             amenities: @amenities,
+             reviews: @reviews %>
     <%= render "shared/booking_card" %>
   </div>
 </div>
-
