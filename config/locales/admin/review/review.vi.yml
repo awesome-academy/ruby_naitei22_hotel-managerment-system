@@ -1,0 +1,65 @@
+vi:
+  admin:
+    reviews:
+      not_found: "Không tìm thấy đánh giá"
+      index:
+        title: "Đánh giá"
+        header: "Danh sách đánh giá (%{count})"
+        pagy_info: "Hiển thị từ %{from} đến %{to} của %{count} đánh giá"
+        no_results: "Không tìm thấy đánh giá nào"
+
+      table_reviews:
+        stt: "STT"
+        user_name: "Tên người dùng"
+        booking_code: "Mã đặt phòng"
+        room_number: "Số phòng"
+        created_at: "Ngày tạo"
+        rating: "Đánh giá"
+        status: "Trạng thái"
+        changed_by: "Người thay đổi"
+
+      form_search_review:
+        user_name: "Tên người dùng"
+        placeholder_user_name: "Nhập tên người dùng"
+        booking_code: "Mã đặt phòng"
+        placeholder_booking_code: "Nhập mã đặt phòng"
+        room_number: "Số phòng"
+        placeholder_room_number: "Nhập số phòng"
+        status: "Trạng thái"
+        rating: "Đánh giá"
+        search_button: "Tìm kiếm"
+        reset_button: "Đặt lại"
+        all: "Tất cả"
+        pending: "Đang chờ"
+        approved: "Đã phê duyệt"
+        rejected: "Đã từ chối"
+
+      review_row:
+        detail_button: "Xem chi tiết"
+      
+      show:
+        title: "Chi tiết đánh giá"
+        header: "Chi tiết đánh giá cho đánh giá #%{number} - Mã đặt phòng #%{booking_code}"
+        request_information: "Thông tin yêu cầu"
+        booking_id: "Mã đặt phòng %{booking_id}"
+        detail: "Chi tiết"
+        back: "Quay lại"
+        approve: "Phê duyệt"
+        reject: "Từ chối"
+        confirm_approve: "Bạn có chắc chắn muốn phê duyệt đánh giá này không?"
+        confirm_reject: "Bạn có chắc chắn muốn từ chối đánh giá này không?"
+
+      review_detail:
+        title: "Chi tiết đánh giá"
+        review_id: "ID đánh giá:"
+        customer: "Khách hàng"
+        email: "Email:"
+        rating: "Xếp hạng"
+        status: "Trạng thái"
+        created_at: "Ngày tạo:"
+        approved_by: "Phê duyệt bởi"
+        comment: "Bình luận"
+      
+      update:
+        success: "Cập nhật đánh giá thành công"
+        error: "Cập nhật đánh giá thất bại"

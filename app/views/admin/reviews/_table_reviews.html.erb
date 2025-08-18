@@ -1,0 +1,23 @@
+<div class="table-container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t(".stt") %></th>
+        <th><%= t(".booking_code") %></th>
+        <th><%= t(".user_name") %></th>
+        <th><%= t(".room_number") %></th>
+        <th><%= t(".rating") %></th>
+        <th><%= t(".status") %></th>
+        <th><%= t(".changed_by") %></th>
+        <th><%= t(".created_at") %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "review_row",
+                 collection: reviews,
+                 as: :review,
+                 locals: { pagy: @pagy } %>
+    </tbody>
+  </table>
+</div>

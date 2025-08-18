@@ -17,6 +17,7 @@ class Admin::BookingsController < Admin::BaseController
         status_changed_by_id: current_user.id
       )
     end
+    @booking.send_confirmation_email if @booking.status_confirmed?
     flash[:success] = t(".success")
     redirect_to admin_booking_path(@booking)
   rescue ActiveRecord::RecordInvalid => e
@@ -36,6 +37,7 @@ class Admin::BookingsController < Admin::BaseController
                        decline_reason: booking_params[:decline_reason],
                        status_changed_by_id: current_user.id)
     end
+    @booking.send_decline_email if @booking.status_declined?
     flash[:success] = t(".success")
     redirect_to admin_booking_path(@booking), status: :see_other
   rescue ActiveRecord::RecordInvalid => e

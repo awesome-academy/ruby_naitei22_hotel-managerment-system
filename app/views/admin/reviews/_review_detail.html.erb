@@ -1,0 +1,59 @@
+<div class="info-card">
+    <h3><%= t(".title") %></h3>
+
+    <div class="info-item">
+        <strong><%= t(".review_id") %></strong>
+        <%= review.id %>
+    </div>
+
+    <div class="info-item">
+        <strong><%= t(".customer") %>:</strong> 
+        <%= review.user.name %>
+    </div>
+
+    <div class="info-item">
+        <strong><%= t(".email") %></strong> 
+        <%= review.user.email %>
+    </div>
+
+    <div class="info-item">
+        <strong><%= t(".rating") %>:</strong>
+        <span class="rating-stars">
+            <% review.rating.times do %>
+                <span class="star">⭐</span>
+            <% end %>
+            <% (5 - review.rating).times do %>
+                <span class="star">☆</span>
+            <% end %>
+            (<%= review.rating %>/5)
+        </span> 
+    </div>
+
+    <div class="info-item">
+        <strong><%= t(".status") %>:</strong>
+        <span class="status-badge <%= review.review_status %>">
+            <%= review.review_status %>
+        </span>
+    </div>
+
+    <div class="info-item">
+        <strong><%= t(".created_at") %></strong> 
+        <%= l(review.created_at, format: :long) %>
+    </div>
+    
+    <% if review.approved_by.present? %>
+        <div class="info-item">
+            <strong><%= t(".approved_by") %>:</strong> 
+            <%= review.approved_by.name %>
+        </div>
+    <% end %>
+
+    <% if review.comment.present? %>
+        <div class="info-item">
+            <strong><%= t(".comment") %>:</strong>
+            <div class="comment-content">
+                <%= simple_format(review.comment) %>
+            </div>
+        </div>
+    <% end %>
+</div>

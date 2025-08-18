@@ -38,6 +38,7 @@ en:
         updated_by: "Updated By"
         updated_at: "Updated At"
         total_price: "Total Price"
+        decline_reason: "Decline Reason"
 
       request_detail:
         time: "Time"

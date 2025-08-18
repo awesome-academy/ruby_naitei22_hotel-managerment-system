@@ -1,0 +1,42 @@
+<% provide :title, t(".title") %>
+
+<div class="admin-review-detail">
+    <div class="review-header">
+        <h1><%= t(".header", number: @review.id, booking_code: @review.booking.booking_code) %></h1>
+    </div>
+    <%= render partial: "review_detail", locals: { review: @review } %>
+
+    <div class="requests-section">
+        <h3><strong><%= t(".request_information") %></strong></h3>
+        <div class="request-card">
+          <div class="request-header">
+            <h4><%= t(".booking_id", booking_id: @review.booking.id) %></h4>
+            <%= link_to t(".detail"), admin_booking_request_path(@review.booking.id, @review.request.id) %>
+          </div>
+          <%= render partial: "admin/bookings/request_detail", locals: { request: @review.request } %>
+        </div>
+    </div>
+
+    <div class="actions">
+        <%= link_to t(".back"), admin_reviews_path, class: "btn btn-secondary" %>
+        <div class="status-actions">
+          <% if @review.review_status_pending? %>
+              <%= button_to t(".approve"), 
+                  admin_review_path(@review), 
+                  method: :patch, 
+                  params: { review: { review_status: :approved } }, 
+                  class: "btn btn-success",
+                  title: t(".approve"),
+                  data: { confirm: t(".confirm_approve") } %>
+                  
+              <%= button_to t(".reject"), 
+                  admin_review_path(@review), 
+                  method: :patch, 
+                  params: { review: { review_status: :rejected } }, 
+                  class: "btn btn-danger",
+                  title: t(".reject"),
+                  data: { confirm: t(".confirm_reject") } %>
+          <% end %>
+        </div>
+    </div>
+</div>

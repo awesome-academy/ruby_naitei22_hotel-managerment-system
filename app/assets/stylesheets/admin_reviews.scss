@@ -1,0 +1,25 @@
+.admin-reviews {
+  .table-container {
+    .status-badge {
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 550;
+      border-radius: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      &.pending {
+        background: #fff3cd;
+        color: #856404;
+      }
+      &.approved {
+        background: #d4edda;
+        color: #155724;
+      }
+      &.rejected {
+        background: #f5c6cb;
+        color: #a71d2a;
+      }
+    }
+  }
+}

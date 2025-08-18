@@ -339,8 +339,8 @@ NEW_BOOKINGS.times do |i|
 
     check_in_date  = dates.first
     check_out_date = dates.last
-    check_in_dt  = check_in_date.to_datetime.change(hour: 14)
-    check_out_dt = check_out_date.to_datetime.change(hour: 11)
+    check_in_dt  = check_in_date.to_datetime.change(hour: 11)
+    check_out_dt = check_out_date.to_datetime.change(hour: 16)
 
     guests = [[room.capacity, 4].compact.min, 1].max
 
@@ -370,24 +370,76 @@ end
 
 puts "Seed xong: #{Booking.count} bookings, #{Request.count} requests, #{RoomAvailabilityRequest.count} links."
 
-Review.create!(
-  user_id: 1,
-  request_id: 2,
-  rating: 4,
-  comment: "Have present statement leave.",
-  review_status: 1
-)
-Review.create!(
-  user_id: 2,
-  request_id: 2,
-  rating: 4,
-  comment: "Good source clearly economic tend. Century Mrs message yard writer development.",
-  review_status: 1
-)
-Review.create!(
-  user_id: 5,
-  request_id: 3,
-  rating: 4,
-  comment: "Or voice rise Mrs. Home but begin parent pass better account. Hour agent expert budget pass accept positive according.",
-  review_status: 1
-)
+# ===== THÊM GUESTS CHO CÁC REQUEST CHECKED_OUT =====
+checked_out_requests = Request.where(status: Request.statuses[:checked_out])
+
+checked_out_requests.each do |request|
+  # Tạo guests dựa trên number_of_guests của request
+  num_guests = [request.number_of_guests, 1].max
+  
+  num_guests.times do |i|
+    guest_names = [
+      "Nguyen Van A", "Tran Thi B", "Le Van C", "Pham Thi D", "Hoang Van E",
+      "Vu Thi F", "Do Van G", "Ngo Thi H", "Bui Van I", "Dang Thi K"
+    ]
+    
+    provinces = [
+      "Ha Noi", "Ho Chi Minh", "Da Nang", "Hai Phong", "Can Tho",
+      "Binh Duong", "Dong Nai", "Khanh Hoa", "Lam Dong", "Quang Nam"
+    ]
+    
+    identity_types = ["national_id", "passport", "identity_number"]
+    
+    # Tạo số CCCD/passport ngẫu nhiên hợp lệ
+    identity_type = identity_types.sample
+    identity_number = case identity_type
+    when "national_id", "identity_number"
+      # CCCD 12 số
+      "#{rand(100000000000..999999999999)}"
+    when "passport"
+      # Passport format: 1 chữ cái + 7 số
+      "#{('a'..'z').to_a.sample}#{rand(1000000..9999999)}"
+    end
+    
+    Guest.create!(
+      request: request,
+      full_name: "#{guest_names.sample} #{i + 1}",
+      identity_type: identity_type,
+      identity_number: identity_number,
+      identity_issued_date: rand(5.years.ago..1.year.ago).to_date,
+      identity_issued_place: provinces.sample
+    )
+  end
+end
+
+# ===== THÊM REVIEWS CHO CÁC REQUEST CHECKED_OUT =====
+checked_out_requests.each do |request|
+  # Lấy user từ booking của request này
+  user = request.booking.user
+  
+  # Tạo review ngẫu nhiên
+  ratings = [3, 4, 5] # Chỉ tạo review tích cực
+  rating = ratings.sample
+  
+  comments = [
+    "Excellent service and comfortable room #{request.room&.room_number}!",
+    "Great experience staying at room #{request.room&.room_number}. Will come back!",
+    "Very satisfied with the service and cleanliness of room #{request.room&.room_number}.",
+    "Good value for money. Room #{request.room&.room_number} was perfect for our stay.",
+    "Professional staff and well-maintained facilities in room #{request.room&.room_number}.",
+    "Highly recommend this hotel. Room #{request.room&.room_number} exceeded expectations.",
+    "Peaceful and comfortable stay in room #{request.room&.room_number}."
+  ]
+  
+  review_statuses = ["pending", "approved", "approved"] # 2/3 chance approved
+  
+  Review.create!(
+    user: user,
+    request: request,
+    rating: rating,
+    comment: comments.sample,
+    review_status: review_statuses.sample
+  )
+end
+
+puts "Đã thêm #{Guest.count} guests và #{Review.count} reviews cho các request checked_out."

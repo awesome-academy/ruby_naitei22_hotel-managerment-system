@@ -16,35 +16,35 @@
       </li>
 
       <li class="nav-item">
-        <%= link_to admin_room_availabilities_path, class: "nav-link #{'active' if current_page?(admin_room_availabilities_path)}" do %>
+        <%= link_to admin_room_availabilities_path, class: "nav-link #{active_under?("admin/room_availabilities")}" do %>
           <i class="fas fa-bed"></i>
           <%= t(".room_text") %>
         <% end %>
       </li>
 
       <li class="nav-item">
-        <%= link_to admin_room_types_path, class: "nav-link #{'active' if current_page?(admin_room_types_path)}" do %>
+        <%= link_to admin_room_types_path, class: "nav-link #{active_under?("admin/room_types")}" do %>
           <i class="fas fa-hotel"></i>
           <%= t(".room_type_text") %>
         <% end %>
       </li>
 
       <li class="nav-item">
-        <%= link_to admin_amenities_path, class: "nav-link #{'active' if current_page?(admin_amenities_path)}" do %>
+        <%= link_to admin_amenities_path, class: "nav-link #{active_under?("admin/amenities")}" do %>
           <i class="fas fa-concierge-bell"></i>
           <%= t(".amenity_text") %>
         <% end %>
       </li>
 
       <li class="nav-item">
-        <%= link_to admin_bookings_path, class: "nav-link #{'active' if current_page?(admin_bookings_path)}" do %>
+        <%= link_to admin_bookings_path, class: "nav-link #{active_under?("admin/bookings")}" do %>
           <i class="fas fa-calendar-check"></i>
           <%= t(".booking_text") %>
         <% end %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
+        <%= link_to admin_reviews_path, class: "nav-link #{active_under?("admin/reviews")}" do %>
           <i class="fas fa-star"></i>
           <%= t(".review_text") %>
         <% end %>

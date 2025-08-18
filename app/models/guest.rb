@@ -57,7 +57,7 @@ class Guest < ApplicationRecord
     return unless images.attached?
 
     images.each do |image|
-      next if image.content_type.in?(Settings.default.microposts.type_image)
+      next if image.content_type.in?(Settings.default.image_content_types)
 
       errors.add(:images, :invalid_format)
     end

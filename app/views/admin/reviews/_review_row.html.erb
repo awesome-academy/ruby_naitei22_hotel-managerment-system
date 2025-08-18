@@ -1,0 +1,19 @@
+<tr>
+  <td><%= pagy.from + review_counter %></td>
+  <td><code><%= review.booking.booking_code %></code></td>
+  <td><%= review.user.name %></td>
+  <td><%= review.room.room_number %></td>
+  <td><%= review.rating %></td>
+  <td>
+    <span class="status-badge <%= review.review_status %>">
+      <%= review.review_status.humanize %>
+    </span>
+  </td>
+  <td><%= review.approved_by&.name || Review::NA %></td>
+  <td><%= l(review.created_at, format: :short) %></td>
+  <td>
+    <%= link_to admin_review_path(review), class: "btn btn-sm btn-outline-primary", title: t(".detail_button") do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  </td>
+</tr>

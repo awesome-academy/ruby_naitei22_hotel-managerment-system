@@ -40,6 +40,13 @@
     <%= l(booking.updated_at, format: :long) %>
   </div>
 
+  <% if booking.decline_reason.present? %>
+    <div class="info-item">
+      <strong><%= t(".decline_reason") %>:</strong>
+      <%= booking.decline_reason %>
+    </div>
+  <% end %>
+
   <div class="info-item total-price">
     <strong><%= t(".total_price") %>:</strong>
     <span class="price-amount">

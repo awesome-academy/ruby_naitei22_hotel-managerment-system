@@ -68,6 +68,15 @@ class Booking < ApplicationRecord
   def all_requests_checked_out?
     requests.all? {|req| req.status == Request::CHECKED_OUT_STATUS}
   end
+
+  def send_confirmation_email
+    BookingMailer.booking_confirmation(self).deliver_later
+  end
+
+  def send_decline_email
+    BookingMailer.booking_decline(self).deliver_later
+  end
+
   private
 
   def cascade_requests_on_confirm

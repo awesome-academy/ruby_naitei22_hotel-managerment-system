@@ -1,0 +1,65 @@
+en:
+  admin:
+    reviews:
+      not_found: "Review not found"
+      index:
+        title: "Reviews"
+        header: "List of Reviews (%{count})"
+        pagy_info: "Showing %{from} to %{to} of %{count} reviews"
+        no_results: "No reviews found"
+
+      table_reviews:
+        stt: "No."
+        user_name: "User Name"
+        booking_code: "Booking Code"
+        room_number: "Room Number"
+        created_at: "Created At"
+        rating: "Rating"
+        status: "Status"
+        changed_by: "Changed By"
+
+      form_search_review:
+        user_name: "User Name"
+        placeholder_user_name: "Enter user name"
+        booking_code: "Booking Code"
+        placeholder_booking_code: "Enter booking code"
+        room_number: "Room Number"
+        placeholder_room_number: "Enter room number"
+        status: "Status"
+        rating: "Rating"
+        search_button: "Search"
+        reset_button: "Reset"
+        all: "All"
+        pending: "Pending"
+        approved: "Approved"
+        rejected: "Rejected"
+      
+      review_row:
+        detail_button: "View Details"
+      
+      show:
+        title: "Review Details"
+        header: "Review Details for Review #%{number} - Booking #%{booking_code}"
+        request_information: "Request Information"
+        booking_id: "Booking ID %{booking_id}"
+        detail: "Details"
+        back: "Back"
+        approve: "Approve"
+        reject: "Reject"
+        confirm_approve: "Are you sure you want to approve this review?"
+        confirm_reject: "Are you sure you want to reject this review?"
+
+      review_detail:
+        title: "Review Details"
+        review_id: "Review ID:"
+        customer: "Customer"
+        email: "Email:"
+        rating: "Rating"
+        status: "Status"
+        created_at: "Created at:"
+        approved_by: "Approved by"
+        comment: "Comment"
+
+      update:
+        success: "Review updated successfully"
+        error: "Failed to update review"
