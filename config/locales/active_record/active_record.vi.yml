@@ -1,0 +1,60 @@
+vi:
+  activerecord:
+    models:
+      user: "Người dùng"
+      room: "Phòng"
+      room_type: "Loại phòng"
+
+    attributes:
+      user:
+        name: "Họ và tên"
+        email: "Email"
+
+      room:
+        room_number: "Số phòng"
+        room_type: "Loại phòng"
+        capacity: "Số người"
+        description: "Mô tả"
+        price_from_date: "Từ ngày"
+        price_to_date: "Đến ngày"
+        price: "Giá"
+
+      room_type:
+        name: "Tên loại phòng"
+        description: "Mô tả loại phòng"
+
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "Vui lòng nhập họ và tên"
+            email:
+              taken: "Email này đã được đăng ký"
+            date_of_birth:
+              invalid_range: "phải nằm trong vòng 100 năm trở lại đây"
+
+        room:
+          attributes:
+            base:
+              failed_to_upsert_prices: "Không thể cập nhật giá phòng"
+            price_from_date:
+              in_past: "phải là ngày hôm nay hoặc trong tương lai"
+            price_to_date:
+              in_past: "phải là ngày hôm nay hoặc trong tương lai"
+              before_start_date: "phải sau ngày bắt đầu"
+
+        request:
+          attributes:
+            check_out:
+              check_in_before_check_out: "phải sau ngày nhận phòng"
+            check_in:
+              future: "phải ở tương lai"
+
+  errors:
+    messages:
+      blank: "không được để trống"
+      invalid: "không hợp lệ"
+      taken: "đã được sử dụng"
+      too_long: "quá dài (tối đa %{count} ký tự)"
+      too_short: "quá ngắn (tối thiểu %{count} ký tự)"

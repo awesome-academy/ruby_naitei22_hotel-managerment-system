@@ -1,0 +1,73 @@
+.admin-amenities {
+  .amenities-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .table-container {
+    .amenity-name {
+      font-weight: 550;
+      color: #343a40;
+    }
+  }
+}
+
+.admin-amenity-form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 32px 28px;
+  max-width: 500px;
+  margin: 0 auto 32px auto;
+
+  label {
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 8px;
+    font-size: 15px;
+    display: block;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #f8f9fa;
+
+    &:focus {
+      outline: none;
+      border-color: #6c63ff;
+      box-shadow: 0 0 0 0.2rem rgba(108,99,255,0.10);
+      background: #fff;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .btn {
+    padding: 12px 28px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    color: #fff;
+    margin-top: 8px;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(108,99,255,0.18);
+      transform: translateY(-1px);
+    }
+  }
+}

@@ -1,0 +1,55 @@
+en:
+  admin:
+    amenities:
+      load_amenity:
+        not_found: "Amenity not found."
+
+      new:
+        title: "Add Amenity"
+        submit: "Create Amenity"
+
+      create:
+        success_message: "Amenity was successfully created."
+        error_message: "Failed to create amenity. Please check the form."
+
+      index:
+        title: Amenities
+        list_title: "Amenities List (%{count})"
+        new: New Amenity
+        name_placeholder: Search amenity name
+        description_placeholder: Search amenity description
+        id: ID
+        name: Amenity
+        description: Description
+        number_of_rooms: Number of Rooms
+        updated_at: Updated At
+        action: Action
+        edit: Edit
+        delete: Delete
+        confirm_delete: Are you sure?
+        search_button: Search
+        detail_button: View Details
+        reset_button: Reset
+        pagy_info: "Showing %{from} to %{to} of %{count} amenities"
+        no_results: "No amenities found"
+
+      edit:
+        title: "Edit Amenity"
+        submit: "Submit Changes"
+
+      update:
+        success_message: "Amenity was successfully updated."
+        error_message: "Failed to update amenity. Please check the form."
+
+      destroy:
+        success_message: "Amenity was successfully deleted."
+        error_message: "Failed to delete amenity. Please try again."
+
+      form:
+        name: "Name"
+        description: "Description"
+
+      amenity:
+        edit: "Edit"
+        delete: "Delete"
+        confirm_delete: "Are you sure you want to delete this amenity?"

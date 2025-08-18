@@ -21,7 +21,7 @@ class Admin::RoomTypesController < Admin::BaseController
   def create
     @room_type = RoomType.new(room_type_params)
     if @room_type.save
-      handle_sucessful_creation
+      handle_successful_creation
     else
       handle_failed_creation
     end
@@ -44,7 +44,7 @@ class Admin::RoomTypesController < Admin::BaseController
     if @room_type.destroy
       flash[:success] = t(".success_message")
     else
-      flash[:error] = t(".error_message")
+      flash[:danger] = t(".error_message")
     end
     redirect_to admin_room_types_path
   end
@@ -59,18 +59,18 @@ class Admin::RoomTypesController < Admin::BaseController
     @room_type = RoomType.find_by(id: params[:id])
     return if @room_type
 
-    flash[:warning] = t("admin.room_types.load_room_type.not_found")
+    flash[:danger] = t("admin.room_types.load_room_type.not_found")
     redirect_to admin_room_types_path
   end
 
-  def handle_sucessful_creation
+  def handle_successful_creation
     flash[:success] = t(".success_message")
     redirect_to admin_room_types_path
   end
 
   def handle_failed_creation
-    flash.now[:error] = t(".error_message")
-    render :new
+    flash.now[:danger] = t(".error_message")
+    render :new, status: :unprocessable_entity
   end
 
   def handle_successful_update
@@ -79,7 +79,7 @@ class Admin::RoomTypesController < Admin::BaseController
   end
 
   def handle_failed_update
-    flash.now[:error] = t(".error_message")
-    render :edit
+    flash.now[:danger] = t(".error_message")
+    render :edit, status: :unprocessable_entity
   end
 end

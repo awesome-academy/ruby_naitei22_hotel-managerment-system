@@ -2,8 +2,7 @@
   <div class="bootstrap-scope">
     <div id="error_explanation">
       <div class="alert alert-danger">
-        <%= t("the_form_contains") %>
-        <%= pluralize(object.errors.count, "error") %>.
+        <%= t("errors.template.header", count: object.errors.count) %>
       </div>
       <ul>
         <% object.errors.full_messages.each do |msg| %>
