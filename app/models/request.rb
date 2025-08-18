@@ -9,7 +9,7 @@ class Request < ApplicationRecord
     note
   ).freeze
 
-  has_many :review, dependent: :destroy
+  has_one :review, dependent: :destroy
   has_many :room_availability_requests, dependent: :destroy
   has_many :room_availabilities, through: :room_availability_requests
   has_many :guests, dependent: :destroy
@@ -52,6 +52,14 @@ class Request < ApplicationRecord
     return nil if availabilities.empty?
 
     availabilities.sum(:price)
+  end
+
+  def self.ransackable_attributes _auth_object = nil
+    %w()
+  end
+
+  def self.ransackable_associations _auth_object = nil
+    %w(booking room)
   end
 
   private

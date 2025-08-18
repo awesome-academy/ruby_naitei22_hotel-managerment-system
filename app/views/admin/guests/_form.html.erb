@@ -41,7 +41,7 @@
     <%= f.label :images, t(".images_label") %>
     <%= f.file_field :images,
                      multiple: true,
-                     accept: Settings.default.microposts.format_image,
+                     accept: Settings.default.image_accept_format,
                      class: "form-control-file" %>
     <small class="form-text text-muted">
       <%= t(".images_help_text") %>

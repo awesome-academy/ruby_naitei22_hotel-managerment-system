@@ -38,6 +38,7 @@ vi:
         updated_by: "Cập nhật bởi"
         updated_at: "Ngày cập nhật"
         total_price: "Tổng tiền"
+        decline_reason: "Lý do từ chối"
 
       request_detail:
         time: "Thời gian"

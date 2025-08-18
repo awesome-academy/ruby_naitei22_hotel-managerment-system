@@ -1,0 +1,16 @@
+en:
+  booking_mailer:
+    booking_confirmation:
+      subject: "Booking Confirmation"
+      intro: "Your booking has been confirmed with code: %{code}"
+      status: "Booking Status: %{code}"
+      created_at: "Booking Date: %{code}"
+      description: "Thank you for choosing our hotel. We look forward to welcoming you!"
+      footer: "If you have any questions, please contact us at our reception."
+    booking_decline:
+      subject: "Booking Declined"
+      intro: "We regret to inform you that your booking with code: %{code} has been declined"
+      status: "Booking Status: %{code}"
+      created_at: "Booking Date: %{code}"
+      description: "Reason for decline: %{code}"
+      footer: "We apologize for the inconvenience. Please feel free to make another booking or contact us for assistance."

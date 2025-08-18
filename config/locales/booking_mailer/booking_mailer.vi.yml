@@ -1,0 +1,16 @@
+vi:
+  booking_mailer:
+    booking_confirmation:
+      subject: "Xác nhận Đặt phòng"
+      intro: "Đặt phòng của bạn đã được xác nhận với mã: %{code}"
+      status: "Trạng thái đặt phòng: %{code}"
+      created_at: "Ngày đặt phòng: %{code}"
+      description: "Cảm ơn bạn đã chọn khách sạn của chúng tôi. Chúng tôi mong được chào đón bạn!"
+      footer: "Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi tại lễ tân."
+    booking_decline:
+      subject: "Từ chối Đặt phòng"
+      intro: "Chúng tôi rất tiếc phải thông báo rằng đặt phòng với mã: %{code} của bạn đã bị từ chối"
+      status: "Trạng thái đặt phòng: %{code}"
+      created_at: "Ngày đặt phòng: %{code}"
+      description: "Lý do từ chối: %{code}"
+      footer: "Chúng tôi xin lỗi vì sự bất tiện này. Vui lòng đặt phòng khác hoặc liên hệ với chúng tôi để được hỗ trợ."

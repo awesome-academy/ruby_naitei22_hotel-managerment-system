@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       end
       resources :amenities, only: %i(index new edit create update destroy)
       resources :users, only: %i(index show)
+      resources :reviews, only: %i(index show update)
     end
     
     # Phòng

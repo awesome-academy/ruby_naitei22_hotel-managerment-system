@@ -1,0 +1,10 @@
+<%= t("app") %>
+
+<%= t("user_mailer.account_activation.greeting") %> <%= @user.name %>.
+
+<%= t("user_mailer.account_activation.welcome") %>
+<%= t(".intro", code: @booking.booking_code) %>
+<%= t(".status", code: @booking.status) %>
+<%= t(".created_at", code: l(@booking.created_at, format: :long)) %>
+<%= t(".description", code: @booking.decline_reason) %>
+<%= t(".footer") %>
