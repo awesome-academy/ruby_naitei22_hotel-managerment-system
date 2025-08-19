@@ -20,7 +20,7 @@
           <% @reviews.each do |review| %>
             <tr>
               <td><%= review.booking.id %></td>
-              <td><strong><%= review.room_type.name %></strong></td>
+              <td><strong><%= review.room.room_number %></strong></td>
               <td class="rating">
                 <% review.rating.times do %>
                   <i class="fa-solid fa-star text-warning"></i>
