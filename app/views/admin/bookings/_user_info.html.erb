@@ -1,18 +1,18 @@
 <div class="info-card">
     <h3><%= t(".title") %></h3>
     <div class="info-item">
-        <strong><%= t(".name") %>:</strong> 
+        <strong><%= t(".name") %>:</strong>
         <%= booking.user.name %>
     </div>
     <div class="info-item">
-        <strong><%= t(".email") %>:</strong> 
+        <strong><%= t(".email") %>:</strong>
         <%= booking.user.email %>
     </div>
     <div class="info-item">
-        <strong><%= t(".phone") %>:</strong> 
+        <strong><%= t(".phone") %>:</strong>
         <%= booking.user.phone %>
     </div>
     <div class="info-item-last">
-        <strong><%= link_to t(".detail"), "#" %></strong> 
+        <strong><%= link_to t(".detail"), admin_user_path(booking.user) %></strong>
     </div>
 </div>

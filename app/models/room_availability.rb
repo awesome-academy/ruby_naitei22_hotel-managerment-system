@@ -1,4 +1,13 @@
 class RoomAvailability < ApplicationRecord
+  ROOM_AVAILABILITY_PARAMS = %i(
+    available_date is_available room_id
+  ).freeze
+
+  validates :available_date, presence: true
+  validates :room_id, presence: true
+  validates :available_date, uniqueness: {scope: :room_id}
+  validates :is_available, inclusion: {in: [true, false]}
+
   belongs_to :room
   has_one :room_type, through: :room
 

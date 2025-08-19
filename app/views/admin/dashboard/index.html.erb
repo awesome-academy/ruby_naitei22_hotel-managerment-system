@@ -31,27 +31,37 @@
   <div class="quick-actions">
     <h3><%= t(".actions_text") %></h3>
     <div class="actions-grid">
-      <%= link_to "#", class: "action-btn" do %>
-        <i class="fas fa-calendar-check"></i>
-        <span><%= t(".booking_management") %></span>
-      <% end %>
-
-      <%= link_to "#", class: "action-btn" do %>
-        <i class="fas fa-bed"></i>
-        <span><%= t(".room_management") %></span>
-      <% end %>
-
-      <%= link_to "#", class: "action-btn" do %>
-        <i class="fas fa-hotel"></i>
-        <span><%= t(".room_type_management") %></span>
-      <% end %>
-
-      <%= link_to "#", class: "action-btn" do %>
+      <%= link_to admin_users_path, class: "action-btn" do %>
         <i class="fas fa-users"></i>
         <span><%= t(".user_management") %></span>
       <% end %>
 
-      <%= link_to "#", class: "action-btn" do %>
+      <%= link_to admin_rooms_path, class: "action-btn" do %>
+        <i class="fas fa-bed"></i>
+        <span><%= t(".room_management") %></span>
+      <% end %>
+
+      <%= link_to admin_room_availabilities_path, class: "action-btn" do %>
+        <i class="fas fa-bed"></i>
+        <span><%= t(".room_availability_management") %></span>
+      <% end %>
+
+      <%= link_to admin_room_types_path, class: "action-btn" do %>
+        <i class="fas fa-hotel"></i>
+        <span><%= t(".room_type_management") %></span>
+      <% end %>
+
+      <%= link_to admin_amenities_path, class: "action-btn" do %>
+        <i class="fas fa-concierge-bell"></i>
+        <span><%= t(".amenity_management") %></span>
+      <% end %>
+
+      <%= link_to admin_bookings_path, class: "action-btn" do %>
+        <i class="fas fa-calendar-check"></i>
+        <span><%= t(".booking_management") %></span>
+      <% end %>
+
+      <%= link_to admin_reviews_path, class: "action-btn" do %>
         <i class="fas fa-star"></i>
         <span><%= t(".review_management") %></span>
       <% end %>

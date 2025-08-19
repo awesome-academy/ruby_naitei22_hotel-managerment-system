@@ -3,6 +3,14 @@ class Admin::RoomsController < Admin::BaseController
   before_action :load_room_types_and_amenities, only: %i(new edit create update)
   before_action :set_default_date_filter, only: %i(show)
 
+  # GET /admin/rooms
+  def index
+    @q = Room.includes(:room_type).ransack(params[:q])
+    scope = @q.result(distinct: true)
+    @pagy, @rooms = pagy(scope, items: Settings.default.digit_10,
+                              limit: Settings.default.digit_10)
+  end
+
   # GET /admin/rooms/new
   def new
     @room = Room.new
@@ -45,7 +53,7 @@ class Admin::RoomsController < Admin::BaseController
     else
       flash[:danger] = t(".failure")
     end
-    redirect_to admin_room_availabilities_path
+    redirect_to admin_rooms_path
   end
 
   # DELETE /admin/rooms/:id/remove_image
@@ -71,7 +79,7 @@ class Admin::RoomsController < Admin::BaseController
     return if @room
 
     flash[:danger] = t("admin.rooms.load_room.not_found")
-    redirect_to admin_room_availabilities_path
+    redirect_to admin_rooms_path
   end
 
   def set_default_date_filter
@@ -83,7 +91,7 @@ class Admin::RoomsController < Admin::BaseController
 
   def handle_successful_creation
     flash[:success] = t(".success")
-    redirect_to admin_room_availabilities_path
+    redirect_to admin_room_path(@room)
   end
 
   def handle_failed_creation
@@ -93,7 +101,7 @@ class Admin::RoomsController < Admin::BaseController
 
   def handle_successful_update
     flash[:success] = t(".success")
-    redirect_to admin_room_availabilities_path
+    redirect_to admin_room_path(@room)
   end
 
   def handle_failed_update

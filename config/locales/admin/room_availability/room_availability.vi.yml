@@ -2,17 +2,16 @@ vi:
   admin:
     room_availabilities:
       index:
-        title: "Phòng"
-        list_title: "Danh sách phòng (%{count})"
-        new_room: "Tạo phòng"
+        title: "Tình trạng phòng"
+        list_title: "Danh sách tình trạng phòng (%{count})"
         index: "STT"
         room_number: "Số phòng"
         room_type: "Loại phòng"
-        capacity: "Sức chứa"
+        capacity: "Số người"
         status: "Trạng thái"
         price: "Giá"
         available_date: "Ngày"
-        pagy_info: "Hiển thị %{from} đến %{to} trên tổng %{count} phòng"
+        pagy_info: "Hiển thị %{from} đến %{to} trên tổng %{count} tình trạng phòng"
         no_results: "Không có kết quả"
 
       form_search_room:
@@ -20,17 +19,28 @@ vi:
         room_number_placeholder: "Nhập số phòng..."
         room_type_name: "Tên loại phòng"
         room_type_name_placeholder: "Nhập tên loại phòng..."
-        available_date: "Ngày"
+        from: "Từ ngày"
+        to: "Đến ngày"
         status: "Trạng thái"
         search_button: "Tìm kiếm"
         reset_button: "Làm mới"
 
       room_availability:
         status_available: "Có thể đặt"
-        status_unavailable: "Đã được đặt"
+        status_unavailable: "Không thể đặt"
         view: "Xem"
 
       filter:
         all: "Tất cả"
         available: "Có thể đặt"
-        unavailable: "Đã được đặt"
+        unavailable: "Không thể đặt"
+
+      edit:
+        title: "Phòng %{room_number} ngày %{available_date}"
+        status: "Trạng thái"
+        price: "Giá"
+        submit: "Cập nhật"
+
+      update:
+        success: "Cập nhật tình trạng phòng thành công."
+        failure: "Cập nhật tình trạng phòng thất bại."

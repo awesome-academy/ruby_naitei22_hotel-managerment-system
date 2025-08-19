@@ -16,16 +16,12 @@
   <td><%= l(room_availability.available_date, format: :short) %></td>
   <td>
     <div class="d-flex gap-1">
-      <!-- Edit Room -->
-      <%= link_to edit_admin_room_path(room_availability.room_id),
-                  class: "btn btn-sm btn-outline-primary" do %>
-        <i class="fas fa-edit"></i>
-      <% end %>
-
-      <!-- View Room -->
-      <%= link_to admin_room_path(room_availability.room_id),
-                  class: "btn btn-sm btn-outline-info" do %>
-        <i class="fas fa-search"></i>
+      <% if room_availability.is_available == true %>
+        <!-- Edit Room -->
+        <%= link_to edit_admin_room_availability_path(room_availability),
+                    class: "btn btn-sm btn-outline-primary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
       <% end %>
     </div>
   </td>
