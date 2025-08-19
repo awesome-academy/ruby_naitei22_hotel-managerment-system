@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_user, only: %i(edit show update)
-
-  # GET /users
-  def index
-    @users = User.recent
-  end
-
   # GET /users/:id
   def show
     @reviews = @user.reviews.includes(request: :booking)
@@ -28,14 +21,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find_by id: params[:id]
-    return if @user
-
-    flash[:warning] = t("users.not_found")
-    redirect_to root_path
-  end
 
   def user_params
     params.require(:user).permit(User::USER_PERMIT)

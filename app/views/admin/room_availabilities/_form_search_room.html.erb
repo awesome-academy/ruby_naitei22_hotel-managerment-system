@@ -11,7 +11,10 @@
       <!-- Search by room_type_name -->
       <div class="search-field">
         <%= f.label :room_type_name_cont, t(".room_type_name"), class: "form-label" %>
-        <%= f.search_field :room_type_name_cont, class: "form-control", placeholder: t(".room_type_name_placeholder") %>
+        <%= f.select :room_type_name_eq,
+             options_for_select(room_type_options, params.dig(:q, :room_type_name_eq)),
+             { include_blank: t(".room_type_name") },
+             class: "form-select" %>
       </div>
 
       <!-- Search by available_date -->

@@ -12,7 +12,7 @@ class Ability
     can :read, RoomType
     can :read, RoomAvailability
 
-    if @user.persisted?
+    if @user.role_user?
       user_role_user
       user_role_booking
       user_role_request

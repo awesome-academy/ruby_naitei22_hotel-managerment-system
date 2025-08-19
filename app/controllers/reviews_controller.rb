@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
 
   load_and_authorize_resource :user
 
+  before_action :set_review, only: :destroy
+
   # GET (/:locale)/users/:user_id/reviews(.:format)
   def index
     @reviews = @user.reviews
@@ -22,13 +24,20 @@ class ReviewsController < ApplicationController
 
   # DELETE (/:locale)/users/:user_id/reviews/:id(.:format)
   def destroy
-    flash[@review&.destroy ? :success : :error] =
-      t(@review ? ".success" : ".error")
+    if @review&.destroy
+      flash[:success] = t(".success")
+    else
+      flash[:error] = t(".error")
+    end
 
     redirect_to after_destroy_path
   end
 
   private
+
+  def set_review
+    @review = @user.reviews.find_by(id: params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:rating, :comment, :request_id,

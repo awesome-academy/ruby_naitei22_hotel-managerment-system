@@ -13,10 +13,6 @@
         <%= f.label :phone_cont, t(".phone"), class: "form-label" %>
         <%= f.search_field :phone_cont, class: "form-control", placeholder: t(".phone_placeholder") %>
       </div>
-      <div class="search-field">
-        <%= f.label :activated_eq, t(".status"), class: "form-label" %>
-        <%= f.select :activated_eq, options_for_select(user_status_filter_options, params.dig(:q, :activated_eq)), {}, {class: "form-select"} %>
-      </div>
       <div class="search-actions">
         <%= f.submit t(".search_button"), class: "btn btn-primary" %>
         <%= link_to t(".reset_button"), admin_users_path, class: "btn btn-secondary" %>

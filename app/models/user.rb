@@ -92,7 +92,7 @@ format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   end
 
   def self.ransackable_attributes _auth_object = nil
-    %w(name email phone activated)
+    %w(name email phone)
   end
 
   private

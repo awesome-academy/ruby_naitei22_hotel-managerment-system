@@ -62,7 +62,7 @@ class Room < ApplicationRecord
   end
 
   def self.ransackable_attributes _auth_object = nil
-    %w(room_number)
+    %w(room_number created_at)
   end
 
   def self.ransackable_associations _auth_object = nil
