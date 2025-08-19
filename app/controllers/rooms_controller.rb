@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
                     .where(review_status: :approved)
                     .distinct
     @available_dates = @room.available_dates
+    authorize! :read, @room
   end
 
   # GET (/:locale)/rooms/:id/calculate_price(.:format)
