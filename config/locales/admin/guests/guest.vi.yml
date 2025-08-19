@@ -1,6 +1,7 @@
 vi:
   admin:
     guests:
+      request_not_checked_in: "Yêu cầu chưa được check in"
       new:
         title: "Thêm Khách Mới"
         header: "Thông tin Khách Mới"
