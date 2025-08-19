@@ -1,5 +1,6 @@
 en:
   bookings:
+    not_found: "Booking not found!"
     requests:
       success: "Add request successfully!"
     card:
@@ -18,3 +19,6 @@ en:
       need_login: "Log in to reserve."
       already_booked: "Already booked this room!"
       current_booking: "See your current booking."
+    destroy:
+      success: "Booking deleted!"
+      failure: "Cannot delete booking!"

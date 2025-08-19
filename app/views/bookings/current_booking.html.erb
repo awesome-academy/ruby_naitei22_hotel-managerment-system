@@ -1,0 +1,47 @@
+<% provide :title, t("current_booking.title") %>
+
+<div class="bootstrap-scope">
+
+<div class="bookings-list">
+  <div class="custom-modal-content">
+      <h2><%= t("current_booking.title") %></h2>
+      <div class="modal-body">
+      <% if @current_booking.requests.any? %>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th data-column="request-id" ><%= t("current_booking.request_id") %></th>
+              <th data-column="room-name" ><%= t("current_booking.room_name") %></th>
+              <th data-column="room-type" ><%= t("current_booking.room_type") %></th>
+              <th data-column="guests" ><%= t("current_booking.guests") %></th>
+              <th data-column="price" ><%= t("current_booking.price") %></th>
+              <th data-column="check-in" ><%= t("current_booking.check_in") %></th>
+              <th data-column="check-out" ><%= t("current_booking.check_out") %></th>
+              <th data-column="note"><%= t("current_booking.note") %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @current_booking.requests.each_with_index do |req, index| %>
+              <%= render "current_booking_data", req: req, index: index %>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h3 class="text-center text-muted"><%= t("current_booking.no_request") %></h3><br>
+      <% end %>
+      <div class="text-center">
+        <%= link_to t("current_booking.add"), rooms_path, method: :patch, class: "btn btn-success btn-lg" %>
+        <% if @current_booking.requests.any? %>
+          <%= link_to t("current_booking.confirm.btn"), confirm_booking_booking_path(@current_booking),
+            data: { "turbo_method": :patch, turbo_confirm: t("current_booking.confirm.noti") },
+            class: "btn btn-primary btn-lg" %>
+          <%= link_to t("current_booking.delete"), @current_booking,
+                        data: { "turbo-method": :delete, turbo_confirm: t("requests.destroy.confirm") },
+                        class: "btn btn-danger btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

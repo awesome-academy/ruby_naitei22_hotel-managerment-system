@@ -13,7 +13,10 @@
         <h3 class="room-name"><%= room.room_number %></h3>
         
         <div class="room-price">
-          <span class="price-amount">$<%= room.room_type.price %></span>
+          <% today_availability = room.room_availabilities.to_a.find { |ra| ra.available_date == Date.current } %>
+          <span class="price-amount">
+            $<%= today_availability&.price || t("n_a") %>
+          </span>
           <span class="price-period"><%= t("rooms.prices.price_night") %></span>
         </div>
       </div>

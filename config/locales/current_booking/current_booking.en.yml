@@ -1,0 +1,21 @@
+en:
+  current_booking:
+    title: "Your current booking"
+    booking_id: "Booking ID"
+    request_id: "ID"
+    room_name: "Room"
+    room_type: "Room's type"
+    guests: "Number of guests"
+    price: "Price"
+    check_in: "Check-in"
+    check_out: "Check-out"
+    status: "Status"
+    no_request: "You don't have any booking at the moment. Please reserve a room."
+    add: "Add Reserve"
+    delete: "Delete"
+    confirm:
+      btn: "Reserve"
+      noti: "Reserve all rooms above?"
+      success: "Reserve successfully!"
+      failure: "Cannot reserve!"
+      overlap_with_rooms: "Cannot confirm booking because these rooms are overlapping with other user: %{rooms}"

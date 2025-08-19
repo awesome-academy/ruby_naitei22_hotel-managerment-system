@@ -2,7 +2,7 @@
   <% if room_already_booked?(@current_booking, @room) %>
       <p>
         <%= t("bookings.card.already_booked") %>
-        <%= link_to t("bookings.card.current_booking"), bookings_path %>
+        <%= link_to t("bookings.card.current_booking"), current_booking_bookings_path %>
       </p>
   <% else %>
     <div class="booking-header">
@@ -29,12 +29,12 @@
             <div class="input-group">
               <%= r.label :check_in, t("bookings.card.check_in"), class: "input-label" %>
               <%= r.date_field :check_in,
-                    id: "check_in_picker",
-                    value: @check_in,
-                    class: "date-input",
-                    placeholder: Settings::placeholder.date_time,
-                    data: { available_dates: @available_dates.to_json, unavailable_message: t("bookings.card.invalid_range") },
-                    required: true %>
+                id: "check_in_picker",
+                value: @check_in,
+                class: "date-input",
+                placeholder: Settings::placeholder.date_time,
+                data: { available_dates: @available_dates.to_json, unavailable_message: t("bookings.card.invalid_range") },
+                required: true %>
             </div>
 
             <div class="input-group">

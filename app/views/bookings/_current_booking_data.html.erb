@@ -1,0 +1,15 @@
+<tr>
+    <td><%= index + 1 %></td>
+    <td><%= req.room.room_number %></td>
+    <td><%= req.room.room_type.name %></td>
+    <td><%= req.number_of_guests %></td>
+    <td><%= number_to_currency(request_total_price(req), unit: "$", delimiter: ".", precision: 0) %></td>
+    <td><%= l(req.check_in, format: :only_date) %></td>
+    <td><%= l(req.check_out, format: :only_date) %></td>
+    <td><%= truncate(req.note, length: 30) %></td>
+    <td>
+        <%= link_to t("current_booking.delete"), req,
+            data: { "turbo-method": :delete, turbo_confirm: t("requests.destroy.confirm") },
+            class: "btn btn-danger btn-sm" %>
+    </td>
+</tr>
