@@ -4,6 +4,8 @@ class RoomType < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
 
+  before_destroy :check_for_rooms
+
   # Associations
   has_many :rooms, dependent: :destroy
 
@@ -13,5 +15,14 @@ class RoomType < ApplicationRecord
 
   def number_of_rooms
     rooms.count
+  end
+
+  private
+
+  def check_for_rooms
+    return unless rooms.exists?
+
+    errors.add(:base, :cannot_delete_with_rooms)
+    throw(:abort)
   end
 end

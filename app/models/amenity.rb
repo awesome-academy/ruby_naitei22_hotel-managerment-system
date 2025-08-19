@@ -7,9 +7,20 @@ class Amenity < ApplicationRecord
   validates :name, presence: true
   validates :description, length: {maximum: 255}, allow_blank: true
 
+  before_destroy :check_for_rooms
+
   class << self
     def ransackable_attributes _auth_object = nil
       %w(name description)
     end
+  end
+
+  private
+
+  def check_for_rooms
+    return unless rooms.exists?
+
+    errors.add(:base, :cannot_delete_with_rooms)
+    throw(:abort)
   end
 end

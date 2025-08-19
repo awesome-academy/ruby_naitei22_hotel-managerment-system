@@ -42,6 +42,7 @@ class Room < ApplicationRecord
   validate :validate_price_dates
 
   after_save :upsert_range_prices
+  before_destroy :check_for_requests
 
   # Associations
   belongs_to :room_type
@@ -178,6 +179,13 @@ class Room < ApplicationRecord
     return unless price_from_date > price_to_date
 
     errors.add(:price_to_date, :before_start_date)
+  end
+
+  def check_for_requests
+    return unless requests.where(status: Request::UNAVAILABLE_STATUSES).exists?
+
+    errors.add(:base, :cannot_delete_with_requests)
+    throw(:abort)
   end
 
   def upsert_range_prices

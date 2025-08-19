@@ -41,7 +41,7 @@ class Admin::AmenitiesController < Admin::BaseController
     if @amenity.destroy
       flash[:success] = t(".success_message")
     else
-      flash[:error] = t(".error_message")
+      flash[:error] = @amenity.errors.full_messages.to_sentence
     end
     redirect_to admin_amenities_path
   end
