@@ -5,10 +5,6 @@
         <%= link_to t("bookings.card.current_booking"), current_booking_bookings_path %>
       </p>
   <% else %>
-    <div class="booking-header">
-      <span class="price">$<%= @room.room_type.price %></span>
-      <span class="price-unit"><%= t("rooms.prices.price_night") %></span>
-    </div>
 
     <% booking = @current_booking || Booking.new %>
     <% request = booking.requests&.find { |r| r.room_id == @room.id } || booking.requests.build(room_id: @room.id) %>

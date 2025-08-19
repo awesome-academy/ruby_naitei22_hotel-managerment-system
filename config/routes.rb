@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   scope "(:locale)", locale: /en|vi/ do
     # Trang chủ
     root to: "static_pages#home"
@@ -20,13 +19,30 @@ Rails.application.routes.draw do
     # Kích hoạt tài khoản (Account Activations)
     resources :account_activations, only: :edit
 
-    # Người dùng (Users)
-    resources :users, only: %i(new create show edit)
+    # user and nested resources
+    resources :users, only: %i(new create show edit update) do
+      resources :bookings, only: %i(index) do
+        member do
+          patch :cancel
+        end
+      end
+      resources :requests do
+        member do
+          patch :cancel
+        end
+      end
+      resources :reviews, only: %i(index destroy create)
+      resource :password, only: %i(create edit update)
+    end
+
 
     # Bài viết (Microposts)
     resources :microposts
-
+    
     resources :rooms, only: %i(index show)
+
+    # Reset mật khẩu (Password Resets)
+    resources :password_resets, only: %i(new create edit update)
 
     # Admin routes
     namespace :admin do
@@ -74,6 +90,4 @@ Rails.application.routes.draw do
 
     resources :requests, only: %i(destroy)
   end
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

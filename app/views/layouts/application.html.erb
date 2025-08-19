@@ -29,13 +29,15 @@
   <%= render "layouts/header", new_locale: (I18n.locale == :en ? :vi : :en) %>
 
   <div class="container">
-    <div class="bootstrap-scope">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %> ">
-          <%= message %>
-        </div>
-      <% end %>
-    </div>
+    <% if flash.present? %>
+      <div class="bootstrap-scope">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
     <%= yield %>
   </div>

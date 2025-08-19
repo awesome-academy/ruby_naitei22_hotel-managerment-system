@@ -1,0 +1,61 @@
+<div id="bookingModal-<%= booking.id %>" class="custom-modal hidden">
+  <div class="custom-modal-content">
+    <span class="close-modal" data-modal-id="bookingModal-<%= booking.id %>">&times;</span>
+    <h2><%= t("bookings.requests_modal.title") %></h2>
+    <p><%= t("bookings.index.table.booking_id") %>: <%= booking.booking_code %></p>
+    <div class="modal-body">
+      <% if booking.requests.any? %>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th data-column="request-id" data-order="asc" data-sortable><%= t("bookings.requests_modal.table.request_id") %></th>
+              <th data-column="room-name" data-order="asc" data-sortable><%= t("bookings.requests_modal.table.room_name") %></th>
+              <th data-column="price" data-order="asc" data-sortable><%= t("bookings.requests_modal.table.price") %></th>
+              <th data-column="check-in" data-order="asc" data-sortable><%= t("bookings.requests_modal.table.check_in") %></th>
+              <th data-column="check-out" data-order="asc" data-sortable><%= t("bookings.requests_modal.table.check_out") %></th>
+              <th><%= t("bookings.requests_modal.table.feedback") %></th>
+              <th><%= t("bookings.requests_modal.table.status") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% booking.requests.each do |request| %>
+              <tr>
+                <td><%= request.id %></td>
+                <td><%= request.room.room_number %></td>
+                <td><%= number_to_currency(request_total_price(request), unit: "", delimiter: ".", precision: 0) %></td>
+                <td><%= l(request.check_in, format: :long) %></td>
+                <td><%= l(request.check_out, format: :long) %></td>
+                <td>
+                  <% if request.reviews.exists? %>
+                    <% review = request.reviews.first %>
+                    <button 
+                      type="button" 
+                      class="btn btn-secondary open-review-modal"
+                      data-modal-id="reviewModal-<%= request.id %>"
+                      data-request="<%= request.to_json %>"
+                      data-review="<%= review.to_json %>">
+                      <%= t("bookings.requests_modal.table.sent") %> <i class="fa-solid fa-pen-to-square ms-2"></i>
+                    </button>
+                  <% elsif request.status_checked_out? %>
+                    <button 
+                      type="button" 
+                      class="btn btn-primary open-review-modal"
+                      data-modal-id="reviewModal-<%= request.id %>"
+                      data-request="<%= request.to_json %>">
+                      <%= t("bookings.requests_modal.table.write_review") %>
+                    </button>
+                  <% else %>
+                    <button class="btn btn-secondary" disabled><%= t("bookings.requests_modal.table.write_review") %></button>
+                  <% end %>
+                </td>
+                <td><%= render "shared/status_badge", status: request.status %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="text-muted"><%= t("bookings.requests_modal.no_request") %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

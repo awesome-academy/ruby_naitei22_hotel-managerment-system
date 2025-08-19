@@ -1,0 +1,16 @@
+<% case status.to_sym %>
+<% when :draft %>
+  <span class="status-badge draft"><%= t("shared.status_badge.draft") %></span>
+<% when :pending %>
+  <span class="status-badge pending"><%= t("shared.status_badge.pending") %></span>
+<% when :confirmed %>
+  <span class="status-badge confirmed"><%= t("shared.status_badge.confirmed") %></span>
+<% when :declined %>
+  <span class="status-badge declined"><%= t("shared.status_badge.declined") %></span>
+<% when :cancelled %>
+  <span class="status-badge cancelled"><%= t("shared.status_badge.cancelled") %></span>
+<% when :checked_in %>
+  <span class="status-badge checked-in"><%= t("shared.status_badge.checked_in") %></span>
+<% when :checked_out %>
+  <span class="status-badge checked-out"><%= t("shared.status_badge.checked_out") %></span>
+<% end %>

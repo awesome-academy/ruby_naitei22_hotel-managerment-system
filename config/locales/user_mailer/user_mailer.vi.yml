@@ -8,8 +8,9 @@ vi:
       activate: "Kích hoạt"
     password_reset:
       subject: "Đặt lại mật khẩu"
-      intro: "Để đặt lại mật khẩu, hãy nhấp vào liên kết dưới đây:"
-      link: "Đặt lại mật khẩu"
+      title: "Đặt lại mật khẩu của bạn"
+      greeting_reset_password: "Bạn đã yêu cầu đặt lại mật khẩu."
+      edit_password_reset: "Nhấn vào đây để đặt lại mật khẩu."
       expiration_notice: "Liên kết này sẽ hết hạn sau hai giờ."
-      ignore_notice: "Nếu bạn không yêu cầu đặt lại mật khẩu, 
-                      vui lòng bỏ qua email này và mật khẩu của bạn sẽ không thay đổi."
+      ignore_notice: "Nếu bạn không yêu cầu đặt lại mật khẩu, vui lòng bỏ qua email này."
+      to_reset_password: "Để đặt lại mật khẩu, hãy nhấn vào liên kết bên dưới:"

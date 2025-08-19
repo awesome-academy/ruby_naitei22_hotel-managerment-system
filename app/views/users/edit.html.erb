@@ -1,0 +1,30 @@
+<% content_for :sidebar_title do %>
+  <%= t("users.sidebar.edit_profile") %>
+<% end %>
+
+<div class="account-container">
+  <%= render "shared/account_sidebar" %>
+
+  <div class="account-content">
+    <%= form_with(model: @user, local: true, html: { class: "edit-profile-form" }) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, t("users.form.email") %>
+        <%= f.email_field :email, class: "input-field", disabled: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :name, t("users.form.name") %>
+        <%= f.text_field :name, class: "input-field" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone, t("users.form.phone") %>
+        <%= f.telephone_field :phone, class: "input-field" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit t("users.form.save_changes"), class: "submit-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

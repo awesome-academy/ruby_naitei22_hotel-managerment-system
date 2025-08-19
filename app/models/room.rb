@@ -140,11 +140,11 @@ class Room < ApplicationRecord
   end)
 
   def average_rating
-    reviews.average(:rating)&.round(1) || 0
+    reviews.where(review_status: :approved).average(:rating)&.round(1) || 0
   end
 
   def number_of_rating
-    reviews.distinct.count(:id)
+    reviews.where(review_status: :approved).distinct.count(:id)
   end
 
   def available_dates

@@ -5,3 +5,7 @@ en:
       confirm: "Are you sure to delete this request?"
       success: "Request deleted successfully."
       failure: "Failed to delete request."
+    cancel:
+      success: "Request has been cancelled."
+      alert: "Cannot cancel this request."
+      failure: "Failed to cancel request."

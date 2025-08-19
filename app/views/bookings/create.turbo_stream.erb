@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "reviews_list", partial: "reviews/list", locals: { reviews: @user.reviews } %>
+<%= turbo_stream.replace "review_form", partial: "reviews/form", locals: { user: @user, review: Review.new } %>
+<%= turbo_stream.after "body" do %>
+  <script>
+    bootstrap.Modal.getInstance(document.getElementById("reviewModal-<%= @review.request_id %>")).hide();
+  </script>
+<% end %>

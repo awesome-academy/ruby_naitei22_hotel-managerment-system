@@ -9,13 +9,6 @@ class Request < ApplicationRecord
     note
   ).freeze
 
-  has_one :review, dependent: :destroy
-  has_many :room_availability_requests, dependent: :destroy
-  has_many :room_availabilities, through: :room_availability_requests
-  has_many :guests, dependent: :destroy
-  belongs_to :booking
-  belongs_to :room
-
   after_initialize :set_default_status, if: :new_record?
   after_update :update_room_availability_status
 
@@ -33,6 +26,13 @@ class Request < ApplicationRecord
     checked_in: 5,
     checked_out: 6
   }, _prefix: true
+
+  has_many :reviews, dependent: :destroy
+  has_many :room_availability_requests, dependent: :destroy
+  has_many :room_availabilities, through: :room_availability_requests
+  has_many :guests, dependent: :destroy
+  belongs_to :booking
+  belongs_to :room
 
   validates :check_in, :check_out, presence: true
   validate  :check_in_before_check_out, if: :check_times_changed?

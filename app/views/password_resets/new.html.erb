@@ -1,0 +1,28 @@
+<% provide :title, t(".title") %>
+
+<div class="form-forgot">
+  <div class="container">
+    <h1><%= t(".title") %></h1>
+
+    <div class="form">
+      <%= form_for :password_reset, url: password_resets_path do |f| %>
+
+        <div class="form-group">
+          <%= f.label :email, t(".email") %>
+          <div class="input-wrapper">
+            <i class="fa fa-envelope icon"></i>
+            <%= f.email_field :email, class: "form-control", placeholder: t(".email_placeholder") %>
+          </div>
+        </div>
+
+        <div class="form-group form-action">
+          <%= f.submit t(".submit"), class: "btn btn-submit" %>
+        </div>
+      <% end %>
+
+      <p class="back-login">
+        <%= link_to t(".back_to_login"), login_path %>
+      </p>
+    </div>
+  </div>
+</div>

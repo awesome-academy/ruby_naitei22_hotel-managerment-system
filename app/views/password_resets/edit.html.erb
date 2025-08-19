@@ -1,0 +1,33 @@
+<% provide :title, t(".reset_title") %>
+
+<div class="form-reset">
+  <div class="container">
+    <h1><%= t(".reset_title") %></h1>
+
+    <div class="form">
+      <%= form_for @user, url: password_reset_path(params[:id]) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <%= hidden_field_tag :email, @user.email %>
+        <div class="form-group">
+          <%= f.label :password, t(".new_password") %>
+          <div class="input-wrapper">
+            <i class="fa fa-lock icon"></i>
+            <%= f.password_field :password, class: "form-control", placeholder: t(".password_placeholder") %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, t(".confirm_password") %>
+          <div class="input-wrapper">
+            <i class="fa fa-lock icon"></i>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".confirm_placeholder") %>
+          </div>
+        </div>
+
+        <div class="form-group form-action">
+          <%= f.submit t(".update_btn"), class: "btn btn-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

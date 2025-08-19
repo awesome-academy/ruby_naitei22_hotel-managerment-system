@@ -1,0 +1,69 @@
+.home-page {
+  & .container {
+    margin: 20px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    & .booking-intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      & > p {
+        font-size: 18px;
+        color: #343a40;
+      }
+      & a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background-color: #379ae6;
+      }
+    }
+
+    & .image-thumbnails-container {
+      & .image-thumbnail {
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+
+        & .img-fluid {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          display: block;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); // shadow cho ảnh
+        }
+
+        & > p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          font-size: 36px;
+          white-space: nowrap;
+          z-index: 2; // chữ nằm trên overlay
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.4); // background opacity overlay
+          border-radius: 8px;
+          z-index: 1; // overlay nằm dưới text
+        }
+      }
+    }
+  }
+}

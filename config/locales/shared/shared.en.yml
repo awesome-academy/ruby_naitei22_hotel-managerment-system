@@ -8,3 +8,17 @@ en:
       see_less: "See less"
       all_review: "See all reviews"
       show_all_reviews: "Show all %{count} reviews"
+    account_sidebar:
+      edit_profile: "Edit profile"
+      booking_history: "Booking history"
+      my_reviews: "My reviews"
+      change_password: "Change password"
+      logout: "Log out"
+    status_badge:
+      draft: "New"
+      pending: "Pending"
+      confirmed: "Confirmed"
+      declined: "Declined"
+      cancelled: "Cancelled"
+      checked_in: "Checked In"
+      checked_out: "Checked Out"
