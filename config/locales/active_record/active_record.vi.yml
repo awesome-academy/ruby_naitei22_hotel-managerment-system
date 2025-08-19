@@ -47,11 +47,22 @@ vi:
           attributes:
             base:
               failed_to_upsert_prices: "Không thể cập nhật giá phòng"
+              cannot_delete_with_requests: "Không thể xóa phòng khi phòng đang được đặt"
             price_from_date:
               in_past: "phải là ngày hôm nay hoặc trong tương lai"
             price_to_date:
               in_past: "phải là ngày hôm nay hoặc trong tương lai"
               before_start_date: "phải sau ngày bắt đầu"
+
+        room_type:
+          attributes:
+            base:
+              cannot_delete_with_rooms: "Không thể xóa loại phòng có phòng tồn tại"
+
+        amenity:
+          attributes:
+            base:
+              cannot_delete_with_rooms: "Không thể xóa tiện nghi có phòng tồn tại"
 
         request:
           attributes:
@@ -59,7 +70,7 @@ vi:
               check_in_before_check_out: "phải sau ngày nhận phòng"
             check_in:
               future: "phải ở tương lai"
-        
+
         guest:
           attributes:
             identity_issued_date:

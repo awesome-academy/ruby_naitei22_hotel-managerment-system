@@ -23,7 +23,7 @@ en:
       room_type:
         name: "Room Type"
         description: "Room Type Description"
-      
+
       guest:
         full_name: "Full Name"
         identity_type: "Identity Type"
@@ -47,11 +47,22 @@ en:
           attributes:
             base:
               failed_to_upsert_prices: "Failed to update room prices"
+              cannot_delete_with_requests: "Cannot delete room with existing requests"
             price_from_date:
               in_past: "must be today or in the future"
             price_to_date:
               in_past: "must be today or in the future"
               before_start_date: "must be after the start date"
+
+        room_type:
+          attributes:
+            base:
+              cannot_delete_with_rooms: "Cannot delete room type with existing rooms"
+
+        amenity:
+          attributes:
+            base:
+              cannot_delete_with_rooms: "Cannot delete amenity with existing rooms"
 
         request:
           attributes:
@@ -59,7 +70,7 @@ en:
               check_in_before_check_out: "must be after check-in date"
             check_in:
               future: "must be in the future"
-        
+
         guest:
           attributes:
             identity_issued_date:

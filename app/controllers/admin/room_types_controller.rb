@@ -44,7 +44,7 @@ class Admin::RoomTypesController < Admin::BaseController
     if @room_type.destroy
       flash[:success] = t(".success_message")
     else
-      flash[:danger] = t(".error_message")
+      flash[:danger] = @room_type.errors.full_messages.to_sentence
     end
     redirect_to admin_room_types_path
   end
