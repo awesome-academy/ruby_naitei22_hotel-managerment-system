@@ -5,6 +5,7 @@ vi:
     confirmations:
       confirmed: "Địa chỉ email của bạn đã được xác nhận thành công."
       send_instructions: "Bạn sẽ nhận được email với hướng dẫn cách xác nhận địa chỉ email trong vài phút."
+      re_send: "Gửi lại hướng dẫn kích hoạt"
       send_paranoid_instructions: "Nếu địa chỉ email tồn tại trong hệ thống, bạn sẽ nhận được email với hướng dẫn cách xác nhận trong vài phút."
     failure:
       already_authenticated: "Bạn đã đăng nhập rồi."

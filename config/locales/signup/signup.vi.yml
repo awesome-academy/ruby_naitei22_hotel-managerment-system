@@ -2,3 +2,4 @@ vi:
   signup:
     title: "Đăng ký"
     submit: "Tạo tài khoản"
+    already_account: "Đã có tài khoản?"

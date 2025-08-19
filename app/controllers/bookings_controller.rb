@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!,
-                only: %i(index update current_booking confirm_booking)
+  before_action :authenticate_user!
   before_action :set_current_booking,
                 only: %i(update current_booking confirm_booking)
   before_action :load_current_booking_data, only: %i(current_booking)
@@ -86,7 +85,7 @@ class BookingsController < ApplicationController
                                        :room_availability}
                                      ]
                                    )
-                                   .find_by(id: params[:id])
+                                   .find_by(status: :draft)
     return if @current_booking
 
     flash[:warning] = t("bookings.not_found")
