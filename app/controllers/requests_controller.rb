@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_request, only: %i(destroy cancel)
-  before_action :check_request_status
+  before_action :check_request_status, only: %i(cancel)
 
   # DELETE (/:locale)/requests/:id(.:format)
   def destroy

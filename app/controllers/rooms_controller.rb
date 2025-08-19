@@ -55,7 +55,7 @@ class RoomsController < ApplicationController
   end
 
   def set_current_booking
-    return unless logged_in?
+    return unless user_signed_in?
 
     @current_booking = current_user.bookings.find_or_create_by(status: :draft)
   end
