@@ -1,12 +1,13 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
+
+  load_and_authorize_resource :user
+  load_and_authorize_resource :booking, through: :user, only: %i(index cancel)
+
+  before_action :set_booking, only: %i(destroy)
   before_action :set_current_booking,
                 only: %i(update current_booking confirm_booking)
   before_action :load_current_booking_data, only: %i(current_booking)
-  before_action :load_booking, only: %i(destroy)
-  before_action :set_user, only: %i(index cancel)
-  before_action :set_booking, only: %i(cancel)
-  before_action :load_bookings, only: %i(index)
 
   # GET (/:locale)/bookings(.:format)
   def index; end
@@ -48,7 +49,7 @@ class BookingsController < ApplicationController
     if overlaps.blank?
       assign_booking_code_and_status
       flash[:success] = t("current_booking.confirm.success")
-      redirect_to bookings_path
+      redirect_to user_bookings_path current_user
     else
       redirect_if_overlap(overlaps)
     end
@@ -72,6 +73,15 @@ class BookingsController < ApplicationController
     )
   end
 
+  def set_booking
+    @booking = current_user.bookings.find_by(id: params[:id])
+
+    return if @booking
+
+    flash[:danger] = t("bookings.not_found")
+    redirect_to root_path
+  end
+
   def set_current_booking
     @current_booking = current_user.bookings.find_or_create_by(status: :draft)
   end
@@ -90,14 +100,6 @@ class BookingsController < ApplicationController
 
     flash[:warning] = t("bookings.not_found")
     redirect_to bookings_path
-  end
-
-  def load_booking
-    @booking = current_user.bookings.find_by id: params[:id]
-    return if @booking
-
-    flash[:warning] = t("bookings.not_found")
-    redirect_to root_path
   end
 
   def create_room_availability_requests booking
@@ -150,37 +152,6 @@ class BookingsController < ApplicationController
     end
   rescue StandardError => e
     flash[:danger] = e.message
-  end
-
-  def set_user
-    @user = User.find_by(id: params[:user_id]) || current_user
-    return if @user
-
-    flash[:warning] = t("users.not_found")
-    redirect_to root_path
-  end
-
-  def set_booking
-    @booking = @user.bookings.find_by(id: params[:id])
-    return if @booking
-
-    flash[:warning] = t("bookings.not_found")
-    redirect_to user_bookings_path(@user)
-  end
-
-  def load_bookings
-    @bookings = current_user.bookings
-                            .includes(
-                              requests: [
-                                {room: :room_type},
-                                {room_availability_requests:
-                                :room_availability}
-                              ]
-                            )
-    return if @bookings.exists?
-
-    flash[:warning] = t("bookings.not_found")
-    redirect_to bookings_path
   end
 
   def handle_cancel_booking

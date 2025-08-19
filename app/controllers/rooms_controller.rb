@@ -4,17 +4,19 @@ class RoomsController < ApplicationController
 
   # GET (/:locale)/rooms(.:format)
   def index
-    @pagy, @rooms = pagy(
-      Room.includes(:room_type)
-      .available_on(params[:check_in], params[:check_out])
-      .by_room_type(params[:room_type])
-      .by_price_range(params[:price_range])
-      .sorted(params[:sort_by])
-    )
+    @rooms = Room.accessible_by(current_ability)
+                 .includes(:room_type)
+                 .available_on(params[:check_in], params[:check_out])
+                 .by_room_type(params[:room_type])
+                 .by_price_range(params[:price_range])
+                 .sorted(params[:sort_by])
+    @pagy, @rooms = pagy(@rooms)
   end
 
   # GET (/:locale)/rooms/id
   def show
+    authorize! :read, @room
+
     @amenities = @room.amenities
     @reviews = @room.reviews
                     .includes(:user)
@@ -51,11 +53,11 @@ class RoomsController < ApplicationController
     return if @room
 
     flash[:warning] = t("rooms.not_found")
-    redirect_to root_path
+    redirect_to rooms_path
   end
 
   def set_current_booking
-    return unless user_signed_in?
+    return unless signed_in?
 
     @current_booking = current_user.bookings.find_or_create_by(status: :draft)
   end

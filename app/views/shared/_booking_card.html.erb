@@ -11,7 +11,7 @@
 
     <%= form_with(
           model: booking,
-          url: user_signed_in? ? room_booking_path(@room, booking) : "#",
+          url: signed_in? ? room_booking_path(@room, booking) : "#",
           method: :patch,
           local: true,
           class: "booking-form"
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <% if user_signed_in? %>
+      <% if signed_in? %>
         <%= f.submit t("bookings.card.reserve"), class: "reserve-button" %>
         <div class="no-charge-notice">
           <%= t("bookings.card.notice") %>
@@ -91,7 +91,7 @@
       <% else %>
         <div class="no-charge-notice">
           <%= t("bookings.card.need_login") %>
-          <%= link_to t("login.login_now"), login_path %>
+          <%= link_to t("login.login_now"), new_user_session_path %>
         </div>
       <% end %>
 

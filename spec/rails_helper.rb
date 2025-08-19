@@ -29,6 +29,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include FactoryBot::Syntax::Methods
+
+  Rails.application.routes.default_url_options[:host] = "localhost:3000"
+
+  # Devise helpers cho controller specs
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|

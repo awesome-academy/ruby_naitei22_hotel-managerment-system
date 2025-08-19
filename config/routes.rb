@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     # Static pages
     get "/static_pages/home", to: "static_pages#home", as: "home"
 
-    
+    # Error
+    get "unauthorized", to: "errors#unauthorized"
+
     devise_for :users, only: %i(sessions registrations confirmations passwords)
     # user and nested resources
     resources :users, only: %i(new create show edit update) do
@@ -77,5 +79,8 @@ Rails.application.routes.draw do
     end
 
     resources :requests, only: %i(destroy)
+
+    # 404 Not found
+    match "*path", to: "errors#not_found", via: :all
   end
 end

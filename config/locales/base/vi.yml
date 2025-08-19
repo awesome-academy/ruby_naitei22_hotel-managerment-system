@@ -10,6 +10,7 @@ vi:
   header:
     logo: "Hitachi"
     home: "Trang chủ"
+    admin: "Trang quản lý"
     explore: "Tìm phòng"
     current_booking: "Đơn đặt phòng"
     login: "Đăng nhập"
@@ -47,3 +48,12 @@ vi:
         header:
           one: "Biểu mẫu chứa 1 lỗi"
           other: "Biểu mẫu chứa %{count} lỗi"
+    not_found:
+      title: "Có vẻ như bạn bị lạc rồi"
+      message: "Trang bạn đang tìm kiếm không tồn tại!"
+      home_link: "Về trang chủ"
+    forbidden:
+        title: "403 - You Shall Not Pass"
+        message_html: >
+          Ôi không, Gandalf đang chặn lối đi!<br/>
+          Có thể bạn đã gõ sai địa chỉ? Hay là bạn muốn đến một nơi khác? Ví dụ như... Hobbiton?

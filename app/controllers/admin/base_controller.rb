@@ -5,9 +5,6 @@ class Admin::BaseController < ApplicationController
   private
 
   def authenticate_admin!
-    return if current_user&.role_admin?
-
-    flash[:danger] = t("admin.base.unauthorized_access")
-    redirect_to root_path
+    authorize! :manage, :all
   end
 end

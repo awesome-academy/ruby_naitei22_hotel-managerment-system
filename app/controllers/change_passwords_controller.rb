@@ -1,5 +1,8 @@
 class ChangePasswordsController < ApplicationController
   before_action :authenticate_user!
+
+  load_and_authorize_resource :user
+
   before_action :set_user
   before_action :check_authen, only: :update
 
@@ -29,7 +32,7 @@ class ChangePasswordsController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(id: params[:user_id])
+    @user = current_user
     return if @user
 
     flash[:danger] = t ".not_found"
