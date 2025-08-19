@@ -16,8 +16,13 @@
 
       <!-- Search by available_date -->
       <div class="search-field">
-        <%= f.label :available_date_eq, t(".available_date"), class: "form-label" %>
-        <%= f.date_field :available_date_eq, class: "form-control", value: (params.dig(:q, :available_date_eq).presence || Date.current) %>
+        <%= f.label :available_date_gteq, t(".from"), class: "form-label" %>
+        <%= f.date_field :available_date_gteq, class: "form-control", value: (params.dig(:q, :available_date_gteq).presence) %>
+      </div>
+
+      <div class="search-field">
+        <%= f.label :available_date_lteq, t(".to"), class: "form-label" %>
+        <%= f.date_field :available_date_lteq, class: "form-control", value: (params.dig(:q, :available_date_lteq).presence) %>
       </div>
 
       <!-- Search by status (is_available) -->

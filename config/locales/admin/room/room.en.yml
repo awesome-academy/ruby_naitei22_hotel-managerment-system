@@ -4,6 +4,18 @@ en:
       load_room:
         not_found: "Room not found."
 
+      index:
+        title: "Rooms"
+        list_title: "Room List (%{count})"
+        new: "Add Room"
+        room_number: "Room Number"
+        room_type_name: "Room Type"
+        capacity: "Capacity"
+        created_at: "Created At"
+        index: "No."
+        pagy_info: "Showing %{from} to %{to} of %{count} rooms"
+        no_results: "No rooms found"
+
       new:
         title: "Add Room"
         submit: "Create Room"
@@ -43,6 +55,15 @@ en:
         from: "From"
         to: "To"
         price: "Price"
+
+      form_search_room:
+        room_number: "Room Number"
+        room_number_placeholder: "Enter room number..."
+        room_type_name: "Room Type"
+        room_type_name_placeholder: "Enter room type..."
+        capacity: "Capacity"
+        search_button: "Search"
+        reset_button: "Reset"
 
       availability_card:
         available_date: "Available date"

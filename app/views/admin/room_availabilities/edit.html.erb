@@ -1,0 +1,24 @@
+<% provide :title, t(".title", room_number: @room_availability.room_number, available_date: @room_availability.available_date) %>
+
+<h1><%= t(".title", room_number: @room_availability.room_number, available_date: @room_availability.available_date) %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="admin-room-type-form">
+      <%= form_with(model: @room_availability, url: admin_room_availability_path(@room_availability), method: :patch) do |f| %>
+        <%= render "shared/error_messages", object: @room_availability %>
+        <%= hidden_field_tag :available_date, @room_availability.available_date %>
+
+        <%= f.label :is_available, t(".status") %>
+        <%= f.select :is_available,
+          options_for_select(availability_status_options, @room_availability.is_available),
+          {},
+          class: "form-control" %>
+
+        <%= f.label :price, t(".price") %>
+        <%= f.number_field :price, class: "input", min: 0, step: 1, class: "form-control" %>
+
+        <%= f.submit t(".submit"), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

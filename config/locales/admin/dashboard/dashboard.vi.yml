@@ -14,3 +14,5 @@ vi:
         room_management: "Quản lý phòng"
         review_management: "Quản lý đánh giá"
         room_type_management: "Quản lý loại phòng"
+        amenity_management: "Quản lý tiện nghi"
+        room_availability_management: "Quản lý tình trạng phòng"

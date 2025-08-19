@@ -32,6 +32,7 @@ vi:
         review_text: "Đánh giá"
         room_type_text: "Loại phòng"
         amenity_text: "Tiện nghi"
+        room_availability_text: "Tình trạng phòng"
 
       header:
         app_text: "Hệ thống quản lý khách sạn"

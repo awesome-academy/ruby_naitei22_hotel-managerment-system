@@ -32,6 +32,7 @@ en:
         review_text: "Reviews"
         room_type_text: "Room Types"
         amenity_text: "Amenities"
+        room_availability_text: "Room Availability"
 
       header:
         app_text: "Hotel Management System"

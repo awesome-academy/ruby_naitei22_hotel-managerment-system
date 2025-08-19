@@ -4,6 +4,18 @@ vi:
       load_room:
         not_found: "Không tìm thấy phòng."
 
+      index:
+        title: "Phòng"
+        list_title: "Danh sách phòng (%{count})"
+        new: "Thêm phòng"
+        room_number: "Số phòng"
+        room_type_name: "Loại phòng"
+        capacity: "Số người"
+        created_at: "Tạo lúc"
+        index: "STT"
+        pagy_info: "Hiển thị %{from} đến %{to} trong tổng số %{count} phòng"
+        no_results: "Không tìm thấy phòng nào"
+
       new:
         title: "Thêm phòng"
         submit: "Tạo phòng"
@@ -43,6 +55,15 @@ vi:
         from: "Từ"
         to: "Đến"
         price: "Giá"
+
+      form_search_room:
+        room_number: "Số phòng"
+        room_number_placeholder: "Nhập số phòng..."
+        room_type_name: "Loại phòng"
+        room_type_name_placeholder: "Nhập loại phòng..."
+        capacity: "Số người"
+        search_button: "Tìm kiếm"
+        reset_button: "Đặt lại"
 
       availability_card:
         available_date: "Ngày"

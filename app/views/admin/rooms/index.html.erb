@@ -1,0 +1,51 @@
+<% provide :title, t(".title") %>
+
+<div class="admin-rooms admin-common">
+	<div class="header">
+		<h1><%= t(".title") %></h1>
+		<div class="rooms-header-row">
+			<h3 class="mb-0"><%= t(".list_title", count: @pagy&.count || 0) %></h3>
+			<%= link_to t(".new"), new_admin_room_path, class: "btn btn-primary" %>
+		</div>
+	</div>
+
+  <%= render "form_search_room" %>
+
+	<div class="table-container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><%= t(".index") %></th>
+					<th><%= t(".room_number") %></th>
+					<th><%= t(".room_type_name") %></th>
+					<th><%= t(".capacity") %></th>
+					<th><%= t(".created_at") %></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @rooms&.each_with_index do |room, index| %>
+					<%= render partial: "room", locals: {room: room, index: index + 1 + @pagy.offset} %>
+				<% end %>
+			</tbody>
+		</table>
+
+		<% if @rooms&.present? %>
+			<div class="pagination-wrapper">
+				<%== pagy_bootstrap_nav @pagy if @pagy %>
+				<% if @pagy %>
+					<div class="pagy-info">
+						<%= t(".pagy_info", from: @pagy.from, to: @pagy.to, count: @pagy.count) %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+
+		<% if @rooms&.empty? %>
+			<div class="empty-state">
+				<i class="fas fa-calendar-times"></i>
+				<h3><%= t(".no_results") %></h3>
+			</div>
+		<% end %>
+	</div>
+</div>

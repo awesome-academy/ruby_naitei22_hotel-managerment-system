@@ -2,9 +2,8 @@ en:
   admin:
     room_availabilities:
       index:
-        title: "Rooms"
-        list_title: "List of Rooms (%{count})"
-        new_room: "New Room"
+        title: "Room Availability"
+        list_title: "List of Room Availability (%{count})"
         index: "No."
         room_number: "Room Number"
         room_type: "Room Type"
@@ -12,7 +11,7 @@ en:
         status: "Status"
         price: "Price"
         available_date: "Date"
-        pagy_info: "Showing %{from} to %{to} of %{count} rooms"
+        pagy_info: "Showing %{from} to %{to} of %{count} room availability"
         no_results: "No results found"
 
       form_search_room:
@@ -20,7 +19,8 @@ en:
         room_number_placeholder: "Enter room number..."
         room_type_name: "Room Type Name"
         room_type_name_placeholder: "Enter room type name..."
-        available_date: "Date"
+        from: "From date"
+        to: "To date"
         status: "Status"
         search_button: "Search"
         reset_button: "Reset"
@@ -34,3 +34,13 @@ en:
         all: "All"
         available: "Available"
         unavailable: "Unavailable"
+
+      edit:
+        title: "Room %{room_number} on %{available_date}"
+        status: "Status"
+        price: "Price"
+        submit: "Update"
+
+      update:
+        success: "Room availability updated successfully."
+        failure: "Failed to update room availability."

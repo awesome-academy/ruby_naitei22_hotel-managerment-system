@@ -1,0 +1,26 @@
+<tr>
+	<td><strong><%= index %></strong></td>
+	<td><%= room.room_number %></td>
+	<td><%= room.room_type&.name %></td>
+	<td><%= room.capacity %></td>
+	<td>
+		<div class="date-info">
+			<%= l(room.created_at, format: :short) %>
+		</div>
+	</td>
+  <td>
+    <div class="d-flex gap-1">
+      <!-- Edit Room -->
+      <%= link_to edit_admin_room_path(room),
+                  class: "btn btn-sm btn-outline-primary" do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+
+      <!-- View Room -->
+      <%= link_to admin_room_path(room),
+                  class: "btn btn-sm btn-outline-info" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

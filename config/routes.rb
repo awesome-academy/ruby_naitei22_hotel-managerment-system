@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       get "/dashboard", to: "dashboard#index", as: "dashboard"
 
       resources :room_types, only: %i(index new edit create update destroy)
-      resources :room_availabilities, only: :index
+      resources :room_availabilities, only: %i(index edit update)
       resources :bookings, only: %i(index show update) do
         member do
           patch :update_status
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
           resources :guests, only: %i(new create edit update destroy)
         end
       end
-      resources :rooms, only: %i(new edit create update show destroy) do
+      resources :rooms, only: %i(index new edit create update show destroy) do
         member do
           delete :remove_image
         end
@@ -54,14 +54,14 @@ Rails.application.routes.draw do
       resources :users, only: %i(index show)
       resources :reviews, only: %i(index show update)
     end
-    
+
     # Phòng
     resources :rooms, only: %i(index show) do
       resources :bookings, only: %i(update)
       member do
         get :calculate_price
       end
-    end 
+    end
 
     resources :bookings, only: %i(index)
   end
