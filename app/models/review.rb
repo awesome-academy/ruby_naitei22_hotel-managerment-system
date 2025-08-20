@@ -12,6 +12,16 @@ class Review < ApplicationRecord
     rejected: 2
   }, _prefix: true
 
+  before_create :set_review_status_pending
+
+  def booking
+    request&.booking
+  end
+
+  def room_type
+    request&.room&.room_type
+  end
+
   ASSOCIATIONS_PRELOAD = [:user, :approved_by,
                          {request: [:booking, :room]}].freeze
   RATINGS = (1..5).to_a.freeze
@@ -25,5 +35,11 @@ class Review < ApplicationRecord
 
   def self.ransackable_associations _auth_object = nil
     %w(user request booking room)
+  end
+
+  private
+
+  def set_review_status_pending
+    self.review_status = :pending
   end
 end

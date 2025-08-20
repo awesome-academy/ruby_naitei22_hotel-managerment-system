@@ -446,7 +446,7 @@ checked_out_requests.each do |request|
     "Peaceful and comfortable stay in room #{request.room&.room_number}."
   ]
   
-  review_statuses = ["pending", "approved", "approved"] # 2/3 chance approved
+  review_statuses = ["pending"] # 2/3 chance approved
   
   Review.create!(
     user: user,
@@ -458,3 +458,21 @@ checked_out_requests.each do |request|
 end
 
 puts "Đã thêm #{Guest.count} guests và #{Review.count} reviews cho các request checked_out."
+
+puts "=== Update RoomAvailabilities for pending/confirm requests ==="
+
+Request.includes(:room, :booking).where(status: [:pending, :confirmed, :checked_in, :checked_out]).find_each do |req|
+  if req.room.present? && req.check_in.present? && req.check_out.present?
+    booking_dates = (req.check_in.to_date..req.check_out.to_date).to_a
+
+    updated = req.room.room_availabilities
+                      .where(available_date: booking_dates)
+                      .update_all(is_available: false)
+
+    puts "Request ##{req.id} (Booking ##{req.booking_id}) → Blocked #{updated} dates"
+  else
+    puts "⚠️ Request ##{req.id} skipped (missing room or dates)"
+  end
+end
+
+puts "=== Done updating RoomAvailabilities ==="

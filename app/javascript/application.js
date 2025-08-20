@@ -6,5 +6,8 @@ import "custom/user_review"
 import "custom/price_calculation"
 import "custom/available_dates"
 import "custom/room_images"
+import "custom/password_toggle"
+import "custom/modal_toggle"
+import "custom/sort"
 
 require("jquery")

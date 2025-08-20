@@ -1,0 +1,44 @@
+<% content_for :sidebar_title do %>
+  <%= t("reviews.index.sidebar_title") %>
+<% end %>
+
+<div class="account-container">
+  <%= render "shared/account_sidebar" %>
+  <div class="account-content" style="flex: 1;">
+    <div class="reviews-table-wrapper">
+      <table class="reviews-table">
+        <thead>
+          <tr>
+            <th><%= t(".table.request_id") %></th>
+            <th><%= t(".table.room") %></th>
+            <th><%= t(".table.rating") %></th>
+            <th><%= t(".table.comment") %></th>
+            <th><%= t(".table.delete") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td><%= review.booking.id %></td>
+              <td><strong><%= review.room_type.name %></strong></td>
+              <td class="rating">
+                <% review.rating.times do %>
+                  <i class="fa-solid fa-star text-warning"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <i class="fa-regular fa-star text-muted"></i>
+                <% end %>
+              </td>
+              <td><%= review.comment %></td>
+              <td>
+                <%= button_to user_review_path(current_user, review), method: :delete, data: { confirm: t(".delete_confirm") }, class: "btn-icon" do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

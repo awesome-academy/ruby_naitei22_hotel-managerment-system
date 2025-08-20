@@ -5,11 +5,12 @@ class BookingsController < ApplicationController
                 only: %i(update current_booking confirm_booking)
   before_action :load_current_booking_data, only: %i(current_booking)
   before_action :load_booking, only: %i(destroy)
+  before_action :set_user, only: %i(index cancel)
+  before_action :set_booking, only: %i(cancel)
+  before_action :load_bookings, only: %i(index)
 
   # GET (/:locale)/bookings(.:format)
-  def index
-    @bookings = current_user.bookings.includes(:requests)
-  end
+  def index; end
 
   # PATCH (/:locale)/rooms/:room_id/bookings/:id(.:format)
   def update
@@ -54,6 +55,16 @@ class BookingsController < ApplicationController
     end
   end
 
+  # POST (/:locale)/rooms/:room_id/bookings(.:format)
+  def cancel
+    if @booking.status_draft? || @booking.status_pending?
+      handle_cancel_booking
+    else
+      flash[:alert] = t(".alert")
+    end
+    redirect_back fallback_location: user_bookings_path(@user)
+  end
+
   private
 
   def booking_params
@@ -75,7 +86,7 @@ class BookingsController < ApplicationController
                                        :room_availability}
                                      ]
                                    )
-                                   .find_by(id: @current_booking.id)
+                                   .find_by(id: params[:id])
     return if @current_booking
 
     flash[:warning] = t("bookings.not_found")
@@ -143,6 +154,48 @@ class BookingsController < ApplicationController
 
       @current_booking.requests.each do |request|
         request.update!(status: :pending)
+      end
+    end
+  rescue StandardError => e
+    flash[:danger] = e.message
+  end
+
+  def set_user
+    @user = User.find_by(id: params[:user_id]) || current_user
+    return if @user
+
+    flash[:warning] = t("users.not_found")
+    redirect_to root_path
+  end
+
+  def set_booking
+    @booking = @user.bookings.find_by(id: params[:id])
+    return if @booking
+
+    flash[:warning] = t("bookings.not_found")
+    redirect_to user_bookings_path(@user)
+  end
+
+  def load_bookings
+    @bookings = current_user.bookings
+                            .includes(
+                              requests: [
+                                {room: :room_type},
+                                {room_availability_requests:
+                                :room_availability}
+                              ]
+                            )
+    return if @bookings.exists?
+
+    flash[:warning] = t("bookings.not_found")
+    redirect_to bookings_path
+  end
+
+  def handle_cancel_booking
+    ActiveRecord::Base.transaction do
+      @booking.update!(status: :cancelled)
+      @booking.requests.each do |request|
+        request.update!(status: :cancelled)
       end
     end
   rescue StandardError => e
