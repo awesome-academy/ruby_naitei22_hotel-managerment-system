@@ -1,0 +1,7 @@
+en:
+  static_pages:
+    home:
+      title: "Home"
+      welcome_message: "Welcome to our hotel booking system!"
+      bookingnow: "Book Now!"
+      welcome: "Great Experience"

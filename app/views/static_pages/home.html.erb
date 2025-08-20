@@ -1,9 +1,19 @@
-<% provide :title, t("home.title") %>
+<% provide :title, t("static_pages.home.title") %>
 
-<div class="center jumbotron" style="margin-top: 30px;">
-  <h1><%= t("home.welcome") %></h1>
-  <h2>
-    <%= t("home.description_html", link: link_to("Ruby on Rails Tutorial", "http://www.railstutorial.org/")).html_safe %>
-  </h2>
-  <%= link_to t("home.signup"), signup_path, class: "btn btn-lg btn-primary" %>
+<div class="home-page">
+  <div class="container">
+    <div class="booking-intro">
+      <p><%= t("static_pages.home.welcome_message") %></p>
+      <%= link_to rooms_path do %>
+        <span><%= t("static_pages.home.bookingnow") %></span>
+      <% end %>
+    </div>
+
+    <div class="image-thumbnails-container">
+      <div class="image-thumbnail">
+        <%= image_tag Settings.default.hotel_image, class: "img-fluid" %>
+        <p> <%= t("static_pages.home.welcome") %> </p>
+      </div>
+    </div>
+  </div>
 </div>
