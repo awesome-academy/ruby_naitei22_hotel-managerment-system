@@ -70,7 +70,7 @@ module SessionsHelper
     reset_session
     remember_or_forget user
     log_in user
-    redirect_back_or user
+    redirect_after_login user
   end
 
   def check_activation user
@@ -89,13 +89,16 @@ module SessionsHelper
     end
   end
 
-  def redirect_back_or default
-    redirect_to session[:forwarding_url] || default
-    session.delete(:forwarding_url)
-  end
-
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  def redirect_after_login user
+    if user.role_admin?
+      redirect_to admin_root_path
+    else
+      redirect_to root_path
+    end
   end
 end

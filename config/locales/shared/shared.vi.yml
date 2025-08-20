@@ -8,3 +8,17 @@ vi:
       see_less: "Thu gọn"
       all_review: "Xem tất cả đánh giá"
       show_all_reviews: "Xem tất cả %{count} đánh giá"
+    account_sidebar:
+      edit_profile: "Chỉnh sửa hồ sơ"
+      booking_history: "Lịch sử đặt phòng"
+      my_reviews: "Đánh giá của tôi"
+      change_password: "Đổi mật khẩu"
+      logout: "Đăng xuất"
+    status_badge:
+      draft: "Mới"
+      pending: "Chờ duyệt"
+      confirmed: "Đã xác nhận"
+      declined: "Bị từ chối"
+      cancelled: "Đã hủy"
+      checked_in: "Đã nhận phòng"
+      checked_out: "Đã trả phòng"

@@ -10,4 +10,8 @@ module BookingsHelper
   def request_total_price request
     request.room_availability_requests.sum {|rar| rar.room_availability.price}
   end
+
+  def booking_total_price booking
+    booking.rooms.sum(:price)
+  end
 end

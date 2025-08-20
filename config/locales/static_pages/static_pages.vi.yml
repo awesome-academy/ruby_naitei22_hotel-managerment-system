@@ -1,0 +1,7 @@
+vi:
+  static_pages:
+    home:
+      title: "Trang chủ"
+      welcome_message: "Chào mừng bạn đến với hệ thống đặt phòng khách sạn!"
+      bookingnow: "Đặt ngay!"
+      welcome: "Trải nghiệm đỉnh cao"

@@ -1,38 +1,99 @@
-<h1>My Bookings</h1>
-
-<% if @bookings.any? %>
-  <table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-      <tr>
-        <th>Booking Code</th>
-        <th>Status</th>
-        <th>Requests</th>
-        <th>Created At</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.booking_code || t("n_a") %></td>
-          <td><%= booking.status %></td>
-          <td>
-            <% booking.requests.each do |req| %>
-              <div>
-                <strong>Room:</strong> <%= req.room.room_number %><br>
-                <strong>Check-in:</strong> <%= req.check_in %><br>
-                <strong>Check-out:</strong> <%= req.check_out %><br>
-                <strong>Guests:</strong> <%= req.number_of_guests %><br>
-                <strong>Note:</strong> <%= req.note.presence %><br>
-                <strong>Price:</strong> <%= req.calculate_price || "0" %>
-              </div>
-              <hr>
-            <% end %>
-          </td>
-          <td><%= booking.created_at %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>You have no bookings yet.</p>
+<% content_for :sidebar_title do %>
+  <%= t("bookings.index.sidebar_title") %>
 <% end %>
+
+<div class="account-container" style="display: flex; gap: 24px;">
+  <%= render "shared/account_sidebar" %>
+  <div class="account-content" style="flex: 1;">
+    <div class="bookings-list">
+      <table class="table">
+        <thead>
+          <tr>
+            <th data-column="booking-id" data-order="asc" data-sortable>
+              <%= t(".table.booking_id") %>
+            </th>
+            <th data-column="room" data-order="asc" data-sortable>
+              <%= t(".table.room") %>
+            </th>
+            <th data-column="price" data-order="asc" data-sortable>
+              <%= t(".table.price") %>
+            </th>
+            <th data-column="status" data-order="asc" data-sortable>
+              <%= t(".table.status") %>
+            </th>
+            <th data-column="created" data-order="asc" data-sortable>
+              <%= t(".table.created_at") %>
+            </th>
+            <th>
+              <%= t(".table.action") %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings.each do |booking| %>
+            <tr>
+              <td>
+                <%= booking.booking_code %>
+              </td>
+              <td>
+                <strong>
+                  <% if booking.rooms.count == 1 %>
+                    <%= booking.rooms.first.room_number %>
+                  <% else %>
+                    <%= booking.rooms.limit(2).map(&:room_number).join(", ") %>
+                    <%= ", ..." if booking.rooms.count > 2 %>
+                  <% end %>
+                </strong>
+              </td>
+              <td class="price">
+                <%= number_to_currency(
+                  booking_total_price(booking),
+                  unit: "",
+                  delimiter: ".",
+                  precision: 0
+                ) %>
+              </td>
+              <td class="status">
+                <%= render "shared/status_badge", status: booking.status %>
+              </td>
+              <td class="created-at">
+                <%= l(booking.created_at.to_date) %>
+              </td>
+              <td class="actions">
+                <div class="action-buttons">
+                    <button 
+                    type="button" 
+                    class="btn btn-primary open-request-modal"
+                    data-modal-id="bookingModal-<%= booking.id %>"
+                    data-booking="<%= booking.to_json %>"
+                    >
+                    <%= t("bookings.index.table.details") %>
+                    </button>
+
+                    <% if booking.status_draft? || booking.status_pending? %>
+                    <%= button_to t(".table.cancel"),
+                        cancel_user_booking_path(current_user, booking),
+                        method: :patch,
+                        class: "btn btn-danger",
+                        data: { confirm: t(".table.cancel_confirm") } %>
+                    <% else %>
+                    <%= content_tag :button, t(".table.cancel_disabled"),
+                        class: "btn btn-secondary",
+                        disabled: true %>
+                    <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <% @bookings.each do |booking| %>
+        <%= render "bookings/requests_modal", booking: booking %>
+        <% booking.requests.each do |request| %>
+          <%= render "bookings/reviews_modal", request: request %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

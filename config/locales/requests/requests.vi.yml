@@ -5,3 +5,7 @@ vi:
       confirm: "Bạn có chắc chắn muốn hủy phòng này không?"
       success: "Hủy phòng thành công."
       failure: "Hủy phòng thất bại."
+    cancel:
+      success: "Request đã được hủy."
+      alert: "Không thể hủy request này."
+      failure: "Hủy request thất bại."

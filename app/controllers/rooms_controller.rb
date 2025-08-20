@@ -16,7 +16,10 @@ class RoomsController < ApplicationController
   # GET (/:locale)/rooms/id
   def show
     @amenities = @room.amenities
-    @reviews = @room.reviews.includes(:user).distinct
+    @reviews = @room.reviews
+                    .includes(:user)
+                    .where(review_status: :approved)
+                    .distinct
     @available_dates = @room.available_dates
   end
 
