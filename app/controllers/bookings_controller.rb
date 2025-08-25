@@ -86,7 +86,7 @@ class BookingsController < ApplicationController
                                        :room_availability}
                                      ]
                                    )
-                                   .find_by(id: @current_booking.id)
+                                   .find_by(id: params[:id])
     return if @current_booking
 
     flash[:warning] = t("bookings.not_found")
@@ -185,7 +185,7 @@ class BookingsController < ApplicationController
                                 :room_availability}
                               ]
                             )
-    return if @bookings
+    return if @bookings.exists?
 
     flash[:warning] = t("bookings.not_found")
     redirect_to bookings_path
@@ -194,7 +194,9 @@ class BookingsController < ApplicationController
   def handle_cancel_booking
     ActiveRecord::Base.transaction do
       @booking.update!(status: :cancelled)
-      @booking.requests.update_all(status: :cancelled)
+      @booking.requests.each do |request|
+        request.update!(status: :cancelled)
+      end
     end
   rescue StandardError => e
     flash[:danger] = e.message

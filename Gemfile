@@ -75,11 +75,17 @@ gem "byebug"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html
+  gem "database_cleaner-active_record"
   gem "debug", platforms: %i(mri mingw x64_mingw)
+  gem "factory_bot_rails"
+  gem "rails-controller-testing"
   gem "rspec-rails", "~> 4.0.1"
   gem "rubocop", "~> 1.26", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "rubocop-rails", "~> 2.14.0", require: false
+  gem "shoulda-matchers", "~> 5.0"
+  gem "simplecov"
+  gem "simplecov-rcov"
 end
 
 group :development do
