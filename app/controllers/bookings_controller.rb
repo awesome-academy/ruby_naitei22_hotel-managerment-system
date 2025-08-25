@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :require_login,
+  before_action :authenticate_user!,
                 only: %i(index update current_booking confirm_booking)
   before_action :set_current_booking,
                 only: %i(update current_booking confirm_booking)
@@ -99,13 +99,6 @@ class BookingsController < ApplicationController
 
     flash[:warning] = t("bookings.not_found")
     redirect_to root_path
-  end
-
-  def require_login
-    return if logged_in?
-
-    flash[:danger] = t(".card.need_login")
-    redirect_back(fallback_location: root_path)
   end
 
   def create_room_availability_requests booking

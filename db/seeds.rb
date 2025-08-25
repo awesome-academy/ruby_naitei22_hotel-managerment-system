@@ -6,26 +6,35 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # db/seeds.rb
-require 'date'
+require "date"
+
+puts "Deleting all tables..."
+
+ActiveRecord::Base.connection.disable_referential_integrity do
+  ActiveRecord::Base.connection.tables.each do |table|
+    next if table == "schema_migrations" || table == "ar_internal_metadata"
+    ActiveRecord::Base.connection.execute("DELETE FROM #{table};")
+  end
+end
+
+puts "All tables cleared!"
 
 User.create!(
   name: "Admin",
   email: "admin@gmail.com",
-  password: "123",
+  password: "123456",
   phone: "729-551-3035",
   role: 1,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now # nếu bạn dùng confirmable
 )
 
 User.create!(
-  name: "Dennis Foley",
-  email: "vickiwilliams@levy.com",
-  password: "Password@123",
+  name: "Aatrox",
+  email: "a@gmail.com",
+  password: "123456",
   phone: "523-468-9226x96295",
   role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 User.create!(
@@ -34,8 +43,7 @@ User.create!(
   password: "Password@123",
   phone: "306-359-9581x037",
   role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 User.create!(
@@ -44,8 +52,7 @@ User.create!(
   password: "Password@123",
   phone: "+1-388-501-3262x5359",
   role: 1,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 User.create!(
@@ -54,8 +61,7 @@ User.create!(
   password: "Password@123",
   phone: "8809003047",
   role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 RoomType.create!(
@@ -413,7 +419,7 @@ checked_out_requests.each do |request|
       "#{rand(100000000000..999999999999)}"
     when "passport"
       # Passport format: 1 chữ cái + 7 số
-      "#{('a'..'z').to_a.sample}#{rand(1000000..9999999)}"
+      "#{("a".."z").to_a.sample}#{rand(1000000..9999999)}"
     end
     
     Guest.create!(

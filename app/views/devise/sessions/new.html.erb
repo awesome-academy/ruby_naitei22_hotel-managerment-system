@@ -5,13 +5,16 @@
     <h1><%= t("login.title") %></h1>
 
     <div class="form">
-      <%= form_for :session, url: login_path do |f| %>
-
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <%= f.label :email, t("login.email") %>
           <div class="input-wrapper">
             <i class="fa fa-envelope icon"></i>
-            <%= f.email_field :email, class: "form-control", placeholder: t("login.email_placeholder") %>
+            <%= f.email_field :email,
+                              autofocus: true,
+                              autocomplete: "email",
+                              class: "form-control",
+                              placeholder: t("login.email_placeholder") %>
           </div>
         </div>
 
@@ -20,7 +23,10 @@
           <div class="password-field">
             <div class="input-wrapper">
               <i class="fa fa-lock icon"></i>
-              <%= f.password_field :password, class: "form-control", placeholder: t("login.password_placeholder") %>
+              <%= f.password_field :password,
+                                   autocomplete: "current-password",
+                                   class: "form-control",
+                                   placeholder: t("login.password_placeholder") %>
               <i class="fa fa-eye toggle-password"></i>
             </div>
           </div>
@@ -29,7 +35,7 @@
         <div class="form-group remember-forgot">
           <label>
             <%= f.check_box :remember_me %>
-            <%= t("login.remember_me") %>
+            <%= f.label :remember_me, t("login.remember_me") %>
           </label>
           <%= link_to t("login.forgot_password"), new_password_reset_path, class: "forgot-link" %>
         </div>
@@ -40,7 +46,8 @@
       <% end %>
 
       <p class="signup-link">
-        <%= t("login.no_account") %> <%= link_to t("login.signup"), signup_path %>
+        <%= t("login.no_account") %>
+        <%= link_to t("login.signup"), new_registration_path(resource_name) %>
       </p>
     </div>
   </div>
