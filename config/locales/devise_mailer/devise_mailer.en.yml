@@ -1,0 +1,21 @@
+en:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+        welcome: "Welcome %{email}!"
+        instruction: "You can confirm your account email through the link below:"
+        link_text: "Confirm my account"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+        hello: "Hello %{email}!"
+        request_info: "Someone has requested a link to change your password. You can do this through the link below."
+        link_text: "Change my password"
+        ignore_info: "If you didn't request this, please ignore this email."
+        password_info: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        subject: "Unlock instructions"
+      email_changed:
+        subject: "Email Changed"
+      password_change:
+        subject: "Password Changed"

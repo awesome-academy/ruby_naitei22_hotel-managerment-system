@@ -1,0 +1,9 @@
+en:
+  devise:
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        email: "Email"
+        email_placeholder: "Enter your email address"
+        submit: "Resend confirmation instructions"
+        back_to_login: "Back to login"

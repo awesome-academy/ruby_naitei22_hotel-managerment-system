@@ -11,26 +11,6 @@ class UsersController < ApplicationController
     @reviews = @user.reviews.includes(request: :booking)
   end
 
-  # GET /signup
-  def new
-    @user = User.new
-  end
-
-  # POST /signup
-  def create
-    @user = User.new user_params
-
-    if @user.save
-      log_out
-      @user.send_activation_email
-      flash[:info] = t(".activate")
-      redirect_to root_url, status: :see_other
-    else
-      flash[:danger] = t(".failure")
-      render :new, status: :unprocessable_entity
-    end
-  end
-
   # GET /users/:id/edit
   def edit; end
 

@@ -1,0 +1,21 @@
+vi:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: "Hướng dẫn xác nhận"
+        welcome: "Chào mừng %{email}!"
+        instruction: "Bạn có thể xác nhận địa chỉ email tài khoản của mình thông qua liên kết bên dưới:"
+        link_text: "Xác nhận tài khoản của tôi"
+      reset_password_instructions:
+        subject: "Hướng dẫn đặt lại mật khẩu"
+        hello: "Xin chào %{email}!"
+        request_info: "Có người đã yêu cầu liên kết để thay đổi mật khẩu của bạn. Bạn có thể thực hiện việc này thông qua liên kết bên dưới."
+        link_text: "Thay đổi mật khẩu của tôi"
+        ignore_info: "Nếu bạn không yêu cầu điều này, vui lòng bỏ qua email này."
+        password_info: "Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập liên kết ở trên và tạo mật khẩu mới."
+      unlock_instructions:
+        subject: "Hướng dẫn mở khóa"
+      email_changed:
+        subject: "Địa chỉ email đã thay đổi"
+      password_change:
+        subject: "Địa chỉ email đã thay đổi"

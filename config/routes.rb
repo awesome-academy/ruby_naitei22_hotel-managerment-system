@@ -1,26 +1,17 @@
 Rails.application.routes.draw do
+  
   scope "(:locale)", locale: /en|vi/ do
     # Trang chủ
     root to: "static_pages#home"
+    devise_for :users, only: [:sessions, :registrations, :passwords, :confirmations],
+      path: "",
+      path_names: { sign_in: "login", sign_out: "logout", sign_up: "signup" }
 
     # Static pages
     get "/static_pages/home", to: "static_pages#home", as: "home"
 
-    # Đăng ký (Sign up)
-    get "/signup", to: "users#new"
-    post "/signup", to: "users#create"
-    put "/users/:id", to: "users#edit"
-
-    # Đăng nhập/Đăng xuất (Login/Logout)
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
-
-    # Kích hoạt tài khoản (Account Activations)
-    resources :account_activations, only: :edit
-
     # user and nested resources
-    resources :users, only: %i(new create show edit update) do
+    resources :users, only: %i(show edit update) do
       resources :bookings, only: %i(index) do
         member do
           patch :cancel
@@ -32,7 +23,7 @@ Rails.application.routes.draw do
         end
       end
       resources :reviews, only: %i(index destroy create)
-      resource :password, only: %i(create edit update)
+      resource :password_user, only: %i(create edit update)
     end
 
 
@@ -40,9 +31,6 @@ Rails.application.routes.draw do
     resources :microposts
     
     resources :rooms, only: %i(index show)
-
-    # Reset mật khẩu (Password Resets)
-    resources :password_resets, only: %i(new create edit update)
 
     # Admin routes
     namespace :admin do

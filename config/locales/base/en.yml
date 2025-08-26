@@ -8,7 +8,7 @@ en:
     signup: "Sign up now!"
 
   header:
-    logo: "Hitachi"
+    logo: "Le Palais des Étoiles"
     home: "Home"
     explore: "Explore"
     current_booking: "Current Booking"
@@ -22,6 +22,7 @@ en:
     english: "English"
     vietnamese: "Vietnamese"
     edit_profile: "Edit Profile"
+    admin: "Go to Admin Page"
 
   help:
     title: "Help"

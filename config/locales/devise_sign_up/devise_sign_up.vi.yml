@@ -1,0 +1,20 @@
+vi:
+  devise:
+    registrations:
+      new:
+        title: "Đăng ký"
+      form:
+        title: "Đăng ký"
+        email: "Email"
+        password: "Mật khẩu"
+        password_confirmation: "Xác nhận mật khẩu"
+        name: "Tên"
+        phone: "Số điện thoại"
+        submit: "Đăng ký"
+        minimum_password: "(tối thiểu: %{number} ký tự)"
+        placeholders:
+          email: "Nhập email của bạn"
+          password: "Nhập mật khẩu của bạn"
+          password_confirmation: "Xác nhận mật khẩu"
+          name: "Nhập tên của bạn"
+          phone: "Nhập số điện thoại của bạn"

@@ -1,0 +1,35 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "shared/error_messages", resource: resource, object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :email, t(".email") %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t(".placeholders.email") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, t(".password") %>
+    <% if @minimum_password_length %>
+    <em><%= t(".minimum_password", number: @minimum_password_length) %></em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: t(".placeholders.password") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, t(".password_confirmation") %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: t(".placeholders.password_confirmation") %>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :name, t(".name") %>
+  <%= f.text_field :name, class: "form-control", placeholder: t(".placeholders.name") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone, t(".phone") %>
+    <%= f.telephone_field :phone, class: "form-control", placeholder: t(".placeholders.phone") %>
+  </div>
+
+  <div>
+    <%= f.submit t(".submit"), class: "btn btn-submit" %>
+  </div>
+<% end %>

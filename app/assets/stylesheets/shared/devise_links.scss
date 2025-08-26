@@ -1,0 +1,72 @@
+.devise-links {
+  .already-account {
+    margin-bottom: 1rem;
+    text-align: center;
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // General link styling for all devise links
+  a {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #495057;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+  }
+
+  // Special styling for OAuth buttons
+  input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    &:focus {
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    a,
+    input[type="submit"] {
+      font-size: 0.85rem;
+    }
+
+    .already-account {
+      margin-bottom: 0.75rem;
+    }
+  }
+}

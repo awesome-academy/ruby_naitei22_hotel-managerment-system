@@ -8,7 +8,7 @@ vi:
     signup: "Đăng ký ngay!"
 
   header:
-    logo: "Hitachi"
+    logo: "Le Palais des Étoiles"
     home: "Trang chủ"
     explore: "Tìm phòng"
     current_booking: "Đơn đặt phòng"
@@ -22,6 +22,7 @@ vi:
     english: "Tiếng Anh"
     vietnamese: "Tiếng Việt"
     edit_profile: "Chỉnh sửa hồ sơ"
+    admin: "Chuyển qua trang quản trị viên"
 
   help:
     title: "Trợ giúp"

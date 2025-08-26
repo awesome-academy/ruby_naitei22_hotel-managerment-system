@@ -1,0 +1,12 @@
+en:
+  devise:
+    sessions:
+      new:
+        title: "Log in"
+      form:
+        email: "Email"
+        email_placeholder: "Enter your email"
+        password: "Password"
+        password_placeholder: "Enter your password"
+        remember_me: "Remember me"
+        submit: "Log in"

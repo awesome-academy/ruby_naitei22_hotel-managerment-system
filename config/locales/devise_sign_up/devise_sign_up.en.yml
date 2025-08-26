@@ -1,0 +1,20 @@
+en:
+  devise:
+    registrations:
+      new:
+        title: "Sign up"
+      form:
+        title: "Sign up"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        name: "Name"
+        phone: "Phone"
+        submit: "Sign up"
+        minimum_password: "(minimum: %{number} characters)"
+        placeholders:
+          email: "Enter your email"
+          password: "Enter your password"
+          password_confirmation: "Confirm your password"
+          name: "Enter your name"
+          phone: "Enter your phone number"

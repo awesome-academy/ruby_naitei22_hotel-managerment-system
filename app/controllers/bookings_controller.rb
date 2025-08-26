@@ -102,7 +102,7 @@ class BookingsController < ApplicationController
   end
 
   def require_login
-    return if logged_in?
+    return if user_signed_in?
 
     flash[:danger] = t(".card.need_login")
     redirect_back(fallback_location: root_path)
