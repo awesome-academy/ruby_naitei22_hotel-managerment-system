@@ -1,0 +1,56 @@
+<% provide :title, t("login.title") %>
+
+<div class="form-login">
+  <div class="container">
+    <h1><%= t("login.title") %></h1>
+
+    <div class="form">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email, t("login.email") %>
+          <div class="input-wrapper">
+            <i class="fa fa-envelope icon"></i>
+            <%= f.email_field :email,
+                              autofocus: true,
+                              autocomplete: "email",
+                              class: "form-control",
+                              placeholder: t("login.email_placeholder") %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, t("login.password") %>
+          <div class="password-field">
+            <div class="input-wrapper">
+              <i class="fa fa-lock icon"></i>
+              <%= f.password_field :password,
+                                   autocomplete: "current-password",
+                                   class: "form-control",
+                                   placeholder: t("login.password_placeholder") %>
+              <i class="fa fa-eye toggle-password"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group remember-forgot">
+          <label>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, t("login.remember_me") %>
+          </label>
+          <%= link_to t("login.forgot_password"),
+                      "#",
+                      class: "forgot-link" %>
+        </div>
+
+        <div class="form-group form-action">
+          <%= f.submit t("login.submit"), class: "btn btn-submit" %>
+        </div>
+      <% end %>
+
+        <p class="signup-link">
+          <%= t("login.no_account") %>
+          <%= link_to t("login.signup"), new_user_registration_path %>
+        </p>
+    </div>
+  </div>
+</div>

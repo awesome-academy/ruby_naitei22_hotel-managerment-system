@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     # Static pages
     get "/static_pages/home", to: "static_pages#home", as: "home"
 
-    devise_for :users, only: %i(registrations confirmations)
+    devise_for :users, only: %i(sessions registrations confirmations)
     # user and nested resources
     resources :users, only: %i(new create show edit update) do
       resources :bookings, only: %i(index) do
