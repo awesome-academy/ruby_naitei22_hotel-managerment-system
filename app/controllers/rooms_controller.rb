@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  skip_authorization_check
   before_action :load_room, only: %i(show calculate_price)
   before_action :set_current_booking, only: %i(show)
 
