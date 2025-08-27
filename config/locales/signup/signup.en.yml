@@ -2,3 +2,4 @@ en:
   signup:
     title: "Sign Up"
     submit: "Create my account"
+    already_account: "Already have an account?"

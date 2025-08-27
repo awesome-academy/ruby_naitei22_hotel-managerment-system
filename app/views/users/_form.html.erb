@@ -1,22 +1,22 @@
 <%= render "shared/error_messages", object: @user %>
 
 <div class="form-group">
-  <%= f.label :email, t("signup.email") %>
+  <%= f.label :email, t("users.form.email") %>
   <%= f.email_field :email, class: "form-control", placeholder: t(".placeholders.email") %>
 </div>
 
 <div class="form-group">
-  <%= f.label :name, t("signup.name") %>
+  <%= f.label :name, t("users.form.name") %>
   <%= f.text_field :name, class: "form-control", placeholder: t(".placeholders.name") %>
 </div>
 
 <div class="form-group">
-  <%= f.label :phone, t("signup.phone") %>
+  <%= f.label :phone, t("users.form.phone") %>
   <%= f.telephone_field :phone, class: "form-control", placeholder: t(".placeholders.phone") %>
 </div>
 
 <div class="form-group">
-  <%= f.label :password, t("signup.password") %>
+  <%= f.label :password, t("users.form.password") %>
   <div class="password-field">
     <%= f.password_field :password, class: "form-control", placeholder: t(".placeholders.password") %>
     <i class="toggle-password fa fa-eye"></i>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :password_confirmation, t("signup.password_confirmation") %>
+  <%= f.label :password_confirmation, t("users.form.password_confirmation") %>
   <div class="password-field">
     <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".placeholders.password_confirmation") %>
     <i class="toggle-password fa fa-eye"></i>

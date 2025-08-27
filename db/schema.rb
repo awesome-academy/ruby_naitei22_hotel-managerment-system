@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_08_18_035730) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_26_144035) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -151,18 +151,17 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_18_035730) do
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
     t.string "phone"
-    t.string "remember_digest"
     t.integer "role", default: 0
-    t.string "activation_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.string "remember_token"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
