@@ -81,15 +81,13 @@ class BookingsController < ApplicationController
                                    .includes(
                                      requests: [
                                        {room: :room_type},
-                                       {room_availability_requests:
-                                       :room_availability}
+                                       {
+                                         room_availability_requests:
+                                         :room_availability
+                                       }
                                      ]
                                    )
-                                   .find_by(id: params[:id])
-    return if @current_booking
-
-    flash[:warning] = t("bookings.not_found")
-    redirect_to bookings_path
+                                   .find_or_create_by(status: :draft)
   end
 
   def load_booking
@@ -122,7 +120,7 @@ class BookingsController < ApplicationController
     room_names = overlaps.map {|r| r.room.room_number}.uniq.join(", ")
     flash[:warning] =
       t("current_booking.confirm.overlap_with_rooms", rooms: room_names)
-    redirect_to @current_booking
+    redirect_to current_booking_bookings_path
     true
   end
 
@@ -173,8 +171,7 @@ class BookingsController < ApplicationController
                             .includes(
                               requests: [
                                 {room: :room_type},
-                                {room_availability_requests:
-                                :room_availability}
+                                {room_availability_requests: :room_availability}
                               ]
                             )
     return if @bookings.exists?

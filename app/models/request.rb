@@ -35,8 +35,13 @@ class Request < ApplicationRecord
   belongs_to :room
 
   validates :check_in, :check_out, presence: true
-  validate  :check_in_before_check_out, if: :check_times_changed?
-  validate  :validate_check_in, if: :check_times_changed?
+  # validate  :check_in_before_check_out, if: :check_times_changed?
+  # validate  :validate_check_in, if: :check_times_changed?
+
+  scope :upcoming_confirmed, (lambda do
+    where(status: :confirmed, check_in: [Time.zone.today, Time.zone.tomorrow])
+      .includes(booking: :user)
+  end)
 
   def calculate_price
     return nil unless check_in && check_out && room.present?

@@ -1,0 +1,9 @@
+vi:
+  request_mailer:
+    checkin_reminder:
+      subject: "Nhắc nhở nhận phòng"
+      greeting: "Xin chào"
+      intro: "Đây là lời nhắc nhở về việc nhận phòng cho yêu cầu của bạn với mã số %{code}."
+      checkin_date: "Ngày nhận phòng của bạn là %{date}."
+      note: "Vui lòng đảm bảo rằng bạn đã chuẩn bị sẵn sàng cho việc nhận phòng."
+      footer: "Cảm ơn bạn đã chọn khách sạn của chúng tôi."
