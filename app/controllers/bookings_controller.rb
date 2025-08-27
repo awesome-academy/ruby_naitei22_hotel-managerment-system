@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :require_login,
-                only: %i(index update current_booking confirm_booking)
+  before_action :authenticate_user!
   before_action :set_current_booking,
                 only: %i(update current_booking confirm_booking)
   before_action :load_current_booking_data, only: %i(current_booking)
@@ -86,7 +85,7 @@ class BookingsController < ApplicationController
                                        :room_availability}
                                      ]
                                    )
-                                   .find_by(id: @current_booking.id)
+                                   .find_by(id: params[:id])
     return if @current_booking
 
     flash[:warning] = t("bookings.not_found")
@@ -99,13 +98,6 @@ class BookingsController < ApplicationController
 
     flash[:warning] = t("bookings.not_found")
     redirect_to root_path
-  end
-
-  def require_login
-    return if logged_in?
-
-    flash[:danger] = t(".card.need_login")
-    redirect_back(fallback_location: root_path)
   end
 
   def create_room_availability_requests booking
@@ -185,7 +177,7 @@ class BookingsController < ApplicationController
                                 :room_availability}
                               ]
                             )
-    return if @bookings
+    return if @bookings.exists?
 
     flash[:warning] = t("bookings.not_found")
     redirect_to bookings_path
@@ -194,7 +186,9 @@ class BookingsController < ApplicationController
   def handle_cancel_booking
     ActiveRecord::Base.transaction do
       @booking.update!(status: :cancelled)
-      @booking.requests.update_all(status: :cancelled)
+      @booking.requests.each do |request|
+        request.update!(status: :cancelled)
+      end
     end
   rescue StandardError => e
     flash[:danger] = e.message

@@ -3,7 +3,6 @@
 <div class="form-signup">
   <div class="container">
     <h1><%= t("signup.title") %></h1>
-
     <div class="form">
       <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
         <%= render "users/form", f: f %>
@@ -15,7 +14,7 @@
 
       <div class="already-account">
         <%= t("signup.already_account") %>
-        <%= link_to t("login.login_now"), "#" %>
+        <%= link_to t("login.login_now"), session_path(resource_name) %>
       </div>
     </div>
   </div>
