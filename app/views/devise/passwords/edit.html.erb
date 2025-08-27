@@ -1,0 +1,34 @@
+<% provide :title, t("password_resets.edit.reset_title") %>
+
+<div class="form-reset">
+  <div class="container">
+    <h1><%= t("password_resets.edit.reset_title") %></h1>
+
+    <div class="form">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="form-group">
+          <%= f.label :password, t("password_resets.edit.new_password") %>
+          <div class="input-wrapper">
+            <i class="fa fa-lock icon"></i>
+            <%= f.password_field :password, class: "form-control", placeholder: t("password_resets.edit.password_placeholder") %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, t("password_resets.edit.confirm_password") %>
+          <div class="input-wrapper">
+            <i class="fa fa-lock icon"></i>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: t("password_resets.edit.confirm_placeholder") %>
+          </div>
+        </div>
+
+        <div class="form-group form-action">
+          <%= f.submit t("password_resets.edit.update_btn"), class: "btn btn-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

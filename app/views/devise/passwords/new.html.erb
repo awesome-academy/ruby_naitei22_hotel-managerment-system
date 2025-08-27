@@ -1,0 +1,29 @@
+<% provide :title, t("password_resets.new.title") %>
+
+<div class="form-forgot">
+  <div class="container">
+    <h1><%= t("password_resets.new.title") %></h1>
+
+    <div class="form">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+
+        <div class="form-group">
+          <%= f.label :email, t("password_resets.new.email") %>
+          <div class="input-wrapper">
+            <i class="fa fa-envelope icon"></i>
+            <%= f.email_field :email, class: "form-control", placeholder: t("password_resets.new.email_placeholder") %>
+          </div>
+        </div>  
+
+        <div class="form-group form-action">
+          <%= f.submit t("password_resets.new.submit"), class: "btn btn-submit" %>
+        </div>
+      <% end %>
+
+      <p class="back-login">
+        <%= link_to t("password_resets.new.back_to_login"), new_user_session_path %>
+      </p>
+    </div>
+  </div>
+</div>

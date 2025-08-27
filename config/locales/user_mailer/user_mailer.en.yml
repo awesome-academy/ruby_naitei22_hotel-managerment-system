@@ -9,8 +9,7 @@ en:
     password_reset:
       subject: "Password Reset"
       title: "Reset Your Password"
-      greeting_reset_password: "You requested a password reset."
+      greeting_reset_password: "Someone has requested a link to change your password. You can do this through the link below."
       edit_password_reset: "Click here to reset your password."
-      expiration_notice: "This link will expire in two hours."
-      ignore_notice: "If you did not request a password reset, please ignore this email."
+      ignore_notice: "If you didn't request this, please ignore this email. Your password won't change until you access the link above and create a new one."
       to_reset_password: "To reset your password, click the link below:"

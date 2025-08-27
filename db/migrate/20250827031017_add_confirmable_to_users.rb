@@ -6,7 +6,5 @@ class AddConfirmableToUsers < ActiveRecord::Migration[7.0]
     add_column :users, :confirmation_sent_at, :datetime
 
     add_index :users, :confirmation_token,   unique: true
-
-    remove_index :users, :reset_password_token
   end
 end
