@@ -1,0 +1,8 @@
+<%= t("app") %>
+
+<%= t("request_mailer.checkin_reminder.greeting") %> <%= @user.name %>.
+
+<%= t("request_mailer.checkin_reminder.intro", code: @request.id) %>
+<%= t("request_mailer.checkin_reminder.checkin_date", date: l(@request.check_in, format: :long)) %>
+<%= t("request_mailer.checkin_reminder.note") %>
+<%= t("request_mailer.checkin_reminder.footer") %>

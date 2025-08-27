@@ -11,11 +11,9 @@ require 'date'
 User.create!(
   name: "Admin",
   email: "admin@gmail.com",
-  password: "123",
+  password: "abc123",
   phone: "729-551-3035",
-  role: 1,
-  activated: true,
-  activated_at: Time.zone.now
+  role: 1
 )
 
 User.create!(
@@ -23,9 +21,7 @@ User.create!(
   email: "vickiwilliams@levy.com",
   password: "Password@123",
   phone: "523-468-9226x96295",
-  role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  role: 0
 )
 
 User.create!(
@@ -33,9 +29,7 @@ User.create!(
   email: "anthony41@lopez-fuller.com",
   password: "Password@123",
   phone: "306-359-9581x037",
-  role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  role: 0
 )
 
 User.create!(
@@ -43,9 +37,7 @@ User.create!(
   email: "jonesdouglas@gmail.com",
   password: "Password@123",
   phone: "+1-388-501-3262x5359",
-  role: 1,
-  activated: true,
-  activated_at: Time.zone.now
+  role: 1
 )
 
 User.create!(
@@ -53,9 +45,7 @@ User.create!(
   email: "douglasvaughn@yahoo.com",
   password: "Password@123",
   phone: "8809003047",
-  role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  role: 0
 )
 
 RoomType.create!(
@@ -391,20 +381,20 @@ checked_out_requests = Request.where(status: Request.statuses[:checked_out])
 checked_out_requests.each do |request|
   # Tạo guests dựa trên number_of_guests của request
   num_guests = [request.number_of_guests, 1].max
-  
+
   num_guests.times do |i|
     guest_names = [
       "Nguyen Van A", "Tran Thi B", "Le Van C", "Pham Thi D", "Hoang Van E",
       "Vu Thi F", "Do Van G", "Ngo Thi H", "Bui Van I", "Dang Thi K"
     ]
-    
+
     provinces = [
       "Ha Noi", "Ho Chi Minh", "Da Nang", "Hai Phong", "Can Tho",
       "Binh Duong", "Dong Nai", "Khanh Hoa", "Lam Dong", "Quang Nam"
     ]
-    
+
     identity_types = ["national_id", "passport", "identity_number"]
-    
+
     # Tạo số CCCD/passport ngẫu nhiên hợp lệ
     identity_type = identity_types.sample
     identity_number = case identity_type
@@ -415,7 +405,7 @@ checked_out_requests.each do |request|
       # Passport format: 1 chữ cái + 7 số
       "#{('a'..'z').to_a.sample}#{rand(1000000..9999999)}"
     end
-    
+
     Guest.create!(
       request: request,
       full_name: "#{guest_names.sample} #{i + 1}",
@@ -431,11 +421,11 @@ end
 checked_out_requests.each do |request|
   # Lấy user từ booking của request này
   user = request.booking.user
-  
+
   # Tạo review ngẫu nhiên
   ratings = [3, 4, 5] # Chỉ tạo review tích cực
   rating = ratings.sample
-  
+
   comments = [
     "Excellent service and comfortable room #{request.room&.room_number}!",
     "Great experience staying at room #{request.room&.room_number}. Will come back!",
@@ -445,9 +435,9 @@ checked_out_requests.each do |request|
     "Highly recommend this hotel. Room #{request.room&.room_number} exceeded expectations.",
     "Peaceful and comfortable stay in room #{request.room&.room_number}."
   ]
-  
+
   review_statuses = ["pending"] # 2/3 chance approved
-  
+
   Review.create!(
     user: user,
     request: request,
