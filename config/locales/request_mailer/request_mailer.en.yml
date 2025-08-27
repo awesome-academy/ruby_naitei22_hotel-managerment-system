@@ -1,0 +1,9 @@
+en:
+  request_mailer:
+    checkin_reminder:
+      subject: "Check-in Reminder"
+      greeting: "Hello"
+      intro: "This is a reminder for your check-in for request ID %{code}."
+      checkin_date: "Your check-in date is %{date}."
+      note: "Please make sure you are ready for check-in."
+      footer: "Thank you for choosing our hotel."
