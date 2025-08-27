@@ -1,0 +1,30 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <%= f.label :email, t(".email") %>
+    <div class="input-wrapper">
+      <i class="fas fa-envelope icon"></i>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t(".email_placeholder") %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, t(".password") %>
+    <div class="password-field">
+      <div class="input-wrapper">
+        <i class="fas fa-lock icon"></i>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: t(".password_placeholder") %>
+        <i class="fas fa-eye toggle-password"></i>
+      </div>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="form-group remember-forgot">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me, t(".remember_me") %>
+    </div>
+  <% end %>
+
+  <div class="form-group form-action">
+    <%= f.submit t(".submit"), class: "btn btn-submit" %>
+  </div>
+<% end %>

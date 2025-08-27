@@ -1,0 +1,30 @@
+<% provide :title, t(".title") %>
+
+<div class="form-forgot">
+  <div class="container">
+    <h1><%= t(".title") %></h1>
+
+    <div class="form">
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+
+        <div class="form-group">
+          <%= f.label :email, t(".email") %>
+          <div class="input-wrapper">
+            <i class="fa fa-envelope icon"></i>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",
+            value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+            class: "form-control", placeholder: t(".email_placeholder") %>
+          </div>
+        </div>
+
+        <div class="form-group form-action">
+          <%= f.submit t(".submit"), class: "btn btn-submit" %>
+        </div>
+      <% end %>
+      <p class="back-login">
+        <%= link_to t(".back_to_login"), new_user_session_path %>
+      </p>
+  </div>
+</div>
+

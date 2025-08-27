@@ -1,0 +1,14 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "shared/error_messages", resource: resource, object: f.object %>
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <div class="input-wrapper">
+      <i class="fa fa-envelope icon"></i>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t(".email_placeholder") %>
+    </div>
+  </div>
+
+  <div class="form-group form-action">
+    <%= f.submit t(".submit"), class: "btn btn-submit" %>
+    </div>
+<% end %>

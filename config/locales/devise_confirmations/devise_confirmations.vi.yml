@@ -1,0 +1,9 @@
+vi:
+  devise:
+    confirmations:
+      new:
+        title: "Gửi lại hướng dẫn xác nhận"
+        email: "Email"
+        email_placeholder: "Nhập địa chỉ email của bạn"
+        submit: "Gửi lại hướng dẫn xác nhận"
+        back_to_login: "Quay lại đăng nhập"

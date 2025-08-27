@@ -17,13 +17,6 @@
   </div>
 
   <div class="info-item">
-    <strong><%= t(".status") %>:</strong>
-    <span class="status-badge <%= user.status %>">
-      <%= t("admin.users.user.status_#{user.status}") %>
-    </span>
-  </div>
-
-  <div class="info-item">
     <strong><%= t(".created_at") %>:</strong>
     <%= l(user.created_at, format: :long) %>
   </div>

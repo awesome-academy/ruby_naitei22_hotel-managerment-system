@@ -86,14 +86,63 @@
 
         &.remember-forgot {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items: center;
           font-size: 14px;
+          margin-top: 15px;
+          margin-bottom: 15px;
+
+          input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ddd;
+            border-radius: 3px;
+            background-color: #fff;
+            cursor: pointer;
+            position: relative;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+
+            &:hover {
+              border-color: #6C63FF;
+            }
+
+            &:checked {
+              background-color: #6C63FF;
+              border-color: #6C63FF;
+
+              &::after {
+                content: '✓';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 12px;
+                font-weight: bold;
+              }
+            }
+
+            &:focus {
+              outline: none;
+              box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+            }
+          }
 
           label {
             display: flex;
             align-items: center;
-            gap: 5px;
+            cursor: pointer;
+            font-weight: normal;
+            margin-bottom: 0;
+            user-select: none;
+
+            &:hover {
+              color: #6C63FF;
+            }
           }
 
           .forgot-link {
@@ -125,6 +174,18 @@
         color: #6C63FF;
         text-decoration: none;
       }
+    }
+
+    // Backup styling cho btn-submit
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background-color: #6C63FF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
     }
   }
 }

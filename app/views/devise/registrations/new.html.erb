@@ -1,0 +1,12 @@
+<% provide :title, t(".title") %>
+
+<div class="form-signup">
+  <div class="container">
+    <h1><%= t(".title") %></h1>
+
+    <div class="form">
+      <%= render "devise/registrations/form", resource: resource, resource_name: resource_name %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

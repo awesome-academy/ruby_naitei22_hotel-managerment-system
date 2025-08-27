@@ -1,0 +1,12 @@
+vi:
+  devise:
+    sessions:
+      new:
+        title: "Đăng nhập"
+      form:
+        email: "Email"
+        email_placeholder: "Nhập email của bạn"
+        password: "Mật khẩu"
+        password_placeholder: "Nhập mật khẩu của bạn"
+        remember_me: "Ghi nhớ tôi"
+        submit: "Đăng nhập"

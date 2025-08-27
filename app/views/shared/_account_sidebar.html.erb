@@ -15,11 +15,11 @@
     </div>
     <div class="sidebar-link">
       <i class="fa fa-lock"></i>
-      <%= link_to t("shared.account_sidebar.change_password"), edit_user_password_path(current_user), class: "sidebar-text #{current_page?(edit_user_password_path(current_user)) ? 'active' : ''}" %>
+      <%= link_to t("shared.account_sidebar.change_password"), edit_user_password_user_path(current_user), class: "sidebar-text #{current_page?(edit_user_password_path(current_user)) ? 'active' : ''}" %>
     </div>
     <div class="sidebar-link">
       <i class="fa fa-sign-out"></i>
-      <%= link_to t("shared.account_sidebar.logout"), logout_path, data: { turbo_method: :delete }, class: "sidebar-text" %>
+      <%= link_to t("shared.account_sidebar.logout"), destroy_user_session_path, data: { turbo_method: :delete }, class: "sidebar-text" %>
     </div>
   </div>
 </div>
