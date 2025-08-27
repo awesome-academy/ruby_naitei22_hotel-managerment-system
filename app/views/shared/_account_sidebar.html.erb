@@ -15,7 +15,9 @@
     </div>
     <div class="sidebar-link">
       <i class="fa fa-lock"></i>
-      <%= link_to t("shared.account_sidebar.change_password"), edit_user_change_password_path(current_user), class: "sidebar-text #{current_page?(edit_user_password_path(current_user)) ? 'active' : ''}" %>
+      <%= link_to t("shared.account_sidebar.change_password"),
+        edit_user_change_password_path(current_user),
+        class: "sidebar-text #{current_page?(edit_user_change_password_path(current_user)) ? 'active' : ''}" %>
     </div>
     <div class="sidebar-link">
       <i class="fa fa-sign-out"></i>
