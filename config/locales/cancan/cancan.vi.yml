@@ -1,0 +1,28 @@
+vi:
+  cancan:
+    access_denied: "Truy Cập Bị Từ Chối"
+    permission_denied: "Bạn không có quyền %{action} %{resource} này."
+    admin_required: "Yêu cầu quyền quản trị viên."
+    login_required: "Vui lòng đăng nhập để tiếp tục."
+    owner_required: "Bạn chỉ có thể truy cập tài nguyên của mình."
+
+  actions:
+    manage: "quản lý"
+    create: "tạo"
+    read: "xem"
+    update: "chỉnh sửa"
+    edit: "chỉnh sửa"
+    destroy: "xóa"
+    confirm_booking: "xác nhận đặt phòng"
+    cancel: "hủy"
+    current_booking: "xem đặt phòng hiện tại"
+    show: "truy cập"
+
+  resources:
+    user: "người dùng"
+    booking: "đặt phòng"
+    room: "phòng"
+    request: "yêu cầu"
+    review: "đánh giá"
+    password_user: "mật khẩu người dùng"
+    all: "tất cả tài nguyên"

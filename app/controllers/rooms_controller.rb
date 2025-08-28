@@ -2,6 +2,8 @@ class RoomsController < ApplicationController
   before_action :load_room, only: %i(show calculate_price)
   before_action :set_current_booking, only: %i(show)
 
+  skip_authorization_check
+
   # GET (/:locale)/rooms(.:format)
   def index
     @pagy, @rooms = pagy(

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i(edit show update)
 
+  authorize_resource
+
   # GET /users
   def index
     @users = User.recent

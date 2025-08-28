@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i(cancel)
   before_action :load_bookings, only: %i(index)
 
+  authorize_resource
+
   # GET (/:locale)/bookings(.:format)
   def index; end
 
