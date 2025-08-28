@@ -22,3 +22,4 @@ vi:
       cancelled: "Đã hủy"
       checked_in: "Đã nhận phòng"
       checked_out: "Đã trả phòng"
+      completed: "Đã hoàn thành"
