@@ -3,11 +3,9 @@ require "rails_helper"
 RSpec.describe RequestsController, type: :controller do
   let(:user) { create(:user) }
   let(:booking) { create(:booking, user: user) }
-  let(:request_record) { create(:request, status: :pending) }
+  let(:request_record) { create(:request, status: :pending, booking: booking) }
 
-  before do
-    allow(controller).to receive(:current_user).and_return(user)
-  end
+  before { sign_in user }
 
   describe "DELETE #destroy" do
     context "when request exists" do
@@ -45,14 +43,10 @@ RSpec.describe RequestsController, type: :controller do
     end
 
     context "when request not found" do
-      before { delete :destroy, params: { id: -1 } }
-
-      it "sets flash[:warning]" do
-        expect(flash[:warning]).to be_present
-      end
-
-      it "redirects to root_path" do
-        expect(response).to redirect_to(root_path)
+      it "raises ActiveRecord::RecordNotFound" do
+        expect {
+          delete :destroy, params: { id: -1 }
+        }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

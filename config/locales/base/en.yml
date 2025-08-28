@@ -10,6 +10,7 @@ en:
   header:
     logo: "Hitachi"
     home: "Home"
+    admin: "Manager's Panel"
     explore: "Explore"
     current_booking: "Current Booking"
     login: "Log in"
@@ -47,3 +48,12 @@ en:
       header:
         one: "The form contains 1 error"
         other: "The form contains %{count} errors"
+    not_found:
+      title: "Look like you're lost"
+      message: "The page you are looking for is not available!"
+      home_link: "Go to Home"
+    forbidden:
+      title: "403 - You Shall Not Pass"
+      message_html: >
+        Uh oh, Gandalf is blocking the way!<br/>
+        Maybe you have a typo in the url? Or you meant to go to a different location? Like...Hobbiton?

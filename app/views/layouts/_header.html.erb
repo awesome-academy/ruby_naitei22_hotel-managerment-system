@@ -6,6 +6,9 @@
         <li><%= link_to t("header.home"), home_path %></li>
         <li><%= link_to t("header.explore"), rooms_path %></li>
         <li><%= link_to t("header.current_booking"), current_booking_bookings_path %></li>
+        <% if can? :access, :admin_panel %>
+          <li><%= link_to t("header.admin"), admin_root_path %></li>
+        <% end %>
       </ul>
       <ul class="user-controls">
         <li>

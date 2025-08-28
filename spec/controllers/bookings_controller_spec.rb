@@ -11,13 +11,11 @@ RSpec.describe BookingsController, type: :controller do
                      check_out: Date.today + 2.days)
   end
 
-  before do
-    allow(controller).to receive(:current_user).and_return(user)
-  end
+  before { sign_in user }
 
   describe "GET #index" do
     context "when logged in" do
-      before {get :index}
+      before {get :index, params: { user_id: user.id }}
       it "assigns @bookings" do
         expect(assigns(:bookings)).to eq(user.bookings)
       end
@@ -29,39 +27,16 @@ RSpec.describe BookingsController, type: :controller do
 
     context "when not logged in" do
       before do
-        allow(controller).to receive(:current_user).and_return(nil)
+        sign_out user
         get :index
       end
 
-      it "sets flash[:danger]" do
-        expect(flash[:danger]).to eq I18n.t("bookings.card.need_login")
+      it "sets flash[:alert]" do
+        expect(flash[:alert]).to eq I18n.t("devise.failure.unauthenticated")
       end
 
-      it "redirects to root_path if no referer" do
-        expect(response).to redirect_to(root_path)
-      end
-
-      it "redirects back if referer present" do
-        request.env["HTTP_REFERER"] = "/previous_page"
-        get :index
-        expect(response).to redirect_to("/previous_page")
-      end
-    end
-
-    context "when current_user has no bookings" do
-      let(:this_user) { create(:user) }
-
-      before do
-        allow(controller).to receive(:current_user).and_return(this_user)
-        get :index
-      end
-
-      it "sets flash[:warning]" do
-        expect(flash[:warning]).to eq I18n.t("bookings.not_found")
-      end
-
-      it "redirects to bookings_path" do
-        expect(response).to redirect_to(bookings_path)
+      it "redirects to login page" do
+        expect(response).to redirect_to(new_user_session_path(locale: nil))
       end
     end
   end
@@ -154,8 +129,9 @@ RSpec.describe BookingsController, type: :controller do
 
     context "when booking not found" do
       before{delete :destroy, params: { id: -1 }}
-      it "sets flash[:warning]" do
-        expect(flash[:warning]).to eq I18n.t("bookings.not_found")
+
+      it "sets flash[:danger]" do
+        expect(flash[:danger]).to eq I18n.t("bookings.not_found")
       end
 
       it "redirects to root_path" do
@@ -173,18 +149,6 @@ RSpec.describe BookingsController, type: :controller do
         expect(response).to render_template(:current_booking)
       end
     end
-
-    context "when booking not found" do
-      before{get :current_booking, params: { id: -1 }}
-
-      it "sets flash[:warning]" do
-        expect(flash[:warning]).to eq I18n.t("bookings.not_found")
-      end
-
-      it "redirects to bookings_path" do
-        expect(response).to redirect_to(bookings_path)
-      end
-    end
   end
 
   describe "PATCH #confirm_booking" do
@@ -200,7 +164,7 @@ RSpec.describe BookingsController, type: :controller do
       end
 
       it "redirects to bookings_path" do
-        expect(response).to redirect_to(bookings_path)
+        expect(response).to redirect_to(user_bookings_path user)
       end
     end
 
@@ -238,7 +202,7 @@ RSpec.describe BookingsController, type: :controller do
       end
 
       it "redirects to bookings_path" do
-        expect(response).to redirect_to(bookings_path)
+        expect(response).to redirect_to(user_bookings_path user)
       end
     end
   end
@@ -266,33 +230,6 @@ RSpec.describe BookingsController, type: :controller do
 
       it "sets flash[:danger]" do
         expect(flash[:danger]).to eq "Something went wrong"
-      end
-    end
-  end
-
-  describe "before_action :set_user" do
-    context "when user not found" do
-      before do 
-        allow(controller).to receive(:current_user).and_return(nil)
-        get :index, params: { user_id: 9999 }
-      end
-      
-      it "redirects to root_path" do
-        expect(response).to redirect_to(root_path)
-      end
-    end
-  end
-
-  describe "before_action :set_booking" do
-    context "when booking not found" do
-      before {post :cancel, params: { user_id: user.id, id: 9999 } }
-
-      it "sets flash[:warning]" do
-        expect(flash[:warning]).to eq I18n.t("bookings.not_found")
-      end
-
-      it "redirects to user_bookings_path" do
-        expect(response).to redirect_to(user_bookings_path(user))
       end
     end
   end

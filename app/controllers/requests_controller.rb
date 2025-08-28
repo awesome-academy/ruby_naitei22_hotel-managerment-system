@@ -1,6 +1,8 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_request, only: %i(destroy cancel)
+
+  load_and_authorize_resource
+
   before_action :check_request_status, only: %i(cancel)
 
   # DELETE (/:locale)/requests/:id(.:format)
@@ -21,14 +23,6 @@ class RequestsController < ApplicationController
   end
 
   private
-
-  def load_request
-    @request = Request.find_by id: params[:id]
-    return if @request
-
-    flash[:warning] = t(".not_found")
-    redirect_to root_path
-  end
 
   def handle_cancel_request
     if @request.update(status: :cancelled)
