@@ -38,13 +38,6 @@
             data: { turbo_frame: "modal" },
             class: "btn btn-danger",
             title: t(".decline_title") %>
-      <% elsif @booking.status_confirmed? && @booking.all_requests_checked_out? %>
-        <%= button_to t(".complete"),
-            update_status_admin_booking_path(@booking),
-            method: :patch,
-            params: { booking: { status: :completed } },
-            class: "btn btn-success",
-            title: t(".complete_title") %>
       <% end %>
     </div>
   </div>
