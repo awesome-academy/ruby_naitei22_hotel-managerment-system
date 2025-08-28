@@ -6,6 +6,9 @@ FactoryBot.define do
     password { "password" }
     password_confirmation { "password" }
 
+    after(:build)  { |u| u.skip_confirmation! }
+    after(:create) { |u| u.confirm }
+
     trait :admin do
       role { :admin }
     end

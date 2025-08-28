@@ -34,15 +34,6 @@ vi:
 
     errors:
       models:
-        user:
-          attributes:
-            name:
-              blank: "Vui lòng nhập họ và tên"
-            email:
-              taken: "Email này đã được đăng ký"
-            date_of_birth:
-              invalid_range: "phải nằm trong vòng 100 năm trở lại đây"
-
         room:
           attributes:
             base:
