@@ -1,13 +1,6 @@
 class Admin::BaseController < ApplicationController
   layout "admin"
-  before_action :authenticate_admin!
+  check_authorization
 
-  private
-
-  def authenticate_admin!
-    return if current_user&.role_admin?
-
-    flash[:danger] = t("admin.base.unauthorized_access")
-    redirect_to root_path
-  end
+  authorize_resource :admin, class: false
 end

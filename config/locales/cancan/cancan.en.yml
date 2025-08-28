@@ -1,0 +1,28 @@
+en:
+  cancan:
+    access_denied: "Access Denied"
+    permission_denied: "You don't have permission to this %{action} %{resource}."
+    admin_required: "Administrator access required."
+    login_required: "Please log in to continue."
+    owner_required: "You can only access your own resources."
+    
+  actions:
+    manage: "manage"
+    create: "create"
+    read: "view"
+    update: "edit" 
+    edit: "edit"
+    destroy: "delete"
+    confirm_booking: "confirm booking"
+    cancel: "cancel"
+    current_booking: "view current booking"
+    show: "access"
+    
+  resources:
+    user: "user"
+    booking: "booking"
+    room: "room"
+    request: "request"  
+    review: "review"
+    password_user: "user's password"
+    all: "all resources"

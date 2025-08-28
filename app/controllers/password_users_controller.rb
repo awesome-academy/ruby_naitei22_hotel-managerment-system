@@ -1,6 +1,7 @@
 class PasswordUsersController < ApplicationController
   before_action :set_user, only: %i(edit update)
   before_action :check_authen, only: :update
+  before_action -> {authorize! :update, @user}, only: %i(edit update)
 
   # GET (/:locale)/users/:user_id/password_user/edit(.:format)
   def edit; end

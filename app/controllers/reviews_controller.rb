@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user
   before_action :load_review, only: %i(destroy)
 
+  authorize_resource
   # GET (/:locale)/users/:user_id/reviews(.:format)
   def index
     @reviews = @user.reviews
