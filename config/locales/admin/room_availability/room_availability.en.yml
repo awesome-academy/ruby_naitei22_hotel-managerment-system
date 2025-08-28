@@ -44,3 +44,6 @@ en:
       update:
         success: "Room availability updated successfully."
         failure: "Failed to update room availability."
+
+      load_room_availability:
+        not_found: "Room availability not found."

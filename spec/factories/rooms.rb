@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :room do
-    room_number { Faker::Number.unique.number(digits: 3) }
+    sequence(:room_number) { |n| "Room#{n}-#{SecureRandom.hex(2)}" }
     capacity { Faker::Number.between(from: 1, to: 5) }
     description { Faker::Lorem.sentence }
     price { Faker::Number.between(from: 50, to: 500) }

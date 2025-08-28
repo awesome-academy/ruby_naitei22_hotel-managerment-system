@@ -52,22 +52,6 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: EMAIL_MAX_LENGTH},
 format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
 
-  class << self
-    # Returns the hash digest of the given string.
-    def digest string
-      cost = if ActiveModel::SecurePassword.min_cost
-               BCrypt::Engine::MIN_COST
-             else
-               BCrypt::Engine.cost
-             end
-      BCrypt::Password.create(string, cost:)
-    end
-
-    def new_token
-      SecureRandom.urlsafe_base64
-    end
-  end
-
   def total_bookings
     bookings.count
   end

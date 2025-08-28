@@ -4,7 +4,7 @@ RSpec.describe Admin::RoomTypesController, type: :controller do
   let(:admin) { create(:user, :admin) }
 
   before do
-    log_in admin
+    sign_in admin
   end
 
   # Test data

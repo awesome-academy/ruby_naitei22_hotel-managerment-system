@@ -34,15 +34,6 @@ en:
 
     errors:
       models:
-        user:
-          attributes:
-            name:
-              blank: "Please enter your name"
-            email:
-              taken: "This email is already registered"
-            date_of_birth:
-              invalid_range: "must be within the last 100 years"
-
         room:
           attributes:
             base:

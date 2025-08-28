@@ -44,3 +44,6 @@ vi:
       update:
         success: "Cập nhật tình trạng phòng thành công."
         failure: "Cập nhật tình trạng phòng thất bại."
+
+      load_room_availability:
+        not_found: "Không tìm thấy tình trạng phòng."
