@@ -2,6 +2,7 @@ vi:
   admin:
     guests:
       request_not_checked_in: "Yêu cầu chưa được check in"
+      guest_not_found: "Không tìm thấy khách"
       new:
         title: "Thêm Khách Mới"
         header: "Thông tin Khách Mới"

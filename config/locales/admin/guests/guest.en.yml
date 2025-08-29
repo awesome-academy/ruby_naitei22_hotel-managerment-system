@@ -2,6 +2,7 @@ en:
   admin:
     guests:
       request_not_checked_in: "Request not checked in"
+      guest_not_found: "Guest not found"
       new:
         title: "Add New Guest"
         header: "New Guest Information"

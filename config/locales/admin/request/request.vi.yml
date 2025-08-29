@@ -1,6 +1,7 @@
 vi:
   admin:
     requests:
+      validate_check_out: "Phải có ít nhất 1 khách trước khi check out."
       not_found_booking: "Không tìm thấy booking nào với ID này."
       not_found_request: "Không tìm thấy yêu cầu nào với ID này."
       guest_row:
