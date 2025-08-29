@@ -6,7 +6,8 @@ class BookingsController < ApplicationController
 
   before_action :set_booking, only: %i(destroy)
   before_action :set_current_booking,
-                only: %i(update current_booking confirm_booking)
+                only: %i(update current_booking confirm_booking
+redirect_if_overlap)
   before_action :load_current_booking_data, only: %i(current_booking)
 
   # GET (/:locale)/bookings(.:format)
@@ -124,7 +125,7 @@ class BookingsController < ApplicationController
     room_names = overlaps.map {|r| r.room.room_number}.uniq.join(", ")
     flash[:warning] =
       t("current_booking.confirm.overlap_with_rooms", rooms: room_names)
-    redirect_to @current_booking
+    redirect_to current_booking_bookings_path
     true
   end
 
@@ -160,6 +161,8 @@ class BookingsController < ApplicationController
       @booking.requests.each do |request|
         request.update!(status: :cancelled)
       end
+
+      flash[:success] = t(".success")
     end
   rescue StandardError => e
     flash[:danger] = e.message

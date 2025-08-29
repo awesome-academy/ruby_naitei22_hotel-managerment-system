@@ -5,11 +5,6 @@
   <td><%= user.phone %></td>
   <td><%= user.total_created_bookings %></td>
   <td>
-    <span class="status-badge <%= user.role %>">
-      <%= t("admin.users.user.status_#{user.role}") %>
-    </span>
-  </td>
-  <td>
     <div class="date-info">
       <%= l(user.created_at, format: :short) %>
     </div>

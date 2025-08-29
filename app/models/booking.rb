@@ -61,7 +61,7 @@ class Booking < ApplicationRecord
   end)
 
   def self.ransackable_attributes _auth_object = nil
-    %w(booking_code status)
+    %w(booking_code status created_at)
   end
 
   def self.ransackable_associations _auth_object = nil

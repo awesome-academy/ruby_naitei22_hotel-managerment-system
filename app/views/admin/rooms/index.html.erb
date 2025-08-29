@@ -19,7 +19,7 @@
 					<th><%= t(".room_number") %></th>
 					<th><%= t(".room_type_name") %></th>
 					<th><%= t(".capacity") %></th>
-					<th><%= t(".created_at") %></th>
+					<th><%= sort_link(@q, :created_at, t(".created_at")) %></th>
 					<th></th>
 				</tr>
 			</thead>
