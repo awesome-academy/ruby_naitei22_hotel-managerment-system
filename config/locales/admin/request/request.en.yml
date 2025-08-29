@@ -1,6 +1,7 @@
 en:
   admin:
     requests:
+      validate_check_out: "Must have at least 1 guest before checking out."
       not_found_booking: "No booking found with this ID."
       not_found_request: "No request found with this ID."
       guest_row:

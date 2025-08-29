@@ -93,8 +93,4 @@ class Booking < ApplicationRecord
       req.update(status: :declined)
     end
   end
-
-  def booking_total_price
-    rooms.sum(:price)
-  end
 end

@@ -17,7 +17,7 @@ class Guest < ApplicationRecord
   validates :full_name, presence: true
   validates :identity_type, presence: true
   validates :identity_number, presence: true,
-             uniqueness: {case_sensitive: false}
+             uniqueness: true
   validates :identity_issued_date, presence: true
   validates :identity_issued_place, presence: true
   validate :validate_identity_date

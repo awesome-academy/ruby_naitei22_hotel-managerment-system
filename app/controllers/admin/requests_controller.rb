@@ -26,7 +26,7 @@ class Admin::RequestsController < Admin::BaseController
     return if @request
 
     flash[:danger] = t("admin.requests.not_found_request")
-    redirect_to admin_booking_path(booking_id)
+    redirect_to admin_booking_path(params[:booking_id])
   end
 
   def request_params

@@ -7,7 +7,7 @@ RSpec.describe Admin::ReviewsController, type: :controller do
   let(:review) {create(:review)}
 
   before do
-    log_in admin
+    sign_in admin
   end
 
   describe "GET #index" do
